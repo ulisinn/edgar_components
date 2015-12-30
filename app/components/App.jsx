@@ -56,9 +56,12 @@ export default class App extends React.Component {
                                 links={links}
                                 backgroundImage={backgroundImage}
                                 location={location}/>
-                    <Home links={links}
-                          siteReady={siteReady}
-                          onNavClick={(id) => this.onLinkClicked(id)}/>
+                    <div className="content">
+
+                        <Home links={links}
+                              siteReady={siteReady}
+                              onNavClick={(id) => this.onLinkClicked(id)}/>
+                    </div>
                     {/* <BackgroundLoop links={links}
                      audio={audio}
                      backgroundImage={backgroundImage}
@@ -96,9 +99,12 @@ export default class App extends React.Component {
                                 location={location}/>
                     <BackgroundLoop links={links} audio={audio} backgroundImage={backgroundImage} location={location}
                                     isHidden={true}/>
-                    <Home links={links}
-                          siteReady={siteReady}
-                          onNavClick={(id) => this.onLinkClicked(id)}/>
+                    <div className="content">
+                        <Home links={links}
+                              siteReady={siteReady}
+                              onNavClick={(id) => this.onLinkClicked(id)}/>
+
+                    </div>
                     <Navigation links={links} backgroundImage={backgroundImage}
                                 onNavClick={(id) => this.onLinkClicked(id)}/>
 

@@ -1,4 +1,4 @@
-//@import '../../node_modules/css-reset/reset.css';
+@import '../../../../node_modules/resetcss/reset.min.css';
 @import 'fontello.scss';
 @import 'open_sans.css';
 @import 'menlo.css';
@@ -45,11 +45,13 @@ body {
 .navigation {
   position: fixed;
   width: 100%;
-  min-width: 850px;
+  max-width: 825px;
   height: 1.5em;
   top: 0;
   left: 0;
-  margin-top: 1.5em;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  //border:1px solid red;
 }
 
 .mainNavButtonActive {
@@ -61,7 +63,7 @@ body {
   cursor: pointer;
   font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
 }
 
 .mainNavButtonActive:hover {
