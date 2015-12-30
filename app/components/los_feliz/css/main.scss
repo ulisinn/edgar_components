@@ -1,0 +1,170 @@
+//@import '../../node_modules/css-reset/reset.css';
+@import 'fontello.scss';
+@import 'open_sans.css';
+@import 'menlo.css';
+
+$navSelected: #b70606;
+
+body {
+  background-color: black;
+  font-family: 'Menlo-Regular';
+  overflow-x: hidden;
+}
+
+#app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.animated {
+  animation: animate 40s linear infinite;
+  -webkit-animation: animate 40s linear infinite;
+}
+
+@keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@-webkit-keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+.navigation {
+  position: fixed;
+  width: 100%;
+  min-width: 850px;
+  height: 1.5em;
+  top: 0;
+  left: 0;
+  margin-top: 1.5em;
+}
+
+.mainNavButtonActive {
+  color: white;
+  display: inline-block;
+  padding-top: 4px;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.mainNavButtonActive:hover {
+  color: $navSelected;
+}
+
+.mainNavButtonSelected {
+  color: $navSelected;
+  display: inline-block;
+  padding-top: 4px;
+  padding-bottom: 2px;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+  cursor: default;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  font-family: 'open_sansbold';
+  //font-size: 5em;
+  //color:black;
+}
+
+.contentInset {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 5em;
+  width: 100%;
+  max-width: 800px;
+  padding: 2em;
+  paddingTop: '1em';
+}
+
+// SPLASH PAGE
+
+.splashPage {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 920px;
+
+  svg {
+    cursor: pointer;
+  }
+  .splashHeader {
+    font-family: 'open_sans_condensedbold';
+    line-height: 0.7em;
+    font-size: 3em;
+    text-align: center;
+    color: white;
+    margin-bottom: 2em;
+  }
+  .splashSub {
+    font-family: 'open_sanscondensed_light';
+    font-size: 3em;
+    text-align: center;
+    color: white;
+    margin-left: 0.6em;
+
+  }
+
+}
+
+.socialIcons {
+  font-size: 1.6em;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.3em;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 270px;
+  }
+  a {
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    color: white;
+    transition: background-color .2s linear, $navSelected .2s linear;
+  }
+
+  a:hover{
+    color: $navSelected;
+
+  }
+}

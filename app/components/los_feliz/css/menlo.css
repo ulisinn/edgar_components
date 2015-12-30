@@ -1,0 +1,9 @@
+
+@font-face {
+    font-family: 'Menlo-Regular';
+    src: url('../fonts/Menlo-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Menlo-Regular.ttf') format('truetype'),
+    url('../fonts/Menlo-Regular.svg#Menlo-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
