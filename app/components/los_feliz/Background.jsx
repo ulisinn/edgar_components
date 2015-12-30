@@ -55,6 +55,7 @@ export default class Background extends React.Component {
 
     onBackgroundImageLoaded() {
         TweenMax.to(this._animatedBg, 1, {autoAlpha: 1});
+        this.props.onFadeStart();
     }
 
 }
