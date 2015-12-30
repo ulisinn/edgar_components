@@ -56,6 +56,9 @@ export default class App extends React.Component {
                                 links={links}
                                 backgroundImage={backgroundImage}
                                 location={location}/>
+                    <Home links={links}
+                          siteReady={siteReady}
+                          onNavClick={(id) => this.onLinkClicked(id)}/>
                     {/* <BackgroundLoop links={links}
                      audio={audio}
                      backgroundImage={backgroundImage}
@@ -65,9 +68,7 @@ export default class App extends React.Component {
                                 backgroundImage={backgroundImage}
                                 onNavClick={(id) => this.onLinkClicked(id)}
                     />
-                    <Home links={links}
-                          siteReady={siteReady}
-                          onNavClick={(id) => this.onLinkClicked(id)}/>
+
                     <SocialIcons links={links}
                                  siteReady={siteReady}
                                  onNavClick={(id) => this.onLinkClicked(id)}/>
@@ -95,14 +96,15 @@ export default class App extends React.Component {
                                 location={location}/>
                     <BackgroundLoop links={links} audio={audio} backgroundImage={backgroundImage} location={location}
                                     isHidden={true}/>
-                    <Navigation links={links} backgroundImage={backgroundImage}
-                                onNavClick={(id) => this.onLinkClicked(id)}/>
                     <Home links={links}
                           siteReady={siteReady}
                           onNavClick={(id) => this.onLinkClicked(id)}/>
+                    <Navigation links={links} backgroundImage={backgroundImage}
+                                onNavClick={(id) => this.onLinkClicked(id)}/>
+
                     <SocialIcons links={links}
-                          siteReady={siteReady}
-                          onNavClick={(id) => this.onLinkClicked(id)}/>
+                                 siteReady={siteReady}
+                                 onNavClick={(id) => this.onLinkClicked(id)}/>
 
                 </div>
             );
