@@ -26,6 +26,7 @@
 
 /app/components/kanban
 # Mongo Explorer plugin:
+/build
 # .idea/mongoSettings.xml
 
 ## File-based project format:
