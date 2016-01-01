@@ -32,6 +32,7 @@
 ## File-based project format:
 *.ipr
 *.iws
+/modernizr.js
 
 ## Plugin-specific files:
 /node_modules
