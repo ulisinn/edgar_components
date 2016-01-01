@@ -58,11 +58,12 @@ export default class App extends React.Component {
                                 location={location}/>
                     <div className="contentCenterAlign">
 
-                        <Home links={links}
+                        {/* <Home links={links}
                               siteReady={siteReady}
                               onNavClick={(id) => this.onLinkClicked(id)}/>
-                        {/*<Teaser assets={this.state} onNavClick={(id) => this.onLinkClicked(id)}/>
-                        <Credits assets={this.state} onNavClick={(id) => this.onLinkClicked(id)}/>*/}
+                        <Teaser assets={this.state}/>
+                        <Credits assets={this.state}/>*/}
+                        <Theory assets={this.state}/>
 
                     </div>
                     {/* <BackgroundLoop links={links}
@@ -120,20 +121,6 @@ export default class App extends React.Component {
         } else {
             return null;
         }
-        /*        return (<div>
-         <Navigation />
-         <Background />
-         <BackgroundLoop />
-         <Teaser />
-         <Stills />
-         <Screenings />
-         <Interviews />
-         <Credits />
-         <Theory />
-         <MakingOf />
-         <Downloads />
-         </div>)*/
-
     }
 
     onBackgroundFadeStart() {

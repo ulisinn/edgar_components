@@ -1,7 +1,5 @@
 import  React from 'react';
-import {getCredits} from './utils/data.js';
 
-var _body;
 export default class Credits extends React.Component {
     constructor(props) {
         super(props);
@@ -33,6 +31,5 @@ export default class Credits extends React.Component {
         //console.log("createMarkup", item);
         return {__html: item};
     };
-
 
 }

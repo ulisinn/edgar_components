@@ -26,7 +26,7 @@ export default class Navigation extends React.Component {
         this.showHideNavbar(links, 0);
         window.addEventListener('resize', () => this.handleResize());
         this.initializeMenu();
-        console.log("componentDidMount NAV", links, this._navBar, this._hamburgerClassnames);
+       // console.log("componentDidMount NAV", links, this._navBar, this._hamburgerClassnames);
     }
 
     componentWillUnmount() {
@@ -44,7 +44,7 @@ export default class Navigation extends React.Component {
             mobileNav = false;
         }
         TweenMax.set(this._mobileNav, {autoAlpha: alpha});
-        console.log("mobileNav", mobileNav);
+       // console.log("mobileNav", mobileNav);
         this.setState({mobileNav});
 
     }
@@ -74,7 +74,7 @@ export default class Navigation extends React.Component {
     }
 
     onNavItemMouseDown() {
-        console.log("onNavItemMouseDown");
+        //console.log("onNavItemMouseDown");
         const hamburgerPressed = false;
         this.setState({hamburgerPressed});
         this.setMobileNavState()
@@ -82,7 +82,7 @@ export default class Navigation extends React.Component {
 
     setMobileNavState() {
         const hamburgerPressed = this.state.hamburgerPressed;
-        console.log("onHamburgerClick setMobileNavState", hamburgerPressed);
+        //console.log("onHamburgerClick setMobileNavState", hamburgerPressed);
 
         if (!this._mobileNav) {
             return
@@ -125,7 +125,7 @@ export default class Navigation extends React.Component {
         }
         this.setMobileNavState();
 
-        console.log("this._hamburgerClassnames", this._hamburgerClassnames, this.state.hamburgerPressed);
+        //console.log("this._hamburgerClassnames", this._hamburgerClassnames, this.state.hamburgerPressed);
         return (
             <nav className="navigation" ref={(c) => this._navBar = c}>
                 <ul ref={(c) => this._mobileNav = c}>

@@ -15,8 +15,8 @@ export default class MainNavButton extends React.Component {
 
     render() {
         //console.log(this.props.buttonName);
-        let btn;
         //return (this.props.buttonName.isSelected) ? ()=>this.renderSelectedButton() : ()=>this.renderActiveButton()
+        let btn;
 
         (this.props.buttonName.isSelected) ? btn = this.renderSelectedButton() : btn = this.renderActiveButton();
         return btn;

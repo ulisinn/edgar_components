@@ -1,38 +1,28 @@
 import  React from 'react';
-import {getTheory} from './utils/data.js';
+import ListCallout from './ui_elements/ListCallout'
 
-var _body;
 export default class Theory extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {null};
-        const theory = getTheory().then(function (response) {
-            //console.log("Theory response", response.data);
-            const theory = response.data.map(
-                function (item) {
-                    const t = {};
-                    t.assetID = item._id;
-                    t.title = item.Theory[0].title;
-                    t.author = item.Theory[0].author;
-                    t.processed = item.Theory[0].body.processed;
-                    t.raw = item.Theory[0].body.raw;
-                    //console.log("item", item);
-                    return t;
-                });
-            this.setState({theory});
-        }.bind(this))
+        const theory = this.props.assets.theory;
+        this.state = {theory};
+    }
+
+    onItemSelected(item) {
+        console.log('onItemSelected', item);
     }
 
     render() {
-        const theory = this.state.theory;
-        if (theory) {
-            //console.log('render Theory', theory[0]);
-            return <div>
-                <ul>{theory.map(this.renderData)}</ul>
-                {/*<div dangerouslySetInnerHTML={this.createMarkup(theory[0].processed)}/>*/}
-            </div>;
-        }
-        return null
+        const theory = this.props.assets.theory;
+        /*        if (credits) {
+         //console.log('render Credits', credits[0]);
+         return <div className="credits">
+         <div dangerouslySetInnerHTML={this.createMarkup(credits[0].processed)}/>
+         </div>;
+         }*/
+        return <div className="theory">
+            <ListCallout listItems={theory} onItemSelected={(item) => this.onItemSelected(item)}/>
+        </div>
     }
 
     renderData(item) {
@@ -48,6 +38,5 @@ export default class Theory extends React.Component {
         //console.log("createMarkup", item);
         return {__html: item};
     };
-
 
 }

@@ -8,6 +8,7 @@ $helvetica: system, -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Hel
 
 $navSelected: #b70606;
 $navWidth: 770px;
+$calloutBackground: rgba(0, 0, 0, 0.3);
 
 body {
   background-color: black;
@@ -60,8 +61,6 @@ body {
   margin-top: 0.5em;
   margin-left: 0.5em;
   margin-right: auto;
-
-  //border: 1px solid red;
 }
 
 .navigation ul {
@@ -97,7 +96,7 @@ body {
   }
 
   .navigation ul {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: $calloutBackground;
     border: 1px solid #ccc;
     padding-bottom: 5px;
     padding-top: 3px;
@@ -167,7 +166,6 @@ body {
   //overflow: hidden;
 }
 
-
 .contentInset {
   background-color: rgba(255, 255, 255, 0.8);
   margin-top: 5em;
@@ -175,6 +173,32 @@ body {
   max-width: 800px;
   padding: 2em;
   paddingTop: '1em';
+}
+
+.listCallout {
+  font-family: 'Menlo-Regular';
+  font-size: 0.75em;
+  line-height: 1.3em;
+  text-align: right;
+  background-color: $calloutBackground;
+  border: 1px solid #ccc;
+  width: 200px;
+  color: white;
+
+  li {
+    padding-top: 4px;
+    padding-bottom: 1em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .listItemSelected {
+    color: $navSelected;
+    cursor: default;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
 }
 
 // SPLASH PAGE
@@ -259,7 +283,7 @@ body {
     padding-left: 1em;
     padding-right: 1em;
   }
-  p:last-child{
+  p:last-child {
     padding-bottom: 3em;
   }
   p > strong {
