@@ -56,11 +56,14 @@ export default class App extends React.Component {
                                 links={links}
                                 backgroundImage={backgroundImage}
                                 location={location}/>
-                    <div className="content">
+                    <div className="contentCenterAlign">
 
                         <Home links={links}
                               siteReady={siteReady}
                               onNavClick={(id) => this.onLinkClicked(id)}/>
+                        {/*<Teaser assets={this.state} onNavClick={(id) => this.onLinkClicked(id)}/>
+                        <Credits assets={this.state} onNavClick={(id) => this.onLinkClicked(id)}/>*/}
+
                     </div>
                     {/* <BackgroundLoop links={links}
                      audio={audio}

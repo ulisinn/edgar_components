@@ -1,11 +1,13 @@
 {
-    "minify": true,
-    "options": [
+  "minify": true,
+  "options": [
     "mq",
     "setClasses"
-],
-    "feature-detects": [
+  ],
+  "feature-detects": [
+    "test/audio",
     "test/touchevents",
-    "test/video"
-]
+    "test/video",
+    "test/event/deviceorientation-motion"
+  ]
 }

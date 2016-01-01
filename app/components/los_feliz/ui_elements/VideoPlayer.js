@@ -11,10 +11,10 @@ export default class VideoPlayer extends React.Component {
         super(props);
         style = {
             position: 'relative',
-            width: '100%',
-            maxWidth:'960px',
+            width: '90%',
+            maxWidth: '960px',
             //height: '360px',
-            overflow:'hidden'
+            overflow: 'hidden'
         };
 
         videoStyle = {
@@ -30,8 +30,8 @@ export default class VideoPlayer extends React.Component {
         return (
             <div style={style}>
                 <video style={videoStyle} autoPlay controls ref={(c) => this._video = c}>
-                    <source src={'..' +this.props.video.mpeg} type="video/mp4"/>
-                    <source src={'..'+this.props.video.webm} type="video/webm"/>
+                    <source src={this.props.location + this.props.video.mpeg} type="video/mp4"/>
+                    <source src={this.props.location + this.props.video.webm} type="video/webm"/>
                 </video>
             </div>
         )

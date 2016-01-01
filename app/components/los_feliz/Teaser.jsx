@@ -1,44 +1,31 @@
-import  React from 'react';
-import {getTeaser} from './utils/data.js';
+import React from "react";
+import VideoPlayer from './ui_elements/VideoPlayer';
+
+var style;
 
 export default class Teaser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {null};
-        const teaser = getTeaser().then(function (response) {
-            //console.log("response", response.data);
-            const teaser = response.data.map(
-                function (item) {
-                    const t = {};
-                    t.assetID = item.Teaser[0].TeaserMPEG.assetID;
-                    t.title = item.Teaser[0].TeaserTitle;
-                    t.mpeg = item.Teaser[0].TeaserMPEG._default;
-                    t.webm = item.Teaser[0].TeaserWebM._default;
-                    //console.log("item", t);
-                    return t;
-                });
-            this.setState({teaser});
-        }.bind(this))
+        const video = this.props.assets.teaser;
+        this.state = {video};
+
     }
 
     render() {
-        const teaser = this.state.teaser;
+        console.log("Teaser", this.props.assets.location, this.state.video[0]);
 
-        if (teaser) {
-            console.log('render Teaser', teaser);
-            return <div>
-                <ul>{teaser.map(this.renderData)}</ul>
-            </div>
-
-        }
-        return null;
+        return (
+            <div className="content">
+                <VideoPlayer location={this.props.assets.location} video={this.state.video[0]}/></div>
+        )
     }
 
-    renderData(item) {
-        return (
-            <li key={item.assetID}>
-                {item.mpeg}
-            </li>
-        )
+    findVideo(item) {
+        if (item.key === 'Teaser') {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }
