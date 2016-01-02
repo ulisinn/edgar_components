@@ -353,9 +353,14 @@ body {
   //border: 1px solid red;
   overflow: hidden;
 }
-
-.stills img {
+.imageViewerDisplay{
   width: 100%;
+  background-color: $calloutBackground;
+}
+.stills img {
+  width: 91%;
+  margin-left:4.5%;
+  padding-top: 1.5em;
 }
 
 // STILLS
@@ -375,8 +380,8 @@ body {
 
 .imageViewerControlArrow {
   margin-top: 1em;
-  margin-left: 2.5em;
-  margin-right: 2.5em;
+  margin-left: 2.4em;
+  margin-right: 2.4em;
   display: inline-block;
   font-family: "fontello";
   border: 1px solid white;

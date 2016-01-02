@@ -32,7 +32,9 @@ export default class ImageViewer extends React.Component {
 
     render() {
         return (
-            <img src={this.state.imageSrc}/>
+            <div className="imageViewerDisplay">
+                <img src={this.state.imageSrc}/>
+            </div>
         )
     }
 
