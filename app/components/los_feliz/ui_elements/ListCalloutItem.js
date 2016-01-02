@@ -27,14 +27,14 @@ export default class ListCalloutItem extends React.Component {
     renderActiveButton(item) {
         return (
             <li className="listItemCallout" onClick={()=>this.onItemSelected()}>
-                {item.title.toUpperCase()}<br /> {item.author}
+               {item.author}
             </li>)
     }
 
     renderSelectedButton(item) {
         return (
             <li className="listItemSelected">
-                {item.title.toUpperCase()}<br /> {item.author}
+                {item.author}
             </li>)
 
     }

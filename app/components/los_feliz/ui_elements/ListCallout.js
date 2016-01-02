@@ -16,7 +16,8 @@ export default class ListCallout extends React.Component {
         const items = this.state.listItems;
         const listItems = this.initializeList(items);
         this.setState({listItems});
-
+        const currentItem = listItems[0];
+        this.setCurrentItem(currentItem);
     }
 
     initializeList(list) {
@@ -37,6 +38,7 @@ export default class ListCallout extends React.Component {
     onListItemSelected(newItem) {
         //console.log("onListItemSelected", newItem);
         const oldList = this.state.listItems;
+        const currentItem = newItem;
         const listItems = oldList.map(
             function (item, index) {
                 //console.log(item, index);
@@ -49,7 +51,12 @@ export default class ListCallout extends React.Component {
             }
         );
         this.setState({listItems});
+        this.setCurrentItem(newItem);
+    }
 
+    setCurrentItem(item) {
+        this.setState({item});
+        this.props.onItemSelected(item);
     }
 
     render() {

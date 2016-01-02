@@ -8,7 +8,7 @@ $helvetica: system, -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Hel
 
 $navSelected: #b70606;
 $navWidth: 770px;
-$calloutBackground: rgba(0, 0, 0, 0.3);
+$calloutBackground: rgba(0, 0, 0, 0.6);
 
 body {
   background-color: black;
@@ -181,9 +181,10 @@ body {
   line-height: 1.3em;
   text-align: right;
   background-color: $calloutBackground;
-  border: 1px solid #ccc;
+  //border: 1px solid #ccc;
   width: 200px;
   color: white;
+  margin-right: 1em;
 
   li {
     padding-top: 4px;
@@ -198,6 +199,27 @@ body {
     color: $navSelected;
     cursor: default;
     background-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.listItem {
+  font-family: 'Menlo-Regular';
+  font-size: 0.75em;
+  line-height: 1.7em;
+  color: white;
+  background-color: $calloutBackground;
+  padding: 3em;
+  padding-top: 1em;
+
+  h1{
+    font-family: 'open_sansbold';
+    line-height: 1.3em;
+    font-size: 2em;
+    padding-bottom: 1em;
+  }
+  p{
+    padding-bottom: 1em;
+
   }
 }
 
@@ -305,4 +327,16 @@ body {
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+}
+
+// THEORY
+
+.theory {
+  position: relative;
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 780px;
 }

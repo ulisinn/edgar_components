@@ -1,5 +1,6 @@
 import  React from 'react';
-import ListCallout from './ui_elements/ListCallout'
+import ListCallout from './ui_elements/ListCallout';
+import ListItem from './ui_elements/ListItem';
 
 export default class Theory extends React.Component {
     constructor(props) {
@@ -9,34 +10,17 @@ export default class Theory extends React.Component {
     }
 
     onItemSelected(item) {
-        console.log('onItemSelected', item);
+        const currentItem = item;
+        //console.log('onItemSelected', item);
+        this.setState({currentItem})
     }
 
     render() {
         const theory = this.props.assets.theory;
-        /*        if (credits) {
-         //console.log('render Credits', credits[0]);
-         return <div className="credits">
-         <div dangerouslySetInnerHTML={this.createMarkup(credits[0].processed)}/>
-         </div>;
-         }*/
+        const currentItem = this.state.currentItem;
         return <div className="theory">
             <ListCallout listItems={theory} onItemSelected={(item) => this.onItemSelected(item)}/>
+            <ListItem currentItem={currentItem}/>
         </div>
     }
-
-    renderData(item) {
-        return (
-            <li key={item.assetID}>
-                <div>{item.title}</div>
-                <div>{item.author}</div>
-            </li>
-        )
-    }
-
-    createMarkup(item) {
-        //console.log("createMarkup", item);
-        return {__html: item};
-    };
-
 }

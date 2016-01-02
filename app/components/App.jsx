@@ -56,7 +56,7 @@ export default class App extends React.Component {
                                 links={links}
                                 backgroundImage={backgroundImage}
                                 location={location}/>
-                    <div className="contentCenterAlign">
+                    <div className="contentTopAlign">
 
                         {/* <Home links={links}
                               siteReady={siteReady}
