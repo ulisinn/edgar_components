@@ -61,11 +61,12 @@ export default class App extends React.Component {
                         {/* <Home links={links}
                          siteReady={siteReady}
                          onNavClick={(id) => this.onLinkClicked(id)}/>
+                         <Teaser assets={this.state}/>
                          <Credits assets={this.state}/>
                          <Theory assets={this.state}/>
                          <Interviews assets={this.state}/>
                         <MakingOf assets={this.state}/>*/}
-                        <Teaser assets={this.state}/>
+                        <Stills assets={this.state}/>
 
 
                     </div>

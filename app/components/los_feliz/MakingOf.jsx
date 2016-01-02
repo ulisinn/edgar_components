@@ -19,7 +19,7 @@ export default class MakingOf extends React.Component {
         const makingOf = this.props.assets.makingOf;
         const currentItem = this.state.currentItem;
         console.log('MakingOf render', currentItem);
-        return <div className="interviews">
+        return <div className="makingOf">
             <VideoListCallout listItems={makingOf} onItemSelected={(item) => this.onItemSelected(item)}/>
             <VideoListItem currentItem={currentItem} location={this.props.assets.location}/>
         </div>

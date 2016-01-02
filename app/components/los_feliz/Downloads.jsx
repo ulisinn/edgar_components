@@ -1,5 +1,4 @@
 import  React from 'react';
-import {getDownloads} from './utils/data.js';
 
 export default class Downloads extends React.Component {
     constructor(props) {

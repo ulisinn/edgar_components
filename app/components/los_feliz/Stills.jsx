@@ -1,44 +1,72 @@
 import  React from 'react';
-import {getStills} from './utils/data.js';
+import  ImageViewer from './ui_elements/ImageViewer';
+import  ImageViewerControl from './ui_elements/ImageViewerControl';
+import  ImageViewerCopy from './ui_elements/ImageViewerCopy';
+import {findActiveLink,getImage} from './utils/utils';
 
 export default class Stills extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {null};
-        const stills = getStills().then(function (response) {
-            //console.log("response", response);
-            const stills = response.data.map(
-                function (item) {
-                    const t = {};
-                    t.assetID = item._id;
-                    t.description = item.Stills[0].description;
-                    t.title = item.Stills[0].title;
-                    t.source = item.Stills[0].imageSrc._default;
+        const listItems = this.props.assets.stills;
+        this.state = {listItems};
+        console.log("Stills listItems", listItems);
+    }
 
-                    //console.log(item, t);
-                    return t;
-                });
-            this.setState({stills});
-        }.bind(this))
+    componentDidMount() {
+        console.log("Stills componentDidMount");
+        const items = this.state.listItems;
+        const listItems = this.initializeList(items);
+        this.setState({listItems});
+        const currentItem = listItems[0];
+        this.setCurrentItem(currentItem);
+    }
+
+
+    initializeList(list) {
+        const listItems = list.map(
+            function (item, index) {
+                //console.log(item, index);
+                if (index == 0) {
+                    item.isSelected = true;
+                } else {
+                    item.isSelected = false;
+                }
+                return item
+            }
+        );
+        return listItems;
+    }
+
+    setCurrentItem(item) {
+        const currentItem = item;
+        const currentImage = getImage(this.props.assets.location + item.source);
+
+        this.setState({currentItem});
+        this.setState({currentImage});
+
     }
 
     render() {
-        const stills = this.state.stills;
-
-        if (stills) {
-            console.log('render Stills', stills);
-            return <div>
-                <ul>{stills.map(this.renderData)}</ul>
-            </div>
-        }
-        return null;
-    }
-
-    renderData(data) {
+        const listItems = this.state.listItems;
+        const currentItem = this.state.currentItem;
+        const currentImage = this.state.currentImage;
+        console.log("STILLS RENDER", this.state);
         return (
-            <li key={data.assetID}>
-                {data.source}
-            </li>
+            <div className='stills'>
+                <ImageViewer currentImage={currentImage}
+                             location={this.props.assets.location}
+                             listItems={listItems}
+                             currentItem={currentItem}/>
+                <ImageViewerControl location={this.props.assets.location}
+                                    listItems={listItems}
+                                    currentItem={currentItem}
+                                    setCurrentItem={(item) => this.setCurrentItem(item)}/>
+                <ImageViewerCopy currentImage={currentImage}
+                             location={this.props.assets.location}
+                             listItems={listItems}
+                             currentItem={currentItem}/>
+            </div>
         )
     }
+
 }

@@ -1,5 +1,4 @@
 import  React from 'react';
-import {getScreenings} from './utils/data.js';
 
 var _body;
 export default class Screenings extends React.Component {
