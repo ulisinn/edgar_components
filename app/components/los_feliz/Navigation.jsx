@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import MainNavButton from './ui_elements/MainNavButton';
 
 var divStyle, _hamburgerClassnames;
-var _mobileNav, _navBar, _hamburgerIcon;
+var _mobileNav, _navBar, _hamburgerIcon, _container;
 var navWidth = '780px';
 
 export default class Navigation extends React.Component {
@@ -16,17 +16,33 @@ export default class Navigation extends React.Component {
             backgroundColor: props.backgroundImage.navBgColor,
             opacity: 0
         };
-        //console.log("Navigation constructor", divStyle, props);
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        const links = nextProps.links;
+        this.showHideNavbar(links, 1.5);
+        this.initializeMenu();
+        console.log("NAV componentWillReceiveProps", links);
+
+
+        if (nextProps.siteReady) {
+            TweenMax.to(this._container, 1, {autoAlpha: 1});
+        }
+    }
+
+
     componentDidMount() {
         const links = this.props.links;
-
         this.showHideNavbar(links, 0);
         window.addEventListener('resize', () => this.handleResize());
         this.initializeMenu();
-       // console.log("componentDidMount NAV", links, this._navBar, this._hamburgerClassnames);
+        // console.log("componentDidMount NAV", links, this._navBar, this._hamburgerClassnames);
+
+        TweenMax.set(this._container, {autoAlpha: 0});
+        if (this.props.siteReady) {
+            TweenMax.to(this._container, 1, {autoAlpha: 1});
+        }
     }
 
     componentWillUnmount() {
@@ -44,14 +60,14 @@ export default class Navigation extends React.Component {
             mobileNav = false;
         }
         TweenMax.set(this._mobileNav, {autoAlpha: alpha});
-       // console.log("mobileNav", mobileNav);
+        // console.log("mobileNav", mobileNav);
         this.setState({mobileNav});
 
     }
 
     initializeMenu() {
         let mobileNav = false;
-        if (Modernizr.mq('only screen and (max-width:  '+ navWidth +')')) {
+        if (Modernizr.mq('only screen and (max-width:  ' + navWidth + ')')) {
             mobileNav = true;
             TweenMax.set(this._mobileNav, {autoAlpha: 0});
         } else {
@@ -59,12 +75,6 @@ export default class Navigation extends React.Component {
             TweenMax.set(this._mobileNav, {autoAlpha: 1});
         }
         this.setState({mobileNav});
-    }
-
-    componentWillReceiveProps(nextProps) {
-        const links = nextProps.links;
-        this.showHideNavbar(links, 1.5);
-        this.initializeMenu();
     }
 
     onHamburgerClick() {
@@ -88,7 +98,7 @@ export default class Navigation extends React.Component {
             return
         }
 
-        if (Modernizr.mq('only screen and (max-width:  '+ navWidth +')')) {
+        if (Modernizr.mq('only screen and (max-width:  ' + navWidth + ')')) {
             if (hamburgerPressed) {
                 TweenMax.to(this._mobileNav, 0.5, {autoAlpha: 1});
             } else {
@@ -101,6 +111,7 @@ export default class Navigation extends React.Component {
 
     showHideNavbar(links, t) {
         const activeLink = links.filter(this.findActiveLink);
+        console.log("showHideNavbar", activeLink);
         var showNavBar = false;
         for (let i = 0; i < activeLink.length; i++) {
             if (activeLink[i].id !== "Home") {
@@ -128,13 +139,15 @@ export default class Navigation extends React.Component {
         //console.log("this._hamburgerClassnames", this._hamburgerClassnames, this.state.hamburgerPressed);
         return (
             <nav className="navigation" ref={(c) => this._navBar = c}>
-                <ul ref={(c) => this._mobileNav = c}>
-                    {links.map(this.renderNavButton, this)}
-                </ul>
-                <button id="hamburger" onClick={() => this.onHamburgerClick()} className={this._hamburgerClassnames}
-                        ref={(c) => this._hamburgerIcon = c}>
-                    <span>toggle menu</span>
-                </button>
+                <div ref={(c) => this._container = c}>
+                    <ul ref={(c) => this._mobileNav = c}>
+                        {links.map(this.renderNavButton, this)}
+                    </ul>
+                    <button id="hamburger" onClick={() => this.onHamburgerClick()} className={this._hamburgerClassnames}
+                            ref={(c) => this._hamburgerIcon = c}>
+                        <span>toggle menu</span>
+                    </button>
+                </div>
             </nav>
         )
     }

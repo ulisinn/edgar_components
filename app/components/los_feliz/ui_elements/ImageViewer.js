@@ -8,7 +8,7 @@ export default class ImageViewer extends React.Component {
         super(props);
         const listItems = this.props.listItems;
         this.state = {listItems};
-        console.log("ImageViewer listItems", listItems);
+        //console.log("ImageViewer listItems", listItems);
     }
 
 
@@ -26,7 +26,7 @@ export default class ImageViewer extends React.Component {
     onImageLoaded(url) {
         const imageSrc = url;
         this.setState({imageSrc});
-        console.log("onImageLoaded", url);
+        //console.log("onImageLoaded", url);
 
     }
 

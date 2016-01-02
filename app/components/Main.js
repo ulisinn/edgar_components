@@ -18,7 +18,7 @@ import Contact from './los_feliz/Contact.jsx';
 import {getInitialData} from './los_feliz/utils/data';
 
 
-export default class App extends React.Component {
+export default class Main extends React.Component {
     constructor(props) {
         super(props);
         console.log(window.location.hostname.indexOf('localhost'));
@@ -42,6 +42,22 @@ export default class App extends React.Component {
         }.bind(this))
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log("MAIN - componentWillReceiveProps", nextProps.routes[1].component.name);
+        const id = nextProps.routes[1].component.name;
+        if (id) {
+            this.setNavState(id);
+        }
+    }
+
+    componentDidMount() {
+        console.log("MAIN - componentDidMount", this.props.routes[1].component.name);
+        const initialRoute = this.props.routes[1].component.name;
+        if (initialRoute) {
+            this.setState({initialRoute});
+        }
+    }
+
     render() {
         const links = this.state.links;
         const backgroundImage = this.state.currentBackground;
@@ -60,7 +76,7 @@ export default class App extends React.Component {
         });
 
         if (this.state && this.state.downloads) {
-            console.log("ALL DATA LOADED", this.state);
+            //console.log("ALL DATA LOADED", this.state);
             return (
                 <div>
                     <Background onFadeStart={() => this.onBackgroundFadeStart()}
@@ -68,19 +84,7 @@ export default class App extends React.Component {
                                 backgroundImage={backgroundImage}
                                 location={location}/>
                     <div className="contentTopAlign">
-
-                        {/*<Home links={links}
-                         siteReady={siteReady}
-                         onNavClick={(id) => this.onLinkClicked(id)}/>
-                         <Teaser assets={this.state}/>
-                         <Credits assets={this.state}/>
-                         <Theory assets={this.state}/>
-                         <Interviews assets={this.state}/>
-                         <MakingOf assets={this.state}/>
-                         <Stills assets={this.state}/>*/}
                         {childrenWithProps}
-
-
                     </div>
                     <BackgroundLoop links={links}
                                     audio={audio}
@@ -89,6 +93,7 @@ export default class App extends React.Component {
                                     isHidden={true}/>
                     <Navigation links={links}
                                 backgroundImage={backgroundImage}
+                                siteReady={siteReady}
                                 onNavClick={(id) => this.onLinkClicked(id)}
                     />
 
@@ -145,6 +150,11 @@ export default class App extends React.Component {
     }
 
     onLinkClicked(id) {
+        this.props.history.pushState(null, "/" + id + "/");
+        this.setNavState(id);
+    }
+
+    setNavState(id) {
         const oldLinks = this.state.links;
         const links = oldLinks.map(function (item) {
             let newObject = {id: item.id, isSelected: item.isSelected, label: item.label};
@@ -157,7 +167,6 @@ export default class App extends React.Component {
         });
         this.setState({links});
         console.log("onLinkClicked old", oldLinks[0], "new", links[0]);
-        this.props.history.pushState(null, "/" + id + "/");
     }
 
     // SET INITIAL STATE
@@ -199,11 +208,12 @@ export default class App extends React.Component {
     }
 
     parseNavigation(response) {
+        const initialRoute = this.state.initialRoute;
         const links = response.data.map(
             function (item) {
                 const t = {};
                 t.id = item.Navigation[0].id;
-                t.isSelected = (item.Navigation[0].isSelected === "false") ? false : true;
+                t.isSelected = (item.Navigation[0].id === initialRoute) ? true : false;
                 t.label = item.Navigation[0].label;
                 return t;
             });

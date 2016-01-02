@@ -41,7 +41,7 @@ export default class BackgroundLoop extends React.Component {
     }
 
     render() {
-        console.log("BackgroundLoop render", this.props.location + this.props.audio[0].mpeg);
+        //console.log("BackgroundLoop render", this.props.location + this.props.audio[0].mpeg);
         return (
             <div>
                 <audio autoPlay loop ref={(c) => this._audio = c}>

@@ -9,10 +9,15 @@ var _classNames;
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
+        const siteReady = false;
+        this.state = ({siteReady});
+
         this._classNames = classnames('splashPage');
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log("HOME componentWillReceiveProps", nextProps);
+
         if (nextProps.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
@@ -20,6 +25,10 @@ export default class Home extends React.Component {
 
     componentDidMount() {
         TweenMax.set(this._container, {autoAlpha: 0});
+
+        if(this.props.siteReady){
+            TweenMax.to(this._container, 1, {autoAlpha: 1});
+        }
     }
 
     onButtonClick() {
@@ -27,6 +36,8 @@ export default class Home extends React.Component {
     }
 
     render() {
+        console.log("HOME render", this.props);
+
         return (
             <div className='contentCenterAlign'>
                 <div className={this._classNames} ref={(c) => this._container = c}>

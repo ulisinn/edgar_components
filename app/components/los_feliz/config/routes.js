@@ -9,23 +9,22 @@ import Screenings from '../Screenings.jsx';
 import Teaser from '../Teaser.jsx';
 import Stills from '../Stills.jsx';
 import Credits from '../Credits.jsx';
-import Interview from '../Interviews.jsx';
+import Interviews from '../Interviews.jsx';
 import Contact from '../Contact.jsx';
-import PressPack from '../Press.jsx';
+import Press from '../Press.jsx';
 
 
 export default (
     <Route path="/" component={Main}>
-        <Route path="Home" component={Home}/>
         <Route path="Theory" component={Theory}/>
         <Route path="MakingOf" component={MakingOf}/>
         <Route path="Screenings" component={Screenings}/>
         <Route path="Teaser" component={Teaser}/>
         <Route path="Stills" component={Stills}/>
         <Route path="Credits" component={Credits}/>
-        <Route path="Interview" component={Interview}/>
+        <Route path="Interviews" component={Interviews}/>
         <Route path="Contact" component={Contact}/>
-        <Route path="PressPack" component={PressPack}/>
+        <Route path="Press" component={Press}/>
         <IndexRoute component={Home}/>
     </Route>
 );
