@@ -182,7 +182,7 @@ body {
   text-align: right;
   background-color: $calloutBackground;
   //border: 1px solid #ccc;
-  width: 200px;
+  width: 220px;
   color: white;
   margin-right: 1em;
 
@@ -210,6 +210,7 @@ body {
   background-color: $calloutBackground;
   padding: 3em;
   padding-top: 1em;
+  width: 100%;
 
   h1{
     font-family: 'open_sansbold';
@@ -331,7 +332,7 @@ body {
 
 // THEORY
 
-.theory {
+.theory, .interviews {
   position: relative;
   margin-top: 3em;
   display: flex;

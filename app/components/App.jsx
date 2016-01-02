@@ -59,11 +59,14 @@ export default class App extends React.Component {
                     <div className="contentTopAlign">
 
                         {/* <Home links={links}
-                              siteReady={siteReady}
-                              onNavClick={(id) => this.onLinkClicked(id)}/>
+                         siteReady={siteReady}
+                         onNavClick={(id) => this.onLinkClicked(id)}/>
+                         <Credits assets={this.state}/>
+                         <Theory assets={this.state}/>
+                         <Interviews assets={this.state}/>
+                        <MakingOf assets={this.state}/>*/}
                         <Teaser assets={this.state}/>
-                        <Credits assets={this.state}/>*/}
-                        <Theory assets={this.state}/>
+
 
                     </div>
                     {/* <BackgroundLoop links={links}
@@ -255,11 +258,13 @@ export default class App extends React.Component {
     }
 
     parseMakingOf(response) {
+        console.log("MAKING OF", response);
         const makingOf = response.data.map(
             function (item) {
                 const t = {};
                 t.assetID = item._id;
-                t.title = item.MakingOf[0].title;
+                t.shortTitle = item.MakingOf[0].titleShort;
+                t.longTitle = item.MakingOf[0].title;
                 t.description = item.MakingOf[0].description;
                 t.mpeg = item.MakingOf[0].mpeg._default;
                 t.webm = item.MakingOf[0].webm._default;
