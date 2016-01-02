@@ -15,7 +15,7 @@ export default class Teaser extends React.Component {
         console.log("Teaser", this.props.assets.location, this.state.video[0]);
 
         return (
-            <div className="content">
+            <div className="contentCenterAlign">
                 <VideoPlayer location={this.props.assets.location} video={this.state.video[0]}/></div>
         )
     }
