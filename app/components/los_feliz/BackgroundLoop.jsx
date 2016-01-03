@@ -33,7 +33,7 @@ export default class BackgroundLoop extends React.Component {
         const currentVolume = {volume: this._audio.volume};
         const audioEl = this._audio;
         TweenMax.to(currentVolume, 1.5, {
-            volume: (muted) ? 0 : 1, onUpdate: function () {
+            volume: (muted) ? 0 : 0, onUpdate: function () {
                 audioEl.volume = currentVolume.volume;
             }
         });

@@ -164,7 +164,9 @@ export default class Main extends React.Component {
         this.setNavState(id);
     }
 
-    setMagicWord(str) {
+    onSetMagicWord(str) {
+        console.log("onSetMagicWord");
+        const magicWord = str;
         this.setState({magicWord});
     }
 

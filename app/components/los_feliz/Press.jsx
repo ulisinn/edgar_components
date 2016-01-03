@@ -52,15 +52,20 @@ export default class Press extends React.Component {
 
     render() {
         let currentContent = this.state.currentContent;
-        const category = (this.state.category)?this.state.category:currentContent.category;
+        const category = (this.state.category) ? this.state.category : currentContent.category;
         const currentItem = this.state.currentItem;
-        console.log("PRESS STATE", this.state);
+        const magicWord = this.props.assets.magicWord;
+        console.log("PRESS STATE", this.props);
         if (currentItem) {
             currentContent = (this.state.currentItem.category === "Reviews") ? this.props.assets.reviews : this.props.assets.downloads;
         }
         return <div className="press" ref={(c) => this._container = c}>
             <PressCallout listItems={category} onItemSelected={(item) => this.onItemSelected(item)}/>
-            <PressCategory currentItem={currentItem} currentContent={currentContent}/>
+            <PressCategory currentItem={currentItem}
+                           currentContent={currentContent}
+                           location={this.props.assets.location}
+                           setMagicWord = {this.props.setMagicWord}
+                           magicWord={magicWord}/>
         </div>
     }
 }

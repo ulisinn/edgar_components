@@ -10,6 +10,22 @@ $navSelected: #b70606;
 $navWidth: 770px;
 $calloutBackground: rgba(0, 0, 0, 0.6);
 
+::-webkit-input-placeholder {
+  color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+
+:-ms-input-placeholder {
+  color: white;
+}
+
 body {
   background-color: black;
   font-family: 'Menlo-Regular';
@@ -187,12 +203,13 @@ body {
   margin-right: 1em;
 
   li {
-    padding-top: 4px;
-    padding-bottom: 1em;
+    padding-top: 10px;
+    padding-bottom: 12px;
     padding-left: 0.7em;
     padding-right: 0.7em;
     font-size: 13px;
     cursor: pointer;
+    line-height: 1.4em;
   }
 
   .listItemSelected {
@@ -462,7 +479,11 @@ body {
   justify-content: center;
 }
 
-.contact{
+.downloads a:hover {
+  color: $navSelected;
+}
+
+.contact {
   margin-top: 4em;
 }
 
@@ -488,5 +509,38 @@ body {
     line-height: 1.3em;
 
     margin-top: 0.6em;
+  }
+}
+
+.downloads {
+  line-height: 1em;
+  .submitDownload {
+    border: 1px solid white;
+    padding: 1em;
+    padding-top: 0.4em;
+    padding-bottom: 0.2em;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .submitDownload:hover {
+    color: $navSelected;
+    border: 1px solid $navSelected;
+    background-color: rgba(255, 255, 255, 0.6);
+
+  }
+
+  input[type=password] {
+    border-style: none;
+    background-color: darkred;
+    color: white;
+    font-family: 'Menlo-Regular';
+    padding: 0.5em;
+    text-align: center;
+    margin: 2em;
+    border: 1px solid white;
+  }
+  input[type=password]:focus {
+    outline: none;
   }
 }
