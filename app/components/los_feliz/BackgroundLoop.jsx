@@ -26,14 +26,14 @@ export default class BackgroundLoop extends React.Component {
         const activeLink = links.filter(this.findActiveLink);
         var muted = false;
         for (let i = 0; i < activeLink.length; i++) {
-            if (activeLink[i].id === "Teaser" || activeLink[i].id === "Interview" || activeLink[i].id === "MakingOf") {
+            if (activeLink[i].id === "Teaser" || activeLink[i].id === "Interviewscs" || activeLink[i].id === "MakingOf") {
                 muted = true;
             }
         }
         const currentVolume = {volume: this._audio.volume};
         const audioEl = this._audio;
         TweenMax.to(currentVolume, 1.5, {
-            volume: (muted) ? 0 : 0, onUpdate: function () {
+            volume: (muted) ? 0 : 1, onUpdate: function () {
                 audioEl.volume = currentVolume.volume;
             }
         });

@@ -7,8 +7,9 @@ $helvetica: system, -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Hel
 @import "hamburger.scss";
 
 $navSelected: #b70606;
+$tomatoHeader: #b84133;
 $navWidth: 770px;
-$calloutBackground: rgba(0, 0, 0, 0.6);
+$calloutBackground: rgba(0, 0, 0, 0.75);
 
 ::-webkit-input-placeholder {
   color: white;
@@ -207,13 +208,13 @@ body {
     padding-bottom: 12px;
     padding-left: 0.7em;
     padding-right: 0.7em;
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
     line-height: 1.4em;
   }
 
   .listItemSelected {
-    color: $navSelected;
+    color: $tomatoHeader;
     cursor: default;
     background-color: rgba(255, 255, 255, 0.7);
   }
@@ -370,7 +371,7 @@ body {
 
   p > em {
     display: inline-block;
-    color: #b84133;
+    color: $tomatoHeader;
     margin-top: 1em;
     font-family: 'open_sans_condensedbold';
     font-size: 1.3em;
@@ -469,7 +470,7 @@ body {
   font-family: 'Menlo-Regular';
 
   color: white;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $calloutBackground;
 }
 
 .reviews, .downloads, .contact {
@@ -495,7 +496,7 @@ body {
   line-height: 1.2em;
 
   h1 {
-    color: $navSelected;
+    color: $tomatoHeader;
     margin-bottom: 0.7em;
     font-size: 1.5em;
     letter-spacing: 0.06em;

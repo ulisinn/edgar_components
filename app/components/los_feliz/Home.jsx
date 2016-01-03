@@ -50,7 +50,7 @@ export default class Home extends React.Component {
                                 <tspan className="splashHeader" dx="0">LOS FELIZ</tspan>
                                 <tspan className="splashSub" dx="15px"> A ROAD MOVIE SHOT IN A STUDIO</tspan>
                             </text>
-                            <image xlinkHref={car} x="759px" y="11%" height="76px" width="166px"/>
+                            <image xlinkHref={car} x="745px" y="11%" height="76px" width="166px"/>
                         </svg>
                     </div>
                 </div>
