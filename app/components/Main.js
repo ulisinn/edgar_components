@@ -24,10 +24,11 @@ export default class Main extends React.Component {
         console.log(window.location.hostname.indexOf('localhost'));
         const location = (window.location.hostname.indexOf('.at') == -1) ? "http://new.1000000000.at" : "";
         const siteReady = false;
-        this.state = {location, siteReady};
+        const magicWord = "";
+        this.state = {location, siteReady, magicWord};
 
         const data = getInitialData().then(function (response) {
-            console.log("getInitialData", response[10].data);
+            console.log("getInitialData", response[11].data);
             this.parseBackground(response[0]);
             this.parseBackgroundLoop(response[1]);
             this.parseNavigation(response[2]);
@@ -38,6 +39,7 @@ export default class Main extends React.Component {
             this.parseMakingOf(response[7]);
             this.parseCredits(response[8]);
             this.parseTheory(response[9]);
+            this.parseReviews(response[11]);
             this.parseDownloads(response[10]);
         }.bind(this))
     }
@@ -52,8 +54,8 @@ export default class Main extends React.Component {
     }
 
     componentDidMount() {
-        console.log("MAIN - componentDidMount", this.props.routes,this.props.routes[1].path);
-        const initialRoute = (this.props.routes[1].path)?this.props.routes[1].path:"Home";
+        console.log("MAIN - componentDidMount", this.props.routes, this.props.routes[1].path);
+        const initialRoute = (this.props.routes[1].path) ? this.props.routes[1].path : "Home";
         if (initialRoute) {
             this.setState({initialRoute});
         }
@@ -73,6 +75,7 @@ export default class Main extends React.Component {
             return React.cloneElement(child, {
                 assets: state,
                 onNavClick: (id) => parentComp.onLinkClicked(id),
+                setMagicWord: (str) => parentComp.onSetMagicWord(str),
                 siteReady: siteReady
             });
         });
@@ -90,20 +93,20 @@ export default class Main extends React.Component {
                     </div>
                     <BackgroundLoop links={links}
                                     audio={audio}
-                                    currentRoute ={currentRoute}
+                                    currentRoute={currentRoute}
                                     backgroundImage={backgroundImage}
                                     location={location}
                                     isHidden={true}/>
                     <Navigation links={links}
                                 backgroundImage={backgroundImage}
                                 siteReady={siteReady}
-                                currentRoute ={currentRoute}
+                                currentRoute={currentRoute}
                                 onNavClick={(id) => this.onLinkClicked(id)}
                     />
 
                     <SocialIcons links={links}
                                  siteReady={siteReady}
-                                 currentRoute ={currentRoute}
+                                 currentRoute={currentRoute}
                                  onNavClick={(id) => this.onLinkClicked(id)}/>
                 </div>
             );
@@ -157,6 +160,10 @@ export default class Main extends React.Component {
     onLinkClicked(id) {
         this.props.history.pushState(null, "/" + id + "/");
         this.setNavState(id);
+    }
+
+    setMagicWord(str) {
+        this.setState({magicWord});
     }
 
     setNavState(id) {
@@ -338,6 +345,7 @@ export default class Main extends React.Component {
             function (item) {
                 const t = {};
                 t.assetID = item._id;
+                t.magicWord = item.Downloads[0].magicWord;
                 t.description = item.Downloads[0].description;
                 t.download = item.Downloads[0].download._default;
 
@@ -345,5 +353,23 @@ export default class Main extends React.Component {
                 return t;
             });
         this.setState({downloads});
+    }
+
+    parseReviews(response) {
+        const reviews = response.data.map(
+            function (item) {
+                const t = {};
+                t.assetID = item._id;
+                t.publication = item.Reviews[0].publication;
+                t.author = item.Reviews[0].author;
+                t.title = item.Reviews[0].title;
+                t.date = item.Reviews[0].date;
+                t.processed = item.Reviews[0].body.processed;
+                t.raw = item.Reviews[0].body.raw;
+                t.file = item.Reviews[0].file;
+                //console.log(item, t);
+                return t;
+            });
+        this.setState({reviews});
     }
 }

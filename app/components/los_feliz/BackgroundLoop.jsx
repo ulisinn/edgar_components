@@ -3,8 +3,6 @@ import TweenMax from 'gsap';
 
 import {findActiveLink,getImage} from './utils/utils';
 
-const _audioVolume = 0;
-
 export default class BackgroundLoop extends React.Component {
     constructor(props) {
         super(props);
@@ -35,7 +33,7 @@ export default class BackgroundLoop extends React.Component {
         const currentVolume = {volume: this._audio.volume};
         const audioEl = this._audio;
         TweenMax.to(currentVolume, 1.5, {
-            volume: (muted) ? 0 : this._audioVolume, onUpdate: function () {
+            volume: (muted) ? 0 : 1, onUpdate: function () {
                 audioEl.volume = currentVolume.volume;
             }
         });
@@ -43,7 +41,7 @@ export default class BackgroundLoop extends React.Component {
     }
 
     render() {
-        //console.log("BackgroundLoop render", this.props.location + this.props.audio[0].mpeg);
+        console.log("BackgroundLoop render", this.props.location + this.props.audio[0].mpeg);
         return (
             <div>
                 <audio autoPlay loop ref={(c) => this._audio = c}>

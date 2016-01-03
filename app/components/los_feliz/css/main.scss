@@ -365,7 +365,7 @@ body {
 
 // THEORY
 
-.theory, .interviews, .interviews, .makingOf {
+.theory, .interviews, .interviews, .makingOf, .press {
   position: relative;
   margin-top: 3em;
   display: flex;
@@ -441,7 +441,7 @@ body {
   margin-top: 1em;
 }
 
-.screenings, .contact, .press {
+.screenings, .contact, .reviews, .downloads {
   position: relative;
   margin-top: 4em;
   display: flex;
@@ -455,7 +455,12 @@ body {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.contact, .press {
+.reviews, .downloads{
+  margin-top: 0;
+
+}
+
+.contact {
   min-height: 5em;
   div {
     width: 100%;

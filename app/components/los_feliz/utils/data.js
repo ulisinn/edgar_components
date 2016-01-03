@@ -198,6 +198,24 @@ export function getDownloads() {
     });
 }
 
+// GET REVIEWS
+
+export function getReviews() {
+    return axios.get('http://new.1000000000.at/reviews.php').catch(function (response) {
+        if (response instanceof Error) {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', response.message);
+        } else {
+            // The request was made, but the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(response.data);
+            console.log(response.status);
+            console.log(response.headers);
+            console.log(response.config);
+        }
+    });
+}
+
 
 
 export function getInitialData() {
@@ -212,5 +230,7 @@ export function getInitialData() {
         getMakingOf(),
         getCredits(),
         getTheory(),
-        getDownloads()])
+        getDownloads(),
+        getReviews()
+    ])
 }
