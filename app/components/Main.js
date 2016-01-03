@@ -67,6 +67,7 @@ export default class Main extends React.Component {
         const location = this.state.location;
         const audio = this.state.backgroundLoop;
         const siteReady = this.state.siteReady;
+        const initialRoute = this.state.initialRoute;
         const currentRoute = this.state.currentRoute;
         const state = this.state;
         const parentComp = this;
@@ -107,6 +108,7 @@ export default class Main extends React.Component {
                     <SocialIcons links={links}
                                  siteReady={siteReady}
                                  currentRoute={currentRoute}
+                                 initialRoute={initialRoute}
                                  onNavClick={(id) => this.onLinkClicked(id)}/>
                 </div>
             );

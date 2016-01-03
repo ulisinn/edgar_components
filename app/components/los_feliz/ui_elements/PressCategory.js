@@ -22,8 +22,6 @@ export default class PressCategory extends React.Component {
                 <h1>{currentItem.category}</h1>
             </div>;
         } else {
-
-            console.log("RENDER REVIEWS");
             return (
                 <div className="reviews" ref={(c) => this._container = c}>
                     {currentContent.map(this.renderReviews, this)}
@@ -33,7 +31,6 @@ export default class PressCategory extends React.Component {
     }
 
     renderReviews(item, index) {
-        console.log(item);
         return (
             <div key={item.assetID}>
                 <ReviewsItem currentItem={item}/>

@@ -14,19 +14,27 @@ export default class SocialIcons extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("SocialIcons componentWillReceiveProps",nextProps.currentRoute);
+        const currentRoute = nextProps.currentRoute;
+
+        //console.log("SocialIcons componentWillReceiveProps", nextProps.currentRoute);
         if (nextProps.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
-        if(nextProps.currentRoute === "Credits" || nextProps.currentRoute === "Theory" || nextProps.currentRoute === "Screenings"){
-            this._classNames = classnames('socialIconsVertical');
-        }else{
-            this._classNames = classnames('socialIcons');
-        }
+        this.setSocialIconDirection(currentRoute)
     }
 
     componentDidMount() {
+        //console.log("SocialIcons componentDidMount", this.props);
+        const currentRoute = this.props.initialRoute;
         TweenMax.set(this._container, {autoAlpha: 0});
+    }
+
+    setSocialIconDirection(currentRoute) {
+        if (currentRoute === "Credits" || currentRoute === "Theory" || currentRoute === "Screenings" || currentRoute === "Press") {
+            this._classNames = classnames('socialIconsVertical');
+        } else {
+            this._classNames = classnames('socialIcons');
+        }
     }
 
     onButtonClick() {
@@ -34,6 +42,11 @@ export default class SocialIcons extends React.Component {
     }
 
     render() {
+        if(! this.props.currentRoute){
+            this.setSocialIconDirection(this.props.initialRoute)
+        }
+        //console.log("SocialIcons render", this.props.currentRoute,this.props.initialRoute);
+
         return (
             <div className={this._classNames} ref={(c) => this._container = c}>
                 <div>

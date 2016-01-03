@@ -10,7 +10,6 @@ export default class ScreeningsItem extends React.Component {
 
     render() {
         const currentItem = this.props.currentItem;
-        console.log(currentItem);
         return <div className='screeningsItem'>
             <h1>{currentItem.publication}</h1>
             <h2>{currentItem.title}</h2>

@@ -455,19 +455,15 @@ body {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.reviews, .downloads{
+.reviews, .downloads, .contact {
   margin-top: 0;
-
+  min-height: 400px;
+  align-items: center;
+  justify-content: center;
 }
 
-.contact {
-  min-height: 5em;
-  div {
-    width: 100%;
-    padding-top: 3em;
-    padding-bottom: 3em;
-    text-align: center;
-  }
+.contact{
+  margin-top: 4em;
 }
 
 .screeningsItem {
@@ -481,7 +477,7 @@ body {
     color: $navSelected;
     margin-bottom: 0.7em;
     font-size: 1.5em;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.06em;
   }
 
   h4 {

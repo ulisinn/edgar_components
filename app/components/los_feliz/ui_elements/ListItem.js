@@ -12,7 +12,7 @@ export default class ListItem extends React.Component {
 
     render() {
         const currentItem = this.props.currentItem;
-            console.log('render ListItem', currentItem, this.props);
+            //console.log('render ListItem', currentItem, this.props);
         if (currentItem) {
             return <div className='listItem' >
                 <div dangerouslySetInnerHTML={this.createMarkup(currentItem.processed)}/>
