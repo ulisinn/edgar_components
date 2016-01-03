@@ -2,7 +2,9 @@
  * Created by ulrichsinn on 01/02/2016.
  */
 import  React from 'react';
+import TweenMax from 'gsap';
 
+var _container;
 
 export default class ImageViewerControl extends React.Component {
     constructor(props) {
@@ -13,6 +15,10 @@ export default class ImageViewerControl extends React.Component {
         //console.log("ImageViewerControl listItems", listItems);
     }
 
+    componentDidMount(){
+        TweenMax.set(this._container, {autoAlpha: 0});
+    }
+
     componentWillReceiveProps(newProps) {
         const currentIndex = this.findCurrentIndex(newProps.currentItem, newProps.listItems);
         const numItems = this.props.listItems.length;
@@ -20,6 +26,18 @@ export default class ImageViewerControl extends React.Component {
         this.setState({numItems});
         this.setState({currentIndex});
 
+        const currentImage = newProps.currentImage.then(
+            function (successurl) {
+                this.onImageLoaded(successurl);
+            }.bind(this)).catch(
+            function (errorurl) {
+                console.log('errorurl', errorurl);
+            });
+
+    }
+
+    onImageLoaded(url) {
+        TweenMax.set(this._container, {autoAlpha: 1});
     }
 
     findCurrentIndex(current, list) {
@@ -55,7 +73,7 @@ export default class ImageViewerControl extends React.Component {
         const listItems = this.state.listItems;
         console.log("currentItem", this.state);
         return (
-            <div className='imageViewerControl'>
+            <div className='imageViewerControl' ref={(c) => this._container = c}>
                 <div className="imageViewerControlArrow" onClick={()=>this.onPreviousSelected()}> &#xe801;</div>
                 <div className="imageViewerControlCounter">{this.state.currentIndex}/{this.state.numItems}</div>
                 <div className="imageViewerControlArrow" onClick={()=>this.onNextSelected()}> &#xe800;</div>

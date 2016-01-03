@@ -25,7 +25,7 @@ export default class Stills extends React.Component {
         this.setCurrentItem(currentItem);
 
         TweenMax.set(this._container, {autoAlpha: 0});
-        if(this.props.siteReady){
+        if (this.props.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
     }
@@ -73,14 +73,15 @@ export default class Stills extends React.Component {
                              location={this.props.assets.location}
                              listItems={listItems}
                              currentItem={currentItem}/>
-                <ImageViewerControl location={this.props.assets.location}
+                <ImageViewerControl currentImage={currentImage}
+                                    location={this.props.assets.location}
                                     listItems={listItems}
                                     currentItem={currentItem}
                                     setCurrentItem={(item) => this.setCurrentItem(item)}/>
                 <ImageViewerCopy currentImage={currentImage}
-                             location={this.props.assets.location}
-                             listItems={listItems}
-                             currentItem={currentItem}/>
+                                 location={this.props.assets.location}
+                                 listItems={listItems}
+                                 currentItem={currentItem}/>
             </div>
         )
     }

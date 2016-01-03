@@ -1,16 +1,27 @@
 import React from "react";
 import TweenMax from 'gsap';
+import classnames from 'classnames';
 
 var _container;
+var _classNames;
 
 export default class SocialIcons extends React.Component {
     constructor(props) {
         super(props);
+
+        this._classNames = classnames('socialIconsVertical');
+        this._classNames = classnames('socialIcons');
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log("SocialIcons componentWillReceiveProps",nextProps.currentRoute);
         if (nextProps.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
+        }
+        if(nextProps.currentRoute === "Credits" || nextProps.currentRoute === "Theory" || nextProps.currentRoute === "Screenings"){
+            this._classNames = classnames('socialIconsVertical');
+        }else{
+            this._classNames = classnames('socialIcons');
         }
     }
 
@@ -24,7 +35,7 @@ export default class SocialIcons extends React.Component {
 
     render() {
         return (
-            <div className="socialIcons" ref={(c) => this._container = c}>
+            <div className={this._classNames} ref={(c) => this._container = c}>
                 <div>
                     <a href="https://www.facebook.com/1000000000.at" target="_blank">
                         &#xe80c;

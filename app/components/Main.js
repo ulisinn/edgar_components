@@ -44,9 +44,10 @@ export default class Main extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         console.log("MAIN - componentWillReceiveProps", nextProps.routes, nextProps.routes[1].path);
-        const id = nextProps.routes[1].path;
-        if (id) {
-            this.setNavState(id);
+        const currentRoute = nextProps.routes[1].path;
+        if (currentRoute) {
+            this.setNavState(currentRoute);
+            this.setState({currentRoute});
         }
     }
 
@@ -64,6 +65,7 @@ export default class Main extends React.Component {
         const location = this.state.location;
         const audio = this.state.backgroundLoop;
         const siteReady = this.state.siteReady;
+        const currentRoute = this.state.currentRoute;
         const state = this.state;
         const parentComp = this;
 
@@ -88,17 +90,20 @@ export default class Main extends React.Component {
                     </div>
                     <BackgroundLoop links={links}
                                     audio={audio}
+                                    currentRoute ={currentRoute}
                                     backgroundImage={backgroundImage}
                                     location={location}
                                     isHidden={true}/>
                     <Navigation links={links}
                                 backgroundImage={backgroundImage}
                                 siteReady={siteReady}
+                                currentRoute ={currentRoute}
                                 onNavClick={(id) => this.onLinkClicked(id)}
                     />
 
                     <SocialIcons links={links}
                                  siteReady={siteReady}
+                                 currentRoute ={currentRoute}
                                  onNavClick={(id) => this.onLinkClicked(id)}/>
                 </div>
             );
