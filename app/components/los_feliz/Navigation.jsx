@@ -23,7 +23,7 @@ export default class Navigation extends React.Component {
         const links = nextProps.links;
         this.showHideNavbar(links, 1.5);
         this.initializeMenu();
-        console.log("NAV componentWillReceiveProps", links);
+        console.log("NAV componentWillReceiveProps", nextProps.siteReady);
 
 
         if (nextProps.siteReady) {
@@ -127,6 +127,7 @@ export default class Navigation extends React.Component {
     }
 
     render() {
+        console.log("NAV RENDER");
         const props = this.props;
         const links = props.links;
         if (!this.state.hamburgerPressed) {

@@ -43,16 +43,16 @@ export default class Main extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("MAIN - componentWillReceiveProps", nextProps.routes[1].component.name);
-        const id = nextProps.routes[1].component.name;
+        console.log("MAIN - componentWillReceiveProps", nextProps.routes, nextProps.routes[1].path);
+        const id = nextProps.routes[1].path;
         if (id) {
             this.setNavState(id);
         }
     }
 
     componentDidMount() {
-        console.log("MAIN - componentDidMount", this.props.routes[1].component.name);
-        const initialRoute = this.props.routes[1].component.name;
+        console.log("MAIN - componentDidMount", this.props.routes,this.props.routes[1].path);
+        const initialRoute = (this.props.routes[1].path)?this.props.routes[1].path:"Home";
         if (initialRoute) {
             this.setState({initialRoute});
         }
