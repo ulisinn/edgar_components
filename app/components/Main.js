@@ -263,6 +263,7 @@ export default class Main extends React.Component {
                 t.address = item.Screenings[0].address;
                 t.date = item.Screenings[0].date;
                 t.comment = item.Screenings[0].comment;
+                t.city = item.Screenings[0].city;
                 //console.log("item", item.Screenings);
                 return t;
             });

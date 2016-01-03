@@ -1,4 +1,5 @@
 import React from "react";
+import ScreeningsItem from "./ui_elements/ScreeningsItem";
 import TweenMax from 'gsap';
 
 var style;
@@ -12,11 +13,12 @@ export default class Screenings extends React.Component {
             textAlign: 'center'
         }
     }
+
     componentDidMount() {
-        console.log("Screenings componentDidMount", this.props.siteReady);
+        console.log("Screenings componentDidMount", this.props.assets.screenings);
 
         TweenMax.set(this._container, {autoAlpha: 0});
-        if(this.props.siteReady){
+        if (this.props.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
     }
@@ -30,9 +32,22 @@ export default class Screenings extends React.Component {
     }
 
     render() {
+        const screenings = this.props.assets.screenings.map(function(item){
+            return item
+        }).reverse();
+
         return (
-            <div className="content" ref={(c) => this._container = c}>
-                <div style={style} className="contentInset"><h1>Screenings: Coming Soon</h1></div>
+            <div className="screenings" ref={(c) => this._container = c}>
+                {screenings.map(this.renderScreening, this)}
+            </div>
+        )
+    }
+
+    renderScreening(item, index) {
+        const name = "MainNavButton_" + index;
+        return (
+            <div key={item.assetID}>
+                <ScreeningsItem currentItem={item}/>
             </div>
         )
     }

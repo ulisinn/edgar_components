@@ -29,8 +29,8 @@ export default class Contact extends React.Component {
     }
     render() {
         return (
-            <div className="content" ref={(c) => this._container = c}>
-                <div style={style} className="contentInset"><h1>Contact: Coming Soon</h1></div>
+            <div className="contact" ref={(c) => this._container = c}>
+                <div style={style} ><h1>Contact: Coming Soon</h1></div>
             </div>
         )
     }

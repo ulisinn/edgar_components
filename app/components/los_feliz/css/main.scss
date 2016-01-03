@@ -267,7 +267,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    margin-left:0.5em;
+    margin-left: 0.5em;
     width: 100%;
     max-width: 270px;
   }
@@ -278,7 +278,7 @@ body {
     font-style: normal;
     font-weight: normal;
     text-decoration: none;
-    margin-bottom:0.3em;
+    margin-bottom: 0.3em;
     color: white;
     transition: background-color .2s linear, $navSelected .2s linear;
   }
@@ -413,6 +413,15 @@ body {
   width: 100%;
 }
 
+.imageViewerControlWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
 .imageViewerControlArrow {
   margin-top: 1em;
   margin-left: 2.4em;
@@ -430,4 +439,53 @@ body {
 .imageViewerControlCounter {
   display: inline-block;
   margin-top: 1em;
+}
+
+.screenings, .contact, .press {
+  position: relative;
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 600px;
+  font-family: 'Menlo-Regular';
+
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.contact, .press {
+  min-height: 5em;
+  div {
+    width: 100%;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    text-align: center;
+  }
+}
+
+.screeningsItem {
+  position: relative;
+  text-align: left;
+  padding: 2em;
+  padding-top: 1.5em;
+  line-height: 1.2em;
+
+  h1 {
+    color: $navSelected;
+    margin-bottom: 0.7em;
+    font-size: 1.5em;
+    letter-spacing: 0.12em;
+  }
+
+  h4 {
+    margin-top: 0.6em;
+  }
+  p {
+    font-size: 0.75em;
+    line-height: 1.3em;
+
+    margin-top: 0.6em;
+  }
 }

@@ -15,8 +15,8 @@ export default class ImageViewerControl extends React.Component {
         //console.log("ImageViewerControl listItems", listItems);
     }
 
-    componentDidMount(){
-        TweenMax.set(this._container, {autoAlpha: 0});
+    componentDidMount() {
+        TweenMax.set(this._container, {opacity: 0});
     }
 
     componentWillReceiveProps(newProps) {
@@ -33,11 +33,10 @@ export default class ImageViewerControl extends React.Component {
             function (errorurl) {
                 console.log('errorurl', errorurl);
             });
-
     }
 
     onImageLoaded(url) {
-        TweenMax.set(this._container, {autoAlpha: 1});
+        TweenMax.set(this._container, {opacity: 1});
     }
 
     findCurrentIndex(current, list) {
@@ -73,10 +72,12 @@ export default class ImageViewerControl extends React.Component {
         const listItems = this.state.listItems;
         console.log("currentItem", this.state);
         return (
-            <div className='imageViewerControl' ref={(c) => this._container = c}>
-                <div className="imageViewerControlArrow" onClick={()=>this.onPreviousSelected()}> &#xe801;</div>
-                <div className="imageViewerControlCounter">{this.state.currentIndex}/{this.state.numItems}</div>
-                <div className="imageViewerControlArrow" onClick={()=>this.onNextSelected()}> &#xe800;</div>
+            <div className='imageViewerControl'>
+                <div className='imageViewerControlWrapper' ref={(c) => this._container = c}>
+                    <div className="imageViewerControlArrow" onClick={()=>this.onPreviousSelected()}> &#xe801;</div>
+                    <div className="imageViewerControlCounter">{this.state.currentIndex}/{this.state.numItems}</div>
+                    <div className="imageViewerControlArrow" onClick={()=>this.onNextSelected()}> &#xe800;</div>
+                </div>
             </div>
         )
     }

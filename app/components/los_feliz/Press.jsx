@@ -30,8 +30,8 @@ export default class Press extends React.Component {
 
     render() {
         return (
-            <div className="content" ref={(c) => this._container = c}>
-                <div style={style} className="contentInset"><h1>Reviews: Coming Soon</h1></div>
+            <div className="press" ref={(c) => this._container = c}>
+                <div style={style}><h1>Reviews: Coming Soon</h1></div>
             </div>
         )
     }
