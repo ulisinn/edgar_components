@@ -3,6 +3,9 @@ import TweenMax from 'gsap';
 import classnames from 'classnames';
 
 var car = require('./assets/car_small_icn.png');
+var blinker = require('./assets/car_small_animated.gif');
+var _blink;
+var _tagline;
 var _container;
 var _classNames;
 
@@ -26,13 +29,22 @@ export default class Home extends React.Component {
     componentDidMount() {
         TweenMax.set(this._container, {autoAlpha: 0});
 
-        if(this.props.siteReady){
+        if (this.props.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
     }
 
     onButtonClick() {
-        this.props.onNavClick("Teaser");
+        //this.props.onNavClick("Teaser");
+        var owner = this;
+        TweenMax.set(this._blink, {autoAlpha: 0});
+        TweenMax.to(this._tagline, 2, {autoAlpha: 0, css: {marginLeft: 1000}, delay: 0.5});
+        TweenMax.to(this._container, 1, {
+            autoAlpha: 0, delay: 1, onComplete: function () {
+                owner.props.onNavClick("Teaser");
+            }
+        });
+
     }
 
     render() {
@@ -42,8 +54,11 @@ export default class Home extends React.Component {
             <div className='contentCenterAlign'>
                 <div className={this._classNames} ref={(c) => this._container = c}>
                     <div >
-                        <svg width="100%" viewBox="0 0 920 200" preserveAspectRatio="xMinYMin meet"
+                        <svg ref={(c) => this._tagline = c} width="100%" viewBox="0 0 920 200"
+                             preserveAspectRatio="xMinYMin meet"
                              onClick={()=>this.onButtonClick()}>
+
+
                             <text alignmentBaseline='middle' textAnchor='start' fill="white"
                                   x="0"
                                   y="43%">
@@ -51,6 +66,8 @@ export default class Home extends React.Component {
                                 <tspan className="splashSub" dx="15px"> A ROAD MOVIE SHOT IN A STUDIO</tspan>
                             </text>
                             <image xlinkHref={car} x="745px" y="11%" height="76px" width="166px"/>
+                            <image xlinkHref={blinker} x="745px" y="13%" height="76px" width="166px"
+                                   ref={(c) => this._blink = c}/>
                         </svg>
                     </div>
                 </div>

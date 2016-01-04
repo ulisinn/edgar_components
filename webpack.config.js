@@ -38,7 +38,7 @@ const common = {
                 loaders: ['babel'],
                 include: PATHS.app
             }, {
-                test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
                 loader: 'url-loader?limit=30000&name=assets/[name].[hash].[ext]',
                 include: PATHS.app
             }
