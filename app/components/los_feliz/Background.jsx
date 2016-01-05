@@ -1,10 +1,14 @@
 import React from "react";
 import TweenMax from 'gsap';
+import classnames from 'classnames';
+
 
 import {findActiveLink,getImage} from './utils/utils';
 
 var backgroundStyle, lightBoxStyle;
 var _animatedBg, _lightBox;
+var _classNames;
+
 
 export default class Background extends React.Component {
     constructor(props) {
@@ -38,16 +42,51 @@ export default class Background extends React.Component {
                 console.log('errorurl', errorurl);
             });
 
+        this._classNames = classnames('animated');
+
+
+    }
+
+
+    componentDidMount() {
+        const links = this.props.links;
+        this.showHideLightbox(links, 0);
     }
 
     componentWillReceiveProps(nextProps) {
-        //console.log(this.backgroundStyle, "BACKGROUND ", nextProps.links, this.props.links);
+        const links = nextProps.links;
+        this.showHideLightbox(links, 1.5)
+    }
+
+    showHideLightbox(links, t) {
+        var activeLink;
+        var showLightBox = false;
+        try {
+            activeLink = links.filter(this.findActiveLink);
+        } catch (e) {
+            //
+        }
+        if (!activeLink) {
+            return;
+        }
+        //console.log(activeLink, "Background componentWillReceiveProps");
+        for (let i = 0; i < activeLink.length; i++) {
+            if (activeLink[i].id === "Teaser") {
+                showLightBox = true;
+            }
+        }
+        if (showLightBox) {
+            TweenMax.to(this._lightBox, t, {autoAlpha: 1});
+        } else {
+            TweenMax.to(this._lightBox, t, {autoAlpha: 0});
+
+        }
     }
 
     render() {
         return (
             <div>
-                <div style={backgroundStyle} className="animated" ref={(c) => this._animatedBg = c}></div>
+                <div style={backgroundStyle} className={this._classNames} ref={(c) => this._animatedBg = c}></div>
                 <div style={lightBoxStyle} className="lightbox" ref={(c) => this._lightBox = c}></div>
             </div>
         )
@@ -58,4 +97,11 @@ export default class Background extends React.Component {
         this.props.onFadeStart();
     }
 
+    findActiveLink(item) {
+        if (item.isSelected) {
+            return true
+        } else {
+            return false
+        }
+    }
 }
