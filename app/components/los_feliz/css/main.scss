@@ -27,6 +27,13 @@ $calloutBackground: rgba(0, 0, 0, 0.75);
   color: white;
 }
 
+.pause {
+  -webkit-animation-play-state: paused !important;
+  -moz-animation-play-state: paused !important;
+  -o-animation-play-state: paused !important;
+  animation-play-state: paused !important;
+}
+
 body {
   background-color: black;
   font-family: 'Menlo-Regular';
@@ -281,7 +288,7 @@ body {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 40px;
   height: 7.2em;
 
   div {
@@ -291,7 +298,6 @@ body {
     position: relative;
     margin-left: 0.5em;
     width: 100%;
-    max-width: 270px;
   }
   a {
     display: inline-block;
@@ -345,14 +351,40 @@ body {
 
 // CREDITS
 
+.creditsWrapper {
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
 .credits {
+  position: relative;
+
   color: white;
-  background-color: rgba(0, 0, 0, 0.6);
   text-align: center;
   width: 100%;
+  height: 90%;
+  overflow: hidden;
   max-width: 600px;
   margin-top: 4em;
   margin-bottom: 4em;
+  background-color: $calloutBackground;
+
+  //border: 1px solid red;
+
+  .creditsContent {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+  }
 
   p {
     font-family: 'Menlo-Regular';
@@ -361,6 +393,7 @@ body {
     padding-left: 1em;
     padding-right: 1em;
   }
+
   p:last-child {
     padding-bottom: 3em;
   }
@@ -383,6 +416,20 @@ body {
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+
+  .replayCredits {
+    color: $tomatoHeader;
+    cursor: pointer;
+  }
+
+  .replayCredits:hover{
+    text-decoration: underline;
+  }
+}
+
+.credits:hover{
+  border: 2px solid $tomatoHeader;
+  //box-shadow: inset 0 0 6px $tomatoHeader;
 }
 
 // THEORY

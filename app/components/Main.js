@@ -88,6 +88,8 @@ export default class Main extends React.Component {
                     <Background onFadeStart={() => this.onBackgroundFadeStart()}
                                 links={links}
                                 backgroundImage={backgroundImage}
+                                currentRoute={currentRoute}
+                                initialRoute={initialRoute}
                                 location={location}/>
                     <div className="contentTopAlign">
                         {childrenWithProps}
@@ -121,6 +123,8 @@ export default class Main extends React.Component {
                     <Background onFadeStart={() => this.onBackgroundFadeStart()}
                                 links={links}
                                 backgroundImage={backgroundImage}
+                                currentRoute={currentRoute}
+                                initialRoute={initialRoute}
                                 location={location}/>
                 </div>
             );
@@ -131,6 +135,8 @@ export default class Main extends React.Component {
                     <Background onFadeStart={() => this.onBackgroundFadeStart()}
                                 links={links}
                                 backgroundImage={backgroundImage}
+                                currentRoute={currentRoute}
+                                initialRoute={initialRoute}
                                 location={location}/>
                     <BackgroundLoop links={links} audio={audio} backgroundImage={backgroundImage} location={location}
                                     isHidden={true}/>
@@ -160,8 +166,16 @@ export default class Main extends React.Component {
     }
 
     onLinkClicked(id) {
+        if (id === "Contact") {
+            this.sendMail();
+            return;
+        }
         this.props.history.pushState(null, "/" + id + "/");
         this.setNavState(id);
+    }
+
+    sendMail() {
+        document.location.href = "mailto:edgar@sil.at";
     }
 
     onSetMagicWord(str) {
@@ -171,6 +185,7 @@ export default class Main extends React.Component {
     }
 
     setNavState(id) {
+
         const oldLinks = this.state.links;
         const links = oldLinks.map(function (item) {
             let newObject = {id: item.id, isSelected: item.isSelected, label: item.label};
