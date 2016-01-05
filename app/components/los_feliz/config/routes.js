@@ -23,7 +23,6 @@ export default (
         <Route path="Stills" component={Stills}/>
         <Route path="Credits" component={Credits}/>
         <Route path="Interviews" component={Interviews}/>
-        <Route path="Contact" component={Contact}/>
         <Route path="Press" component={Press}/>
         <IndexRoute component={Home}/>
     </Route>
