@@ -8,22 +8,18 @@ import MainContentPanel from './content_panel/MainContentPanel';
 
 var _container;
 
-export default class MakingOf extends React.Component {
+export default class Drawings extends React.Component {
     constructor(props) {
         super(props);
-        const makingOf = this.props.assets.makingOf;
-        const navigation = this.props.assets.makingOf.navigation[0].MakingOfNav.map(function (item) {
-            //console.log(item);
-            item.assetID = uuid.v4();
-            return item;
-        });
+        const listItems = this.props.assets.drawings;
+        const currentItem = listItems[0];
 
-        this.state = {makingOf, navigation};
-        //console.log("makingOf", makingOf, navigation);
+        this.state = {listItems, currentItem};
+        console.log("Drawings listItems", listItems);
     }
 
     componentDidMount() {
-        //console.log("MakingOf componentDidMount", this.props.assets.makingOf.navigation[0].MakingOfNav);
+        //console.log("Drawings componentDidMount", this.props.assets.drawings.navigation[0].MakingOfNav);
 
         TweenMax.set(this._container, {autoAlpha: 0});
         if (this.props.siteReady) {
@@ -32,7 +28,7 @@ export default class MakingOf extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        //console.log("MakingOf componentWillReceiveProps", nextProps);
+        //console.log("Drawings componentWillReceiveProps", nextProps);
 
         if (nextProps.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
@@ -48,25 +44,16 @@ export default class MakingOf extends React.Component {
     render() {
         const navigation = this.state.navigation;
         const currentItem = this.state.currentItem;
-        const makingOf = this.props.assets.makingOf;
+        const drawings = this.props.assets.drawings;
         const location = this.props.assets.location;
-        console.log('MakingOf render', location);
+        console.log('Drawings render', location, this.state);
         if (currentItem) {
             return <div
-                className="makingOf"
+                className="drawings"
                 ref={(c) => this._container = c}>
-                <Sidebar
-                    listItems={navigation}
-                    onItemSelected={(item) => this.onItemSelected(item)}/>
                 <MainContentPanel
                     location={location}
-                    currentItem={makingOf[currentItem.id][0]}/>
-            </div>
-        } else {
-            return <div ref={(c) => this._container = c}>
-                <Sidebar
-                    listItems={navigation}
-                    onItemSelected={(item) => this.onItemSelected(item)}/>
+                    currentItem={drawings[0]}/>
             </div>
         }
     }

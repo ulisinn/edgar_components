@@ -16,6 +16,10 @@ export default class PressCategory extends React.Component {
         this.state = ({wasAnswered});
     }
 
+    requestPassword() {
+        document.location.href = "mailto:edgar@sil.at?subject=Password Request";
+    }
+
     render() {
         const currentItem = this.props.currentItem;
         const currentContent = this.props.currentContent;
@@ -35,6 +39,7 @@ export default class PressCategory extends React.Component {
                     <div className="submitDownload" onClick={() =>this.onClick()}
                          onFocus={() =>this.onFocus()}>SUBMIT
                     </div>
+                    <div className="passwordRequest" onClick={() => this.requestPassword()}>REQUEST A PASSWORD</div>
                 </div>;
             }
         } else {

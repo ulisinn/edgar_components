@@ -12,11 +12,13 @@ import Credits from '../Credits.jsx';
 import Interviews from '../Interviews.jsx';
 import Contact from '../Contact.jsx';
 import Press from '../Press.jsx';
+import Drawings from '../Drawings.jsx';
 
 
 export default (
     <Route path="/" component={Main}>
         <Route path="Theory" component={Theory}/>
+        <Route path="Drawings" component={Drawings}/>
         <Route path="MakingOf" component={MakingOf}/>
         <Route path="Screenings" component={Screenings}/>
         <Route path="Teaser" component={Teaser}/>

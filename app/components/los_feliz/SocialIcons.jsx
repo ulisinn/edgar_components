@@ -30,7 +30,7 @@ export default class SocialIcons extends React.Component {
     }
 
     setSocialIconDirection(currentRoute) {
-        if (currentRoute === "Credits" || currentRoute === "Theory" || currentRoute === "Screenings" || currentRoute === "Press") {
+        if (currentRoute === "Drawings" || currentRoute === "Credits" || currentRoute === "MakingOf" || currentRoute === "Theory" || currentRoute === "Screenings" || currentRoute === "Press") {
             this._classNames = classnames('socialIconsVertical');
         } else {
             this._classNames = classnames('socialIcons');
@@ -42,7 +42,7 @@ export default class SocialIcons extends React.Component {
     }
 
     render() {
-        if(! this.props.currentRoute){
+        if (!this.props.currentRoute) {
             this.setSocialIconDirection(this.props.initialRoute)
         }
         //console.log("SocialIcons render", this.props.currentRoute,this.props.initialRoute);

@@ -2,6 +2,7 @@
  * Created by ulrichsinn on 12/30/2015.
  */
 
+import  React from 'react';
 
 export function findActiveLink(item) {
     if (item.isSelected) {
@@ -23,4 +24,9 @@ export function getImage(url) {
         };
         img.src = url
     })
+}
+
+export function createMarkup(item) {
+    //console.log("createMarkup", item);
+    return {__html: item};
 }

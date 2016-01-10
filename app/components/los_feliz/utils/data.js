@@ -126,10 +126,27 @@ export function getInterviews() {
     });
 }
 
-// GET MAKING OF VIDEOS
+// GET MAKING CONTENT
 
 export function getMakingOf() {
     return axios.get('http://new.1000000000.at/makingof.php').catch(function (response) {
+        if (response instanceof Error) {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', response.message);
+        } else {
+            // The request was made, but the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(response.data);
+            console.log(response.status);
+            console.log(response.headers);
+            console.log(response.config);
+        }
+    });
+}
+// GET PAINTINGS & SKETCHES
+
+export function getPaintings() {
+    return axios.get('http://new.1000000000.at/paintings.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -228,6 +245,7 @@ export function getInitialData() {
         getScreenings(),
         getInterviews(),
         getMakingOf(),
+        getPaintings(),
         getCredits(),
         getTheory(),
         getDownloads(),

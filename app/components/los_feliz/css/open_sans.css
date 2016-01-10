@@ -10,7 +10,6 @@
 
 }
 
-
 @font-face {
     font-family: 'open_sans_condensedbold';
     src: url('../fonts/OpenSans-CondBold-webfont.eot');
@@ -22,7 +21,6 @@
     font-style: normal;
 
 }
-
 
 @font-face {
     font-family: 'open_sansbold';
@@ -37,9 +35,6 @@
 
 }
 
-
-
-
 @font-face {
     font-family: 'open_sanslight';
     src: url('../fonts/opensanslight-webfont.eot');
@@ -53,9 +48,6 @@
 
 }
 
-
-
-
 @font-face {
     font-family: 'open_sansregular';
     src: url('../fonts/opensansregular-webfont.eot');
@@ -68,9 +60,6 @@
     font-style: normal;
 
 }
-
-
-
 
 @font-face {
     font-family: 'open_sanssemibold';

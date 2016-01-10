@@ -3,6 +3,13 @@ import TweenMax from 'gsap';
 
 var _container, _creditsContent, _creditsWrapper, _creditsTween, _resizeTimeOut;
 
+var orf = require('./assets/orf.png');
+var filmFonds = require('./assets/filmfonds.png');
+var edoko = require('./assets/edoko.png');
+var filmInstitute = require('./assets/film_institute.png');
+var kulturLand = require('./assets/kulturland.png');
+var museum = require('./assets/21erHaus.png');
+
 export default class Credits extends React.Component {
     constructor(props) {
         super(props);
@@ -104,6 +111,14 @@ export default class Credits extends React.Component {
             //console.log('render Credits', credits[0]);
             return (
                 <div className="creditsWrapper" ref={(c) => this._creditsWrapper = c}>
+                    <div className="logos">
+                        <img src={filmInstitute} alt=""/>
+                        <img src={filmFonds} alt=""/>
+                        <img src={orf} alt=""/>
+                        <img src={kulturLand} alt=""/>
+                        <img src={edoko} alt=""/>
+                        <img src={museum} alt=""/>
+                    </div>
                     <div className="credits"
                          ref={(c) => this._container = c}
                          onMouseEnter={() => this.pauseCredits()}

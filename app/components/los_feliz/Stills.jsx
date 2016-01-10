@@ -78,10 +78,6 @@ export default class Stills extends React.Component {
                                     listItems={listItems}
                                     currentItem={currentItem}
                                     setCurrentItem={(item) => this.setCurrentItem(item)}/>
-                <ImageViewerCopy currentImage={currentImage}
-                                 location={this.props.assets.location}
-                                 listItems={listItems}
-                                 currentItem={currentItem}/>
             </div>
         )
     }

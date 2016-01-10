@@ -1,15 +1,24 @@
 $helvetica: system, -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+$navSelected: #b70606;
+$tomatoHeader: #b84133;
+$navWidth: 850px;
+$calloutBackground: rgba(0, 0, 0, 0.75);
+
 @import '../../../../node_modules/resetcss/reset.min.css';
 @import 'fontello.scss';
 @import 'open_sans.css';
 @import 'menlo.css';
-@import "hamburger.scss";
 
-$navSelected: #b70606;
-$tomatoHeader: #b84133;
-$navWidth: 770px;
-$calloutBackground: rgba(0, 0, 0, 0.75);
+$menlo: 'Menlo-Regular';
+$open_sansregular: 'open_sansregular';
+$open_sanssemibold: 'open_sanssemibold';
+$open_sansbold: 'open_sansbold';
+$open_sans_condensedbold: 'open_sans_condensedbold';
+$open_sanscondensed_light: 'open_sanscondensed_light';
+
+@import "hamburger.scss";
+@import 'makingOf.scss';
 
 ::-webkit-input-placeholder {
   color: white;
@@ -36,7 +45,7 @@ $calloutBackground: rgba(0, 0, 0, 0.75);
 
 body {
   background-color: black;
-  font-family: 'Menlo-Regular';
+  font-family: $menlo;
   overflow-x: hidden;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -177,7 +186,7 @@ body {
   justify-content: center;
   top: 0;
   left: 0;
-  font-family: 'open_sansbold';
+  font-family: $open_sansbold;
 }
 
 .contentTopAlign {
@@ -189,7 +198,7 @@ body {
   justify-content: center;
   top: 0;
   left: 0;
-  font-family: 'open_sansbold';
+  font-family: $open_sansbold;
   //border:1px solid red;
   //overflow: hidden;
 }
@@ -203,8 +212,8 @@ body {
   paddingTop: '1em';
 }
 
-.listCallout {
-  font-family: 'Menlo-Regular';
+.listCallout, .makingOfListCallout {
+  font-family: $menlo;
   font-size: 0.75em;
   line-height: 1.3em;
   text-align: right;
@@ -231,8 +240,13 @@ body {
   }
 }
 
+.makingOfListCallout {
+  width: 350px;
+
+}
+
 .listItem {
-  font-family: 'Menlo-Regular';
+  font-family: $menlo;
   font-size: 0.75em;
   line-height: 1.7em;
   color: white;
@@ -242,10 +256,15 @@ body {
   width: 100%;
 
   h1 {
-    font-family: 'open_sansbold';
+    font-family: $open_sansbold;
     line-height: 1.3em;
     font-size: 2em;
-    padding-bottom: 1em;
+    margin-bottom: 1em;
+  }
+  h2 {
+    margin-top: -1.6em;
+    margin-bottom: 1.3em;
+    font-size: 1.3em;
   }
   p {
     padding-bottom: 1em;
@@ -265,7 +284,7 @@ body {
     cursor: pointer;
   }
   .splashHeader {
-    font-family: 'open_sans_condensedbold';
+    font-family: $open_sans_condensedbold;
     line-height: 0.7em;
     font-size: 3em;
     text-align: center;
@@ -273,7 +292,7 @@ body {
     margin-bottom: 2em;
   }
   .splashSub {
-    font-family: 'open_sanscondensed_light';
+    font-family: $open_sanscondensed_light;
     font-size: 3em;
     text-align: center;
     color: white;
@@ -363,6 +382,18 @@ body {
   overflow: hidden;
 }
 
+.logos {
+  position: fixed;
+  top: 3.5em;
+  z-index: 1;
+  overflow: hidden;
+  width: 80px;
+  img {
+    width: 90%;
+    margin: 10px;
+  }
+}
+
 .credits {
   position: relative;
 
@@ -387,7 +418,7 @@ body {
   }
 
   p {
-    font-family: 'Menlo-Regular';
+    font-family: $menlo;
     font-size: 0.7em;
     line-height: 1.7em;
     padding-left: 1em;
@@ -401,7 +432,7 @@ body {
     display: inline-block;
     color: rgba(180, 180, 180, 1);
     margin-top: 1em;
-    font-family: 'open_sans_condensedbold';
+    font-family: $open_sans_condensedbold;
     letter-spacing: 0.15em;
     font-size: 1em;
   }
@@ -410,7 +441,7 @@ body {
     display: inline-block;
     color: $tomatoHeader;
     margin-top: 1em;
-    font-family: 'open_sans_condensedbold';
+    font-family: $open_sans_condensedbold;
     font-size: 1.3em;
     line-height: 2.5em;
     letter-spacing: 0.06em;
@@ -422,19 +453,19 @@ body {
     cursor: pointer;
   }
 
-  .replayCredits:hover{
+  .replayCredits:hover {
     text-decoration: underline;
   }
 }
 
-.credits:hover{
+.credits:hover {
   border: 2px solid $tomatoHeader;
   //box-shadow: inset 0 0 6px $tomatoHeader;
 }
 
 // THEORY
 
-.theory, .interviews, .interviews, .makingOf, .press {
+.theory, .interviews, .interviews, .makingOf, .press, .drawings {
   position: relative;
   margin-top: 3em;
   display: flex;
@@ -442,6 +473,10 @@ body {
   align-items: flex-start;
   width: 100%;
   max-width: 780px;
+}
+
+.makingOf {
+  max-width: 960px;
 }
 
 .stills {
@@ -470,7 +505,7 @@ body {
 // STILLS
 
 .imageViewerControl {
-  font-family: 'Menlo-Regular';
+  font-family: $menlo;
   font-size: 0.75em;
   line-height: 1.7em;
   display: flex;
@@ -489,6 +524,7 @@ body {
   align-items: center;
   justify-content: space-between;
   color: white;
+  margin-bottom: 1.8em;
 }
 
 .imageViewerControlArrow {
@@ -518,7 +554,7 @@ body {
   align-items: flex-start;
   width: 100%;
   max-width: 600px;
-  font-family: 'Menlo-Regular';
+  font-family: $menlo;
 
   color: white;
   background-color: $calloutBackground;
@@ -586,7 +622,7 @@ body {
     border-style: none;
     background-color: darkred;
     color: white;
-    font-family: 'Menlo-Regular';
+    font-family: $menlo;
     padding: 0.5em;
     text-align: center;
     margin: 2em;
@@ -595,4 +631,17 @@ body {
   input[type=password]:focus {
     outline: none;
   }
+}
+
+// DOWNLOADS
+
+.passwordRequest {
+  font-size: 0.85em;
+  color: $tomatoHeader;
+  margin-top: 1.5em;
+  cursor: pointer;
+}
+
+.passwordRequest:hover {
+  text-decoration: underline;
 }

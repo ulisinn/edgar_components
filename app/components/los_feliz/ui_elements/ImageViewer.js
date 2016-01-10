@@ -2,6 +2,9 @@
  * Created by ulrichsinn on 01/02/2016.
  */
 import  React from 'react';
+import TweenMax from 'gsap';
+
+var _image;
 
 export default class ImageViewer extends React.Component {
     constructor(props) {
@@ -13,6 +16,8 @@ export default class ImageViewer extends React.Component {
 
 
     componentWillReceiveProps(newProps) {
+        TweenMax.set(this._image,{autoAlpha: 0});
+
         const currentImage = newProps.currentImage.then(
             function (successurl) {
                 this.onImageLoaded(successurl);
@@ -27,13 +32,14 @@ export default class ImageViewer extends React.Component {
         const imageSrc = url;
         this.setState({imageSrc});
         //console.log("onImageLoaded", url);
+        TweenMax.to(this._image, 0.7, {autoAlpha: 1});
 
     }
 
     render() {
         return (
             <div className="imageViewerDisplay">
-                <img src={this.state.imageSrc}/>
+                <img src={this.state.imageSrc}  ref={(c) => this._image = c}/>
             </div>
         )
     }

@@ -26,7 +26,7 @@ export default class BackgroundLoop extends React.Component {
         const activeLink = links.filter(this.findActiveLink);
         var muted = false;
         for (let i = 0; i < activeLink.length; i++) {
-            if (activeLink[i].id === "Teaser" || activeLink[i].id === "Interviews" || activeLink[i].id === "MakingOf") {
+            if (activeLink[i].id === "Teaser" || activeLink[i].id === "Interviews") {
                 muted = true;
             }
         }

@@ -37,10 +37,11 @@ export default class Main extends React.Component {
             this.parseScreenings(response[5]);
             this.parseInterviews(response[6]);
             this.parseMakingOf(response[7]);
-            this.parseCredits(response[8]);
-            this.parseTheory(response[9]);
-            this.parseReviews(response[11]);
-            this.parseDownloads(response[10]);
+            this.parsePaintings(response[8]);
+            this.parseCredits(response[9]);
+            this.parseTheory(response[10]);
+            this.parseReviews(response[12]);
+            this.parseDownloads(response[11]);
         }.bind(this))
     }
 
@@ -240,12 +241,13 @@ export default class Main extends React.Component {
 
     parseNavigation(response) {
         const initialRoute = this.state.initialRoute;
-        const links = response.data.map(
+        console.log("NAVIGATION", response.data[0].Navigation);
+        const links = response.data[0].Navigation.map(
             function (item) {
                 const t = {};
-                t.id = item.Navigation[0].id;
-                t.isSelected = (item.Navigation[0].id === initialRoute) ? true : false;
-                t.label = item.Navigation[0].label;
+                t.id = item.id;
+                t.isSelected = (item.id === initialRoute) ? true : false;
+                t.label = item.label;
                 return t;
             });
         this.setState({links});
@@ -314,19 +316,13 @@ export default class Main extends React.Component {
 
     parseMakingOf(response) {
         console.log("MAKING OF", response);
-        const makingOf = response.data.map(
-            function (item) {
-                const t = {};
-                t.assetID = item._id;
-                t.shortTitle = item.MakingOf[0].titleShort;
-                t.longTitle = item.MakingOf[0].title;
-                t.description = item.MakingOf[0].description;
-                t.mpeg = item.MakingOf[0].mpeg._default;
-                t.webm = item.MakingOf[0].webm._default;
-                //console.log("item", t, item);
-                return t;
-            });
+        const makingOf = response.data;
         this.setState({makingOf});
+    }
+    parsePaintings(response) {
+        console.log("PAINTINGS", response);
+        const drawings = response.data;
+        this.setState({drawings});
     }
 
     parseCredits(response) {
