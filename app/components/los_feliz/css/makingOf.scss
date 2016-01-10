@@ -1,0 +1,111 @@
+
+.mainContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 780px;
+  min-height: 533px;
+  background-color: $calloutBackground;
+
+  p {
+    margin: 0;
+    color: white;
+    font-family: $menlo;
+    font-size: 0.85em;
+    margin: 0.9em;
+    line-height: 1.3em;
+  }
+
+  a {
+    font-family: $open_sanssemibold;
+    font-size: 0.8em;
+    line-height: 2em;
+
+  }
+}
+
+.playlistTypeButton {
+  text-transform: uppercase;
+  font-family: $menlo;
+  font-size: 13px;
+  color: white;
+  display: inline-block;
+  margin-left: 0.83em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  margin-top: 0.7em;
+  border: 1px solid white;
+  padding: 0.25em;
+  padding-top: 0.3em;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+  cursor: pointer;
+}
+
+.playlistTypeButtonSelected{
+  text-transform: uppercase;
+  font-family: $menlo;
+  font-size: 13px;
+  color: #b70606;
+  display: inline-block;
+  margin-left: 0.83em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  margin-top: 0.7em;
+  border: none;
+  padding: 0.4em;
+  padding-top: 0.35em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.playListControl {
+  font-family: $menlo;
+  font-size: 0.75em;
+  line-height: 1.7em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+}
+
+.playListControlWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  margin-bottom: 0.9em;
+}
+
+.playListControlArrow {
+  margin-top: 0.5em;
+  margin-left: 0.7em;
+  margin-right: 0.7em;
+  display: inline-block;
+  font-family: "fontello";
+  border: 1px solid white;
+  font-size: 1.3em;
+  padding: 0.3em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  cursor: pointer;
+}
+
+.playListControlCounter {
+  display: inline-block;
+  margin-top: 1em;
+}
+
+.playlistViewerImage {
+  img {
+    width: 100%;
+    margin-bottom: -0.5em;
+  }
+  width: 100%;
+}
