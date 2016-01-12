@@ -34,7 +34,8 @@ export default class Teaser extends React.Component {
 
         return (
             <div className="contentCenterAlign" ref={(c) => this._container = c}>
-                <VideoPlayer location={this.props.assets.location} video={this.state.video[0]}/></div>
+                <VideoPlayer location={this.props.assets.location}
+                             video={this.state.video[0]}/></div>
         )
     }
 

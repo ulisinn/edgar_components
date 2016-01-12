@@ -42,7 +42,9 @@ export default class Interviews extends React.Component {
         console.log('Interviews render', currentItem);
         return <div className="interviews" ref={(c) => this._container = c}>
             <VideoListCallout listItems={interviews} onItemSelected={(item) => this.onItemSelected(item)}/>
-            <VideoListItem currentItem={currentItem} location={this.props.assets.location}/>
+            <VideoListItem currentItem={currentItem}
+                           location={this.props.assets.location}
+            />
         </div>
     }
 }

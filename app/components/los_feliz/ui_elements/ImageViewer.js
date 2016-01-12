@@ -16,7 +16,7 @@ export default class ImageViewer extends React.Component {
 
 
     componentWillReceiveProps(newProps) {
-        TweenMax.set(this._image,{autoAlpha: 0});
+        TweenMax.set(this._image, {autoAlpha: 0});
 
         const currentImage = newProps.currentImage.then(
             function (successurl) {
@@ -25,7 +25,6 @@ export default class ImageViewer extends React.Component {
             function (errorurl) {
                 console.log('errorurl', errorurl);
             });
-
     }
 
     onImageLoaded(url) {
@@ -39,7 +38,7 @@ export default class ImageViewer extends React.Component {
     render() {
         return (
             <div className="imageViewerDisplay">
-                <img src={this.state.imageSrc}  ref={(c) => this._image = c}/>
+                <img src={this.state.imageSrc} ref={(c) => this._image = c}/>
             </div>
         )
     }
