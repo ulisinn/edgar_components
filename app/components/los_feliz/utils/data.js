@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // GET BACKGROUND IMAGES
 
-export function getBackgrounds() {
-    return axios.get('http://new.1000000000.at/background_image.php').catch(function (response) {
+export function getBackgrounds(location) {
+    return axios.get(location + '/background_image.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -20,8 +20,8 @@ export function getBackgrounds() {
 
 // GET AUDIO BACKGROUND LOOP
 
-export function getBackgroundLoop() {
-    return axios.get('http://new.1000000000.at/background_loop.php').catch(function (response) {
+export function getBackgroundLoop(location) {
+    return axios.get(location + '/background_loop.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -38,8 +38,8 @@ export function getBackgroundLoop() {
 
 // GET NAVIGATION DESCRIPTION
 
-export function getNavigation() {
-    return axios.get('http://new.1000000000.at/navigation.php').catch(function (response) {
+export function getNavigation(location) {
+    return axios.get(location + '/navigation.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -56,8 +56,8 @@ export function getNavigation() {
 
 // GET TEASER VIDEOS
 
-export function getTeaser() {
-    return axios.get('http://new.1000000000.at/teaser.php').catch(function (response) {
+export function getTeaser(location) {
+    return axios.get(location + '/teaser.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -74,8 +74,8 @@ export function getTeaser() {
 
 // GET STILLS FOR SLIDE SHOW
 
-export function getStills() {
-    return axios.get('http://new.1000000000.at/stills.php').catch(function (response) {
+export function getStills(location) {
+    return axios.get(location + '/stills.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -92,8 +92,8 @@ export function getStills() {
 
 // GET SCREENINGS LISTINGS
 
-export function getScreenings() {
-    return axios.get('http://new.1000000000.at/screenings.php').catch(function (response) {
+export function getScreenings(location) {
+    return axios.get(location + '/screenings.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -110,8 +110,8 @@ export function getScreenings() {
 
 // GET INTERVIEWS VIDEOS
 
-export function getInterviews() {
-    return axios.get('http://new.1000000000.at/interviews.php').catch(function (response) {
+export function getInterviews(location) {
+    return axios.get(location + '/interviews.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -128,8 +128,8 @@ export function getInterviews() {
 
 // GET MAKING CONTENT
 
-export function getMakingOf() {
-    return axios.get('http://new.1000000000.at/makingof.php').catch(function (response) {
+export function getMakingOf(location) {
+    return axios.get(location + '/makingof.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -145,8 +145,8 @@ export function getMakingOf() {
 }
 // GET PAINTINGS & SKETCHES
 
-export function getPaintings() {
-    return axios.get('http://new.1000000000.at/paintings.php').catch(function (response) {
+export function getPaintings(location) {
+    return axios.get(location + '/paintings.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -163,8 +163,8 @@ export function getPaintings() {
 
 // GET CREDTS AS HTML
 
-export function getCredits() {
-    return axios.get('http://new.1000000000.at/credits.php').catch(function (response) {
+export function getCredits(location) {
+    return axios.get(location + '/credits.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -181,8 +181,8 @@ export function getCredits() {
 
 // GET THEORY ARTICLES AS HTML
 
-export function getTheory() {
-    return axios.get('http://new.1000000000.at/theory.php').catch(function (response) {
+export function getTheory(location) {
+    return axios.get(location + '/theory.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -199,8 +199,8 @@ export function getTheory() {
 
 // GET DOWNLOADS AS ZIP
 
-export function getDownloads() {
-    return axios.get('http://new.1000000000.at/downloads.php').catch(function (response) {
+export function getDownloads(location) {
+    return axios.get(location + '/downloads.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -217,8 +217,8 @@ export function getDownloads() {
 
 // GET REVIEWS
 
-export function getReviews() {
-    return axios.get('http://new.1000000000.at/reviews.php').catch(function (response) {
+export function getReviews(location) {
+    return axios.get(location + '/reviews.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -235,20 +235,20 @@ export function getReviews() {
 
 
 
-export function getInitialData() {
+export function getInitialData(location) {
     return axios.all([
-        getBackgrounds(),
-        getBackgroundLoop(),
-        getNavigation(),
-        getTeaser(),
-        getStills(),
-        getScreenings(),
-        getInterviews(),
-        getMakingOf(),
-        getPaintings(),
-        getCredits(),
-        getTheory(),
-        getDownloads(),
-        getReviews()
+        getBackgrounds(location),
+        getBackgroundLoop(location),
+        getNavigation(location),
+        getTeaser(location),
+        getStills(location),
+        getScreenings(location),
+        getInterviews(location),
+        getMakingOf(location),
+        getPaintings(location),
+        getCredits(location),
+        getTheory(location),
+        getDownloads(location),
+        getReviews(location)
     ])
 }
