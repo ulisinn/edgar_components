@@ -35,7 +35,9 @@ export default class InterviewsListItem extends React.Component {
             console.log("InterviewsListItem render", this.props.location + video.mpeg);
             return (
                 <div className='listItem'>
-                    <VideoPlayer location={this.props.location} video={video}/>
+                    <VideoPlayer location={this.props.location}
+                                 video={video}
+                    />
                     <div>
                         <p>&#160;</p>
                         <h1>{this.props.currentItem.longTitle}</h1>

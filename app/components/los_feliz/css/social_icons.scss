@@ -1,0 +1,86 @@
+
+.socialIcons {
+  font-size: 1.6em;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.3em;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 270px;
+  }
+  a {
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    color: white;
+    transition: background-color .2s linear, $navSelected .2s linear;
+    pointer: cursor;
+  }
+
+  a:hover {
+    color: $navSelected;
+  }
+}
+
+.speakerIcon {
+  cursor: pointer;
+  width: 24px;
+  margin-top: 2px;
+
+  .unmuted {
+    display: block;
+  }
+
+  .muted {
+    display: none;
+  }
+}
+
+
+.socialIconsVertical {
+  font-size: 1.3em;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 8.65em;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 0.5em;
+    width: 100%;
+  }
+  a {
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    margin-bottom: 0.3em;
+    color: white;
+    transition: background-color .2s linear, $navSelected .2s linear;
+  }
+
+  a:hover {
+    color: $navSelected;
+  }
+
+  .speakerIcon{
+    width: 20px;
+  }
+}

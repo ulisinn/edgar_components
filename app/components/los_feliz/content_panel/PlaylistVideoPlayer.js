@@ -2,6 +2,9 @@
  * Created by ulrichsinn on 12/24/2015.
  */
 import React from "react";
+
+import AudioActions from '../alt/AudioActions';
+
 import TweenMax from 'gsap';
 
 var _video, style, videoStyle;
@@ -23,6 +26,14 @@ export default class PlaylistVideoPlayer extends React.Component {
             zIndex: '1000000'
 
         }
+    }
+
+    componentDidMount() {
+        AudioActions.setVideoPlaying(true);
+    }
+
+    componentWillUnmount() {
+        AudioActions.setVideoPlaying(false);
     }
 
     render() {

@@ -1,6 +1,11 @@
 import React from "react";
+
+import AudioStore from './alt/AudioStore';
+
 import TweenMax from 'gsap';
 import classnames from 'classnames';
+
+import SpeakerIcon from './ui_elements/SpeakerIcon'
 
 var _container;
 var _classNames;
@@ -8,7 +13,8 @@ var _classNames;
 export default class SocialIcons extends React.Component {
     constructor(props) {
         super(props);
-
+        const isMuted = false;
+        this.state = ({isMuted});
         this._classNames = classnames('socialIconsVertical');
         this._classNames = classnames('socialIcons');
     }
@@ -26,22 +32,34 @@ export default class SocialIcons extends React.Component {
     componentDidMount() {
         //console.log("SocialIcons componentDidMount", this.props);
         const currentRoute = this.props.initialRoute;
+        AudioStore.listen(this.audioStoreChanged);
         TweenMax.set(this._container, {autoAlpha: 0});
     }
 
+    componentWillUnmount() {
+        AudioStore.unlisten(this.audioStoreChanged);
+    }
+
+    audioStoreChanged = (state) => {
+        const isMuted = state.isGloballyMuted;
+        this.setState({isMuted});
+
+    };
+
     setSocialIconDirection(currentRoute) {
-        if (currentRoute === "Drawings" || currentRoute === "Credits" || currentRoute === "MakingOf" || currentRoute === "Theory" || currentRoute === "Screenings" || currentRoute === "Press") {
+        if (currentRoute === "Stills" ||currentRoute === "Drawings" || currentRoute === "Credits" || currentRoute === "MakingOf" || currentRoute === "Theory" || currentRoute === "Screenings" || currentRoute === "Press") {
             this._classNames = classnames('socialIconsVertical');
         } else {
             this._classNames = classnames('socialIcons');
         }
     }
 
-    onButtonClick() {
-        this.props.onNavClick("Teaser");
+    onSpeakerClick() {
+        return false;
     }
 
     render() {
+        const globalMute = this.state.isMuted;
         if (!this.props.currentRoute) {
             this.setSocialIconDirection(this.props.initialRoute)
         }
@@ -68,6 +86,9 @@ export default class SocialIcons extends React.Component {
 
                     <a href="http://www.1000000000.at/?page_id=2" target="_blank">
                         &#xe805;
+                    </a>
+                    <a onClick={() =>this.onSpeakerClick()}>
+                        <SpeakerIcon globalMute={globalMute}/>
                     </a>
                 </div>
             </div>

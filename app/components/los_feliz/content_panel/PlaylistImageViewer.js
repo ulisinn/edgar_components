@@ -34,7 +34,7 @@ export default class PlaylistImageViewer extends React.Component {
 
 
     componentWillReceiveProps(newProps) {
-        TweenMax.set(this._image,{autoAlpha: 0});
+        TweenMax.set(this._image, {autoAlpha: 0});
         const defaultPath = newProps.selectedPlaylistItem.imageSrc._default;
         const path = defaultPath.substring(0, defaultPath.lastIndexOf('/') + 1);
         const src = newProps.location + path + newProps.selectedPlaylistItem.imageSrc.sizes.wh640c0.path;
@@ -47,8 +47,6 @@ export default class PlaylistImageViewer extends React.Component {
             function (errorurl) {
                 console.log('errorurl', errorurl);
             });
-
-
     }
 
     onImageLoaded(url) {

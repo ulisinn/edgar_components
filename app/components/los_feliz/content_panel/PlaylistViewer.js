@@ -31,11 +31,14 @@ export default class PlaylistViewer extends React.Component {
         if (this.props.playlistType === "videos") {
             return <PlaylistVideoPlayer
                 location={this.props.location}
+                onVideoMounted={this.props.onVideoMounted}
+                onVideoUnMmounted={this.props.onVideoUnMmounted}
                 selectedPlaylistItem={this.props.selectedPlaylistItem}>
             </PlaylistVideoPlayer>
         } else {
             return <PlaylistImageViewer
                 location={this.props.location}
+
                 selectedPlaylistItem={this.props.selectedPlaylistItem}>
 
             </PlaylistImageViewer>
