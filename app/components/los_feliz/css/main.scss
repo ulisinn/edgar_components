@@ -2,7 +2,9 @@ $helvetica: system, -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Hel
 
 $navSelected: #b70606;
 $tomatoHeader: #b84133;
-$navWidth: 850px;
+$navWidth: 940px;
+$maxWidth: 960px;
+$calloutWidth: 350px;
 $calloutBackground: rgba(0, 0, 0, 0.75);
 
 @import '../../../../node_modules/resetcss/reset.min.css';
@@ -19,6 +21,7 @@ $open_sanscondensed_light: 'open_sanscondensed_light';
 
 @import "hamburger.scss";
 @import 'makingOf.scss';
+@import 'social_icons.scss';
 
 ::-webkit-input-placeholder {
   color: white;
@@ -114,22 +117,19 @@ body {
 #hamburger {
   display: none;
   position: fixed;
-  right: 0;
+  left: 0;
   top: 0;
 }
 
 @media (max-width: $navWidth) {
   .navigation {
     flex-direction: column;
-    width: 130px;
+    width: 210px;
     height: 1.5em;
     top: 2em;
-    left: auto;
-    right: 0;
     text-align: right;
-    margin-left: auto;
+    margin-left: 1em;
     margin-right: 0.5em;
-
   }
 
   .navigation ul {
@@ -207,7 +207,7 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   margin-top: 5em;
   width: 100%;
-  max-width: 800px;
+  max-width: $maxWidth;
   padding: 2em;
   paddingTop: '1em';
 }
@@ -219,7 +219,7 @@ body {
   text-align: right;
   background-color: $calloutBackground;
   //border: 1px solid #ccc;
-  width: 220px;
+  width: $calloutWidth;
   color: white;
   margin-right: 1em;
 
@@ -278,7 +278,7 @@ body {
   position: relative;
   margin: 0 auto;
   width: 90%;
-  max-width: 920px;
+  max-width: $maxWidth;
 
   svg {
     cursor: pointer;
@@ -302,71 +302,6 @@ body {
 
 }
 
-.socialIconsVertical {
-  font-size: 1.3em;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 40px;
-  height: 7.2em;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    margin-left: 0.5em;
-    width: 100%;
-  }
-  a {
-    display: inline-block;
-    border-radius: 5px;
-    font-family: "fontello";
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: none;
-    margin-bottom: 0.3em;
-    color: white;
-    transition: background-color .2s linear, $navSelected .2s linear;
-  }
-
-  a:hover {
-    color: $navSelected;
-  }
-}
-
-.socialIcons {
-  font-size: 1.6em;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1.3em;
-
-  div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 270px;
-  }
-  a {
-    display: inline-block;
-    border-radius: 5px;
-    font-family: "fontello";
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: none;
-    color: white;
-    transition: background-color .2s linear, $navSelected .2s linear;
-  }
-
-  a:hover {
-    color: $navSelected;
-  }
-}
 
 // CREDITS
 
@@ -388,6 +323,7 @@ body {
   z-index: 1;
   overflow: hidden;
   width: 80px;
+  margin-left: 3em;
   img {
     width: 90%;
     margin: 10px;
@@ -402,9 +338,11 @@ body {
   width: 100%;
   height: 90%;
   overflow: hidden;
-  max-width: 600px;
+  max-width: $maxWidth;
   margin-top: 4em;
   margin-bottom: 4em;
+  margin-right: 3em;
+  margin-left: 3em;
   background-color: $calloutBackground;
 
   //border: 1px solid red;
@@ -468,15 +406,24 @@ body {
 .theory, .interviews, .interviews, .makingOf, .press, .drawings {
   position: relative;
   margin-top: 3em;
+  margin-left: 3em;
+  margin-right: 3em;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   width: 100%;
-  max-width: 780px;
+  max-width: $maxWidth;
 }
 
 .makingOf {
-  max-width: 960px;
+  max-width: $maxWidth;
+}
+
+.drawings {
+  max-width: 100%;
+  margin-left: 3em;
+  margin-right: 3em;
+
 }
 
 .stills {
@@ -486,8 +433,9 @@ body {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 780px;
-  //border: 1px solid red;
+  max-width: 100%;
+  margin-left: 3em;
+  margin-right: 3em;
   overflow: hidden;
 }
 
@@ -553,9 +501,10 @@ body {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 600px;
+  max-width: $maxWidth;
   font-family: $menlo;
-
+  margin-left: 3em;
+  margin-right: 3em;
   color: white;
   background-color: $calloutBackground;
 }
