@@ -27,7 +27,7 @@ export default class Main extends React.Component {
         const magicWord = "";
         this.state = {location, siteReady, magicWord};
 
-        const data = getInitialData().then(function (response) {
+        const data = getInitialData(location).then(function (response) {
             console.log("getInitialData", response[11].data);
             this.parseBackground(response[0]);
             this.parseBackgroundLoop(response[1]);
@@ -112,7 +112,7 @@ export default class Main extends React.Component {
                                  siteReady={siteReady}
                                  currentRoute={currentRoute}
                                  initialRoute={initialRoute}
-                                 onNavClick={(id) => this.onLinkClicked(id)}/>
+                    />
                 </div>
             );
             return null;
@@ -152,7 +152,7 @@ export default class Main extends React.Component {
 
                     <SocialIcons links={links}
                                  siteReady={siteReady}
-                                 onNavClick={(id) => this.onLinkClicked(id)}/>
+                    />
 
                 </div>
             );
@@ -319,6 +319,7 @@ export default class Main extends React.Component {
         const makingOf = response.data;
         this.setState({makingOf});
     }
+
     parsePaintings(response) {
         console.log("PAINTINGS", response);
         const drawings = response.data;
