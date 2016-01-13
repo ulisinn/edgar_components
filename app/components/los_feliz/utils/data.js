@@ -234,6 +234,25 @@ export function getReviews(location) {
 }
 
 
+// GET REVIEWS
+
+export function getLinks(location) {
+    return axios.get(location + '/links.php').catch(function (response) {
+        if (response instanceof Error) {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', response.message);
+        } else {
+            // The request was made, but the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(response.data);
+            console.log(response.status);
+            console.log(response.headers);
+            console.log(response.config);
+        }
+    });
+}
+
+
 
 export function getInitialData(location) {
     return axios.all([
@@ -248,6 +267,7 @@ export function getInitialData(location) {
         getPaintings(location),
         getCredits(location),
         getTheory(location),
+        getLinks(location),
         getDownloads(location),
         getReviews(location)
     ])

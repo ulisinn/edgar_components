@@ -494,7 +494,7 @@ body {
   margin-top: 1em;
 }
 
-.screenings, .contact, .reviews, .downloads {
+.screenings, .contact, .reviews, .downloads, .links {
   position: relative;
   margin-top: 4em;
   display: flex;
@@ -509,7 +509,7 @@ body {
   background-color: $calloutBackground;
 }
 
-.reviews, .downloads, .contact {
+.reviews, .downloads, .contact, .links {
   margin-top: 0;
   min-height: 400px;
   align-items: center;
@@ -520,10 +520,16 @@ body {
   color: $navSelected;
 }
 
-.contact {
+.contact, .links {
   margin-top: 4em;
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 2em;
 }
 
+.links a:hover {
+  color: $navSelected;
+}
 .screeningsItem {
   position: relative;
   text-align: left;

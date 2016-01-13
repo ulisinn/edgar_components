@@ -10,6 +10,9 @@ export default class Links extends React.Component {
         style = {
             textAlign: 'center'
         }
+
+        const links = this.props.assets.external_inks;
+        this.state = {links};
     }
 
     componentDidMount() {
@@ -27,11 +30,17 @@ export default class Links extends React.Component {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
     }
+
     render() {
         return (
-            <div className="contact" ref={(c) => this._container = c}>
-                <div style={style} ><h1>Links: Coming Soon</h1></div>
+            <div className="links" ref={(c) => this._container = c}>
+                <ul>{this.state.links.map(this.renderLinks)}</ul>
             </div>
         )
+    }
+
+    renderLinks(item) {
+        console.log("renderLinks");
+        return <li key={item.assetID}><a href={item.url} target="_blank">{item.label}</a></li>
     }
 }

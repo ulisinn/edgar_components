@@ -40,8 +40,9 @@ export default class Main extends React.Component {
             this.parsePaintings(response[8]);
             this.parseCredits(response[9]);
             this.parseTheory(response[10]);
-            this.parseReviews(response[12]);
-            this.parseDownloads(response[11]);
+            this.parseLinks(response[11]);
+            this.parseReviews(response[13]);
+            this.parseDownloads(response[12]);
         }.bind(this))
     }
 
@@ -391,5 +392,17 @@ export default class Main extends React.Component {
                 return t;
             });
         this.setState({reviews});
+    }
+    parseLinks(response) {
+        const external_inks = response.data.map(
+            function (item) {
+                const t = {};
+                t.assetID = item._id;
+                t.url = item.Links[0].url;
+                t.label = item.Links[0].label;
+                console.log(t);
+                return t;
+            });
+        this.setState({external_inks});
     }
 }
