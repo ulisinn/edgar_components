@@ -5,7 +5,7 @@ import MainNavButton from './ui_elements/MainNavButton';
 
 var divStyle, _hamburgerClassnames;
 var _mobileNav, _navBar, _hamburgerIcon, _container;
-var navWidth = '940px';
+var navWidth = '1010px';
 
 export default class Navigation extends React.Component {
     constructor(props) {

@@ -13,6 +13,7 @@ import Interviews from '../Interviews.jsx';
 import Contact from '../Contact.jsx';
 import Press from '../Press.jsx';
 import Drawings from '../Drawings.jsx';
+import Links from '../Links.jsx';
 
 
 export default (
@@ -26,6 +27,7 @@ export default (
         <Route path="Credits" component={Credits}/>
         <Route path="Interviews" component={Interviews}/>
         <Route path="Press" component={Press}/>
+        <Route path="Links" component={Links}/>
         <IndexRoute component={Home}/>
     </Route>
 );
