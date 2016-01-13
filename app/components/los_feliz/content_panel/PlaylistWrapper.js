@@ -25,7 +25,7 @@ export default class PlaylistWrapper extends React.Component {
     }
 
     componentDidMount() {
-        ////console.log("---- componentDidMount", this.state);
+        //////console.log("---- componentDidMount", this.state);
         this.initializePlaylist(this.props);
     }
 
@@ -34,7 +34,7 @@ export default class PlaylistWrapper extends React.Component {
     }
 
     initializePlaylist(props) {
-        console.log("initializePlaylist", props);
+        //console.log("initializePlaylist", props);
 
         const buttons = this.createButtonData(props);
         this.setState({buttons});
@@ -92,7 +92,7 @@ export default class PlaylistWrapper extends React.Component {
     }
 
     renderControls() {
-        console.log("renderControls", this.state);
+        //console.log("renderControls", this.state);
         if (this.state.buttons !== null) {
             return <PlaylistControls currentPlaylist={this.state.currentPlaylist}
                                      selectedPlaylistItem={this.state.selectedPlaylistItem}
@@ -120,7 +120,7 @@ export default class PlaylistWrapper extends React.Component {
         const currentPlaylist = currentProps[currentPlaylistId];
         const selectedPlaylistItem = currentPlaylist[0];
         const oldButtons = (buttons) ? buttons : this.state.buttons;
-        console.log("onPlaylistSelected", this.state);
+        //console.log("onPlaylistSelected", this.state);
         if (oldButtons) {
             const buttons = oldButtons.map(function (item) {
                 if (item.id === id) {
@@ -182,7 +182,13 @@ export default class PlaylistWrapper extends React.Component {
                 }
             );
             props.videos.forEach(function (item) {
-                item.assetID = parseInt(item.mpeg.assetID);
+                item.assetID = (parseInt(item.mpeg && item.mpeg.assetID)) ? parseInt(item.mpeg.assetID) : uuid.v4();
+                item.mpeg  = (item.mpeg === null) ? {} : item.mpeg;
+                item.mpeg._default  = (item.mpeg._default) ? item.mpeg._default : item.mpeg_path;
+                item.webm  = (item.webm === null) ? {} : item.webm;
+                item.webm  = (item.webm === null) ? {} : item.webm;
+                item.webm._default  = (item.webm._default) ? item.webm._default : item.webm_path;
+                console.log("props.videos", item);
             })
         }
 
@@ -190,7 +196,7 @@ export default class PlaylistWrapper extends React.Component {
             buttonsArr[0].isSelected = true;
         }
         const buttons = (buttonsArr.length > 0) ? buttonsArr : null;
-        console.log("createButtonData", props, buttons);
+        //console.log("createButtonData", props, buttons);
         return buttons
     }
 }

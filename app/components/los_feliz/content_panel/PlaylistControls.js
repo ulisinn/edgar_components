@@ -54,7 +54,7 @@ export default class PlaylistControls extends React.Component {
             var result = parseInt(previousValue) + parseInt(currentValue);
             return result;
         }, 0);
-        console.log("findCurrentIndex", currentIndex);
+        //console.log("findCurrentIndex", currentIndex);
         return currentIndex + 1;
 
     }
@@ -69,7 +69,7 @@ export default class PlaylistControls extends React.Component {
     onNextSelected() {
         const nextIndex = (this.state.currentIndex < this.props.currentPlaylist.length) ? this.state.currentIndex : 0;
         const nextItem = this.props.currentPlaylist[nextIndex];
-        console.log("nextIndex", nextIndex);
+        //console.log("nextIndex", nextIndex);
         this.props.setCurrentItem(nextItem);
     }
 

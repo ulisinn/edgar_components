@@ -62,7 +62,7 @@ export default class SpeakerIcon extends React.Component {
     }
 
     render() {
-        console.log("SpeakerIcon RENDER", this.state);
+        //console.log("SpeakerIcon RENDER", this.state);
         return (
             <svg onClick={() =>this.onSpeakerClick()} className='speakerIcon' width="25px" x="0px" y="0px"
                  viewBox="0 0 456 456"

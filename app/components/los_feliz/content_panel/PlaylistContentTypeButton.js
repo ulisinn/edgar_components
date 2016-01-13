@@ -14,7 +14,7 @@ export default class PlaylistContentTypeButton extends React.Component {
     }
 
     render() {
-        console.log(this.props.buttonName);
+        //console.log(this.props.buttonName);
         //return (this.props.buttonName.isSelected) ? ()=>this.renderSelectedButton() : ()=>this.renderActiveButton()
         let btn;
 

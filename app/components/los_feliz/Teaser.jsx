@@ -30,7 +30,7 @@ export default class Teaser extends React.Component {
     }
 
     render() {
-        console.log("Teaser", this.props.assets.location, this.state.video[0]);
+        console.log("------ Teaser", this.props.assets.location, this.state.video[0]);
 
         return (
             <div className="contentCenterAlign" ref={(c) => this._container = c}>

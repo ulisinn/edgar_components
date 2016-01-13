@@ -13,7 +13,7 @@ export function findActiveLink(item) {
 }
 
 export function getImage(url) {
-    console.log("---- getImage", url);
+    //console.log("---- getImage", url);
     return new Promise(function (resolve, reject) {
         var img = new Image();
         img.onload = function () {

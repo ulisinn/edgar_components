@@ -44,7 +44,7 @@ export default class BackgroundLoop extends React.Component {
     };
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log("BackgroundLoop shouldComponentUpdate", nextState);
+        //console.log("BackgroundLoop shouldComponentUpdate", nextState);
         return false;
     }
 

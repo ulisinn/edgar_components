@@ -16,8 +16,8 @@ export default class PlaylistImageViewer extends React.Component {
 
         const defaultPath = props.selectedPlaylistItem.imageSrc._default;
         const path = defaultPath.substring(0, defaultPath.lastIndexOf('/') + 1);
-        const src = props.location + path + props.selectedPlaylistItem.imageSrc.sizes.wh640c0.path;
-        console.log("PlaylistImageViewer", src);
+        const src = (props.selectedPlaylistItem.imageSrc.sizes) ? props.location + path + props.selectedPlaylistItem.imageSrc.sizes.wh640c0.path : props.location + path + props.selectedPlaylistItem.imageSrc._default;
+        //console.log("PlaylistImageViewer", src, this.state.listItems);
         const imageSrc = '';
         this.state = ({imageSrc});
 
@@ -38,7 +38,7 @@ export default class PlaylistImageViewer extends React.Component {
         const defaultPath = newProps.selectedPlaylistItem.imageSrc._default;
         const path = defaultPath.substring(0, defaultPath.lastIndexOf('/') + 1);
         const src = newProps.location + path + newProps.selectedPlaylistItem.imageSrc.sizes.wh640c0.path;
-        console.log("PlaylistImageViewer", src);
+        //console.log("PlaylistImageViewer", src);
 
         const currentImage = getImage(src).then(
             function (successurl) {
@@ -52,7 +52,7 @@ export default class PlaylistImageViewer extends React.Component {
     onImageLoaded(url) {
         const imageSrc = url;
         this.setState({imageSrc});
-        console.log("onImageLoaded", url);
+        //console.log("onImageLoaded", url);
         TweenMax.to(this._image, 0.7, {autoAlpha: 1});
 
     }

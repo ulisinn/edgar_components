@@ -21,14 +21,14 @@ import {getInitialData} from './los_feliz/utils/data';
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
-        console.log(window.location.hostname.indexOf('localhost'));
+        //console.log(window.location.hostname.indexOf('localhost'));
         const location = (window.location.hostname.indexOf('.at') == -1) ? "http://new.1000000000.at" : "";
         const siteReady = false;
         const magicWord = "";
         this.state = {location, siteReady, magicWord};
 
         const data = getInitialData(location).then(function (response) {
-            console.log("getInitialData", response[11].data);
+            //console.log("getInitialData", response[11].data);
             this.parseBackground(response[0]);
             this.parseBackgroundLoop(response[1]);
             this.parseNavigation(response[2]);
@@ -46,7 +46,7 @@ export default class Main extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("MAIN - componentWillReceiveProps", nextProps.routes, nextProps.routes[1].path);
+        //console.log("MAIN - componentWillReceiveProps", nextProps.routes, nextProps.routes[1].path);
         const currentRoute = nextProps.routes[1].path;
         if (currentRoute) {
             this.setNavState(currentRoute);
@@ -55,7 +55,7 @@ export default class Main extends React.Component {
     }
 
     componentDidMount() {
-        console.log("MAIN - componentDidMount", this.props.routes, this.props.routes[1].path);
+        //console.log("MAIN - componentDidMount", this.props.routes, this.props.routes[1].path);
         const initialRoute = (this.props.routes[1].path) ? this.props.routes[1].path : "Home";
         if (initialRoute) {
             this.setState({initialRoute});
@@ -180,7 +180,7 @@ export default class Main extends React.Component {
     }
 
     onSetMagicWord(str) {
-        console.log("onSetMagicWord");
+        //console.log("onSetMagicWord");
         const magicWord = str;
         this.setState({magicWord});
     }
@@ -198,7 +198,7 @@ export default class Main extends React.Component {
             return newObject;
         });
         this.setState({links});
-        console.log("onLinkClicked old", oldLinks[0], "new", links[0]);
+        //console.log("onLinkClicked old", oldLinks[0], "new", links[0]);
     }
 
     // SET INITIAL STATE
@@ -241,7 +241,7 @@ export default class Main extends React.Component {
 
     parseNavigation(response) {
         const initialRoute = this.state.initialRoute;
-        console.log("NAVIGATION", response.data[0].Navigation);
+        //console.log("NAVIGATION", response.data[0].Navigation);
         const links = response.data[0].Navigation.map(
             function (item) {
                 const t = {};
@@ -254,14 +254,18 @@ export default class Main extends React.Component {
     };
 
     parseTeaser(response) {
+        //console.log("PARSE TEASER", response.data);
         const teaser = response.data.map(
             function (item) {
+                //console.log("item", item);
                 const t = {};
-                t.assetID = item.Teaser[0].TeaserMPEG.assetID;
-                t.title = item.Teaser[0].TeaserTitle;
-                t.mpeg = item.Teaser[0].TeaserMPEG._default;
-                t.webm = item.Teaser[0].TeaserWebM._default;
-                //console.log("item", t);
+                t.assetID = item._id;
+                //t.mpeg = item.video[0].mpeg._default;
+                t.mpeg_path = item.video[0].mpeg_path;
+                t.mpeg = item.video[0].mpeg_path;
+                //t.webm = item.video[0].webm._default;
+                t.webm_path = item.video[0].webm_path;
+                t.webm = item.video[0].webm_path;
                 return t;
             });
         this.setState({teaser});
@@ -315,13 +319,13 @@ export default class Main extends React.Component {
     }
 
     parseMakingOf(response) {
-        console.log("MAKING OF", response);
+        //console.log("MAKING OF", response);
         const makingOf = response.data;
         this.setState({makingOf});
     }
 
     parsePaintings(response) {
-        console.log("PAINTINGS", response);
+        //console.log("PAINTINGS", response);
         const drawings = response.data;
         this.setState({drawings});
     }

@@ -5,7 +5,7 @@ import MainNavButton from './ui_elements/MainNavButton';
 
 var divStyle, _hamburgerClassnames;
 var _mobileNav, _navBar, _hamburgerIcon, _container;
-var navWidth = '780px';
+var navWidth = '940px';
 
 export default class Navigation extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class Navigation extends React.Component {
         const links = nextProps.links;
         this.showHideNavbar(links, 1.5);
         this.initializeMenu();
-        console.log("NAV componentWillReceiveProps", nextProps.siteReady);
+        //console.log("NAV componentWillReceiveProps", nextProps.siteReady);
 
 
         if (nextProps.siteReady) {
@@ -37,7 +37,7 @@ export default class Navigation extends React.Component {
         this.showHideNavbar(links, 0);
         window.addEventListener('resize', () => this.handleResize());
         this.initializeMenu();
-        // console.log("componentDidMount NAV", links, this._navBar, this._hamburgerClassnames);
+        // //console.log("componentDidMount NAV", links, this._navBar, this._hamburgerClassnames);
 
         TweenMax.set(this._container, {autoAlpha: 0});
         if (this.props.siteReady) {
@@ -53,15 +53,17 @@ export default class Navigation extends React.Component {
         const hamburgerPressed = this.state.hamburgerPressed;
         let alpha = 1;
         let mobileNav = false;
-        if (Modernizr.mq('only screen and (max-width: 860px)')) {
+        if (Modernizr.mq('only screen and (max-width:  ' + navWidth + ')')) {
             mobileNav = true;
             alpha = (hamburgerPressed) ? 1 : 0;
         } else {
             mobileNav = false;
         }
         TweenMax.set(this._mobileNav, {autoAlpha: alpha});
-        // console.log("mobileNav", mobileNav);
-        this.setState({mobileNav});
+        if (mobileNav != this.state.mobileNav) {
+            //console.log("mobileNav", mobileNav, this.state.mobileNav);
+            this.setState({mobileNav});
+        }
 
     }
 
@@ -75,6 +77,7 @@ export default class Navigation extends React.Component {
             TweenMax.set(this._mobileNav, {autoAlpha: 1});
         }
         this.setState({mobileNav});
+        this.handleResize();
     }
 
     onHamburgerClick() {
@@ -92,7 +95,7 @@ export default class Navigation extends React.Component {
 
     setMobileNavState() {
         const hamburgerPressed = this.state.hamburgerPressed;
-        //console.log("onHamburgerClick setMobileNavState", hamburgerPressed);
+        //console.log("onHamburgerClick setMobileNavState", hamburgerPressed, this._mobileNav);
 
         if (!this._mobileNav) {
             return
@@ -111,7 +114,7 @@ export default class Navigation extends React.Component {
 
     showHideNavbar(links, t) {
         const activeLink = links.filter(this.findActiveLink);
-        console.log("showHideNavbar", activeLink);
+        //console.log("showHideNavbar", activeLink);
         var showNavBar = false;
         for (let i = 0; i < activeLink.length; i++) {
             if (activeLink[i].id !== "Home") {
@@ -127,7 +130,7 @@ export default class Navigation extends React.Component {
     }
 
     render() {
-        console.log("NAV RENDER");
+        //console.log("NAV RENDER");
         const props = this.props;
         const links = props.links;
         if (!this.state.hamburgerPressed) {
