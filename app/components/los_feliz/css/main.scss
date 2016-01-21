@@ -242,7 +242,6 @@ body {
 
 .makingOfListCallout {
   width: 350px;
-
 }
 
 .listItem {
@@ -301,7 +300,6 @@ body {
   }
 
 }
-
 
 // CREDITS
 
@@ -445,9 +443,9 @@ body {
 }
 
 .stills img {
-  width: 91%;
-  margin-left: 4.5%;
-  padding-top: 1.5em;
+  width: 100%;
+  margin-left: 0;
+  padding-top: 0.7em;
 }
 
 // STILLS
@@ -472,52 +470,66 @@ body {
   align-items: center;
   justify-content: space-between;
   color: white;
-  margin-bottom: 1.8em;
+  //margin-bottom: 1.8em;
 }
 
-.imageViewerControlArrow {
-  margin-top: 1em;
-  margin-left: 2.4em;
-  margin-right: 2.4em;
-  display: inline-block;
-  font-family: "fontello";
-  border: 1px solid white;
-  font-size: 1.3em;
-  padding: 0.3em;
-  padding-left: 0.6em;
-  padding-right: 0.6em;
-  cursor: pointer;
-}
-
-.imageViewerControlCounter {
-  display: inline-block;
-  margin-top: 1em;
-}
-
-.screenings, .contact, .reviews, .downloads, .links {
+.screenings, .contact, .reviews, .downloads, .links, .info {
   position: relative;
   margin-top: 4em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+
   max-width: $maxWidth;
   font-family: $menlo;
-  margin-left: 3em;
-  margin-right: 3em;
+  //margin-left: 3em;
+  //margin-right: 3em;
   color: white;
   background-color: $calloutBackground;
+
+  a:hover {
+    color: $tomatoHeader;
+  }
 }
 
-.reviews, .downloads, .contact, .links {
+.reviews, .downloads, .contact, .links, .info {
   margin-top: 0;
   min-height: 400px;
   align-items: center;
   justify-content: center;
 }
 
+.infoLinks {
+
+  div:nth-child(1) {
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 1.3em;
+  }
+  div:nth-child(2) {
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3em;
+    font-size: 13px;
+  }
+  div:nth-child(3) {
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.8em;
+    font-size: 13px;
+    margin-bottom: 1em;
+  }
+}
+
 .downloads a:hover {
-  color: $navSelected;
+  color: $tomatoHeader;
+}
+
+.info a:hover {
+  color: $tomatoHeader;
+  text-decoration: underline;
 }
 
 .contact, .links {
@@ -528,9 +540,10 @@ body {
 }
 
 .links a:hover {
-  color: $navSelected;
+  color: $tomatoHeader;
 }
-.screeningsItem {
+
+.screeningsItem, .events {
   position: relative;
   text-align: left;
   padding: 2em;
@@ -542,6 +555,7 @@ body {
     margin-bottom: 0.7em;
     font-size: 1.5em;
     letter-spacing: 0.06em;
+    line-height: 1.2em;
   }
 
   h4 {
@@ -553,6 +567,10 @@ body {
 
     margin-top: 0.6em;
   }
+}
+
+.events {
+  text-align: center;
 }
 
 .downloads {
@@ -567,7 +585,7 @@ body {
   }
 
   .submitDownload:hover {
-    color: $navSelected;
+    color: $tomatoHeader;
     border: 1px solid $navSelected;
     background-color: rgba(255, 255, 255, 0.6);
 
@@ -575,7 +593,7 @@ body {
 
   input[type=password] {
     border-style: none;
-    background-color: darkred;
+    background-color: $tomatoHeader;
     color: white;
     font-family: $menlo;
     padding: 0.5em;
@@ -599,4 +617,116 @@ body {
 
 .passwordRequest:hover {
   text-decoration: underline;
+}
+
+@media (max-width: $navWidth) {
+
+  .theory, .interviews, .interviews, .makingOf, .press, .drawings {
+    margin-top: 2em;
+    margin-left: 2.5em;
+    margin-right: 1em;
+  }
+
+  .makingOfListCallout {
+    width: 250px;
+  }
+  .listCallout li, .makingOfListCallout li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    font-size: 9px;
+    cursor: pointer;
+    line-height: 1.4em;
+
+  }
+
+  .links {
+    margin-top: 4em;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+    padding: 1.5em;
+    min-height: auto;
+  }
+
+}
+
+@media (max-width: 799px) and(orientation: landscape) {
+  .makingOf {
+    flex-direction: row;
+  }
+
+  .logos {
+    position: fixed;
+    top: 3.5em;
+    z-index: 1;
+    overflow: visible;
+    width: 33px;
+    margin-left: 3.2em;
+  }
+
+  .logos img {
+    width: 100%;
+    margin-bottom: 0px;
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 799px) and (orientation: portrait) {
+
+  .theory, .interviews, .interviews, .makingOf, .press, .drawings {
+    margin-top: 2em;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+  }
+
+  .makingOf, .interviews, .theory, .press {
+    flex-direction: column;
+  }
+
+  .listCallout {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .listItem {
+    padding: 0;
+    text-align: center;
+  }
+  .makingOfListCallout {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  .makingOfListCallout li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 9px;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.4em;
+  }
+
+  .logos {
+    position: fixed;
+    top: 3.5em;
+    z-index: 1;
+    overflow: visible;
+    width: 40px;
+    margin-left: 2.5em;
+  }
+
+  .logos img {
+    width: 100%;
+    margin-bottom: 5px;
+    margin-left: 5px;
+  }
+
+  .credits {
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+  }
 }

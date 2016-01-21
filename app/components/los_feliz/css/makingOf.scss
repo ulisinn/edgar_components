@@ -42,7 +42,7 @@
   cursor: pointer;
 }
 
-.playlistTypeButtonSelected{
+.playlistTypeButtonSelected {
   text-transform: uppercase;
   font-family: $menlo;
   font-size: 13px;
@@ -107,4 +107,14 @@
     margin-bottom: -0.5em;
   }
   width: 100%;
+}
+
+@media (max-width: $navWidth) {
+  .mainContent {
+    min-height: auto;
+  }
+
+  .mainContent p{
+    font-size: 9px;
+  }
 }
