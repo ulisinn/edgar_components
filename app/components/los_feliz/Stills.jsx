@@ -69,15 +69,15 @@ export default class Stills extends React.Component {
         console.log("STILLS RENDER", this.state);
         return (
             <div className='stills' ref={(c) => this._container = c}>
-                <ImageViewer currentImage={currentImage}
-                             location={this.props.assets.location}
-                             listItems={listItems}
-                             currentItem={currentItem}/>
                 <ImageViewerControl currentImage={currentImage}
                                     location={this.props.assets.location}
                                     listItems={listItems}
                                     currentItem={currentItem}
                                     setCurrentItem={(item) => this.setCurrentItem(item)}/>
+                <ImageViewer currentImage={currentImage}
+                             location={this.props.assets.location}
+                             listItems={listItems}
+                             currentItem={currentItem}/>
             </div>
         )
     }
