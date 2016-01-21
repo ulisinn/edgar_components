@@ -41,8 +41,9 @@ export default class Main extends React.Component {
             this.parseCredits(response[9]);
             this.parseTheory(response[10]);
             this.parseLinks(response[11]);
-            this.parseReviews(response[13]);
-            this.parseDownloads(response[12]);
+            this.parseInfo(response[12]);
+            this.parseReviews(response[14]);
+            this.parseDownloads(response[13]);
         }.bind(this))
     }
 
@@ -99,6 +100,7 @@ export default class Main extends React.Component {
                     <BackgroundLoop links={links}
                                     audio={audio}
                                     currentRoute={currentRoute}
+                                    initialRoute={initialRoute}
                                     backgroundImage={backgroundImage}
                                     location={location}
                                     isHidden={true}/>
@@ -393,6 +395,7 @@ export default class Main extends React.Component {
             });
         this.setState({reviews});
     }
+
     parseLinks(response) {
         const external_inks = response.data.map(
             function (item) {
@@ -400,9 +403,27 @@ export default class Main extends React.Component {
                 t.assetID = item._id;
                 t.url = item.Links[0].url;
                 t.label = item.Links[0].label;
-                console.log(t);
+                //console.log(t);
                 return t;
             });
         this.setState({external_inks});
+    }
+
+    parseInfo(response) {
+        const info = response.data.map(
+            function (item) {
+                console.log("parseInfo item", item);
+                const t = {};
+                t.assetID = item._id;
+                t.url = item.url;
+                t.label = item.label;
+                t.email = item.email;
+                t.mailto = item.mailto;
+                t.phone = item.phone;
+                t.events = item.events;
+                console.log(t);
+                return t;
+            });
+        this.setState({info});
     }
 }

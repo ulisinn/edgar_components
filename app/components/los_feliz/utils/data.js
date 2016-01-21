@@ -234,10 +234,29 @@ export function getReviews(location) {
 }
 
 
-// GET REVIEWS
+// GET LINKS
 
 export function getLinks(location) {
     return axios.get(location + '/links.php').catch(function (response) {
+        if (response instanceof Error) {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', response.message);
+        } else {
+            // The request was made, but the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(response.data);
+            console.log(response.status);
+            console.log(response.headers);
+            console.log(response.config);
+        }
+    });
+}
+
+
+// GET INFO FOR PRESS PAGE
+
+export function getInfo(location) {
+    return axios.get(location + '/info.php').catch(function (response) {
         if (response instanceof Error) {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', response.message);
@@ -268,6 +287,7 @@ export function getInitialData(location) {
         getCredits(location),
         getTheory(location),
         getLinks(location),
+        getInfo(location),
         getDownloads(location),
         getReviews(location)
     ])
