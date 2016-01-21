@@ -15,6 +15,9 @@ export default class Press extends React.Component {
         const downloads = this.props.assets.downloads;
         const category = [
             {
+                category: 'Info/Contact',
+                assetID: uuid.v4()
+            }, {
                 category: 'Reviews',
                 assetID: uuid.v4()
             },
@@ -55,16 +58,17 @@ export default class Press extends React.Component {
         const category = (this.state.category) ? this.state.category : currentContent.category;
         const currentItem = this.state.currentItem;
         const magicWord = this.props.assets.magicWord;
-        console.log("PRESS STATE", this.props);
+        console.log("PRESS STATE", this.props, currentItem);
         if (currentItem) {
             currentContent = (this.state.currentItem.category === "Reviews") ? this.props.assets.reviews : this.props.assets.downloads;
         }
         return <div className="press" ref={(c) => this._container = c}>
             <PressCallout listItems={category} onItemSelected={(item) => this.onItemSelected(item)}/>
-            <PressCategory currentItem={currentItem}
+            <PressCategory info={this.props.assets.info}
+                           currentItem={currentItem}
                            currentContent={currentContent}
                            location={this.props.assets.location}
-                           setMagicWord = {this.props.setMagicWord}
+                           setMagicWord={this.props.setMagicWord}
                            magicWord={magicWord}/>
         </div>
     }
