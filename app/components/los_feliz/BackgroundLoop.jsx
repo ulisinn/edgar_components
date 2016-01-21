@@ -15,8 +15,10 @@ export default class BackgroundLoop extends React.Component {
 
     componentDidMount() {
         const links = this.props.links;
+        const isMuted = (this.props.initialRoute === "Teaser" && this.props.currentRoute === undefined) ? true : false;
+
         this._audio.volume = 0;
-        this.muteUnmuteAudio(false, 0);
+        this.muteUnmuteAudio(isMuted, 0);
         AudioStore.listen(this.audioStoreChanged);
     }
 
@@ -30,7 +32,7 @@ export default class BackgroundLoop extends React.Component {
         this.setState({isGloballyMuted});
         if (state.isGloballyMuted) {
             this.muteUnmuteAudio(true, 1.5)
-        }else{
+        } else {
             if (state.videoIsPlaying) {
                 console.log("BackgroundLoop audioStoreChanged", state.videoIsPlaying, this.state.isGloballyMuted);
                 this.muteUnmuteAudio(true, 1.5)
@@ -57,11 +59,11 @@ export default class BackgroundLoop extends React.Component {
                 audioEl.volume = currentVolume.volume;
             }
         });
-        //console.log(this._audio, "BackgroundLoop muted", muted, currentVolume);
+        console.log(this._audio, "BackgroundLoop muted", muted, currentVolume);
     }
 
     render() {
-        console.log("BackgroundLoop render", this._audio, this.props.location + this.props.audio[0].mpeg);
+        console.log("BackgroundLoop render", this._audio, this.props, this.props.location + this.props.audio[0].mpeg);
         return (
             <div>
                 <audio autoPlay loop ref={(c) => this._audio = c}>
