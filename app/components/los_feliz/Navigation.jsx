@@ -59,7 +59,8 @@ export default class Navigation extends React.Component {
         } else {
             mobileNav = false;
         }
-        TweenMax.set(this._mobileNav, {autoAlpha: alpha});
+
+        TweenMax.set(this._mobileNav, {autoAlpha: alpha, display: (alpha === 0) ? 'none' : 'block'});
         if (mobileNav != this.state.mobileNav) {
             //console.log("mobileNav", mobileNav, this.state.mobileNav);
             this.setState({mobileNav});
@@ -69,9 +70,13 @@ export default class Navigation extends React.Component {
 
     initializeMenu() {
         let mobileNav = false;
+        var nav = this._mobileNav;
         if (Modernizr.mq('only screen and (max-width:  ' + navWidth + ')')) {
             mobileNav = true;
-            TweenMax.set(this._mobileNav, {autoAlpha: 0});
+            TweenMax.set(this._mobileNav, {
+                autoAlpha: 0,
+                display: 'none'
+            });
         } else {
             mobileNav = false;
             TweenMax.set(this._mobileNav, {autoAlpha: 1});
@@ -95,6 +100,8 @@ export default class Navigation extends React.Component {
 
     setMobileNavState() {
         const hamburgerPressed = this.state.hamburgerPressed;
+        var nav = this._mobileNav;
+
         //console.log("onHamburgerClick setMobileNavState", hamburgerPressed, this._mobileNav);
 
         if (!this._mobileNav) {
@@ -103,12 +110,19 @@ export default class Navigation extends React.Component {
 
         if (Modernizr.mq('only screen and (max-width:  ' + navWidth + ')')) {
             if (hamburgerPressed) {
-                TweenMax.to(this._mobileNav, 0.5, {autoAlpha: 1});
+                TweenMax.to(this._mobileNav, 0.5, {autoAlpha: 1, display: 'block'});
             } else {
-                TweenMax.to(this._mobileNav, 0.5, {autoAlpha: 0});
+                TweenMax.to(this._mobileNav, 0.5, {
+                    autoAlpha: 0, onComplete: function () {
+                        console.log("_mobileNav fade out", nav);
+                        TweenMax.set(nav, {display: 'none'});
+
+                    }
+                });
+
             }
         } else {
-            TweenMax.set(this._mobileNav, {autoAlpha: 1});
+            TweenMax.set(this._mobileNav, {autoAlpha: 1, display: 'block'});
         }
     }
 
@@ -123,7 +137,7 @@ export default class Navigation extends React.Component {
         }
 
         if (showNavBar) {
-            TweenMax.to(this._navBar, t, {autoAlpha: 1});
+            TweenMax.to(this._navBar, t, {autoAlpha: 1, display: 'block'});
         } else {
             TweenMax.to(this._navBar, t, {autoAlpha: 0});
         }
