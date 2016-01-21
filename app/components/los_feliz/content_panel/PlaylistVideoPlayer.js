@@ -40,16 +40,17 @@ export default class PlaylistVideoPlayer extends React.Component {
         //console.log("PlaylistVideoPlayer", this.props);
         let source, type;
         if (Modernizr.video.webm) {
-            source = this.props.location + "/" + this.props.selectedPlaylistItem.webm._default;
+            source = this.props.location + this.props.selectedPlaylistItem.webm._default;
             type = this.props.selectedPlaylistItem.mime;
         } else {
-            source = this.props.location + "/" + this.props.selectedPlaylistItem.mpeg._default;
+            source = this.props.location + this.props.selectedPlaylistItem.mpeg._default;
             type = this.props.selectedPlaylistItem.mime;
         }
         //console.log("PlaylistVideoPlayer render:", source, type);
         return (
             <div style={style}>
-                <video style={videoStyle} autoPlay controls ref={(c) => this._video = c} src={source} type={type}>
+                <video style={videoStyle} autoPlay="autoplay" controls ref={(c) => this._video = c} src={source}
+                       type={type}>
 
                 </video>
             </div>

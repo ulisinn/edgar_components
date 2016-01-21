@@ -183,11 +183,11 @@ export default class PlaylistWrapper extends React.Component {
             );
             props.videos.forEach(function (item) {
                 item.assetID = (parseInt(item.mpeg && item.mpeg.assetID)) ? parseInt(item.mpeg.assetID) : uuid.v4();
-                item.mpeg  = (item.mpeg === null) ? {} : item.mpeg;
-                item.mpeg._default  = (item.mpeg._default) ? item.mpeg._default : item.mpeg_path;
-                item.webm  = (item.webm === null) ? {} : item.webm;
-                item.webm  = (item.webm === null) ? {} : item.webm;
-                item.webm._default  = (item.webm._default) ? item.webm._default : item.webm_path;
+                item.mpeg = (item.mpeg === null) ? {} : item.mpeg;
+                item.mpeg._default = (item.mpeg._default) ? item.mpeg._default : item.mpeg_path;
+                item.webm = (item.webm === null) ? {} : item.webm;
+                item.webm = (item.webm === null) ? {} : item.webm;
+                item.webm._default = (item.webm._default) ? item.webm._default : item.webm_path;
                 console.log("props.videos", item);
             })
         }
