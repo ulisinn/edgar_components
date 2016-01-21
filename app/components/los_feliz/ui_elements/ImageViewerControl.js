@@ -74,9 +74,9 @@ export default class ImageViewerControl extends React.Component {
         return (
             <div className='imageViewerControl'>
                 <div className='imageViewerControlWrapper' ref={(c) => this._container = c}>
-                    <div className="imageViewerControlArrow" onClick={()=>this.onPreviousSelected()}> &#xe801;</div>
-                    <div className="imageViewerControlCounter">{this.state.currentIndex}/{this.state.numItems}</div>
-                    <div className="imageViewerControlArrow" onClick={()=>this.onNextSelected()}> &#xe800;</div>
+                    <div className="playListControlArrow" onClick={()=>this.onPreviousSelected()}> &#xe801;</div>
+                    <div className="playListControlCounter">{this.state.currentIndex}/{this.state.numItems}</div>
+                    <div className="playListControlArrow" onClick={()=>this.onNextSelected()}> &#xe800;</div>
                 </div>
             </div>
         )
