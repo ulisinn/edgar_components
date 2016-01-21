@@ -48,7 +48,7 @@ export default class VideoPlayer extends React.Component {
         console.log("VideoPlayer render:", source, type);
         return (
             <div style={style}>
-                <video style={videoStyle} autoPlay controls ref={(c) => this._video = c} src={source} type={type}>
+                <video style={videoStyle} autoPlay="autoplay" controls ref={(c) => this._video = c} src={source} type={type}>
 
                 </video>
             </div>
