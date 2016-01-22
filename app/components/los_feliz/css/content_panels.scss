@@ -23,7 +23,16 @@
 }
 
 @media (max-width: $navWidth) {
-
+  .mainContentPanelColumn {
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .mainContentPanelRow {
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
 }
 
 @media (max-width: 799px) and(orientation: landscape) {
