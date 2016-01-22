@@ -1,16 +1,19 @@
 import  React from 'react';
 import TweenMax from 'gsap';
+import classnames from 'classnames';
 
 import ListCallout from './ui_elements/ListCallout';
 import ListItem from './ui_elements/ListItem';
 
-var _container;
+var _container, _classNames;
 
 export default class Theory extends React.Component {
     constructor(props) {
         super(props);
         const theory = this.props.assets.theory;
         this.state = {theory};
+        this._classNames = classnames('mainContentPanelRow');
+
     }
 
     componentDidMount() {
@@ -38,7 +41,9 @@ export default class Theory extends React.Component {
     render() {
         const theory = this.props.assets.theory;
         const currentItem = this.state.currentItem;
-        return <div className="theory" ref={(c) => this._container = c}>
+        return <div
+            className={this._classNames}
+            ref={(c) => this._container = c}>
             <ListCallout listItems={theory} onItemSelected={(item) => this.onItemSelected(item)}/>
             <ListItem currentItem={currentItem}/>
         </div>
