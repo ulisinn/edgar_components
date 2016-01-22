@@ -1,0 +1,30 @@
+
+// SPLASH PAGE
+
+.splashPage {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  max-width: $maxWidth;
+
+  svg {
+    cursor: pointer;
+  }
+  .splashHeader {
+    font-family: $open_sans_condensedbold;
+    line-height: 0.7em;
+    font-size: 3em;
+    text-align: center;
+    color: white;
+    margin-bottom: 2em;
+  }
+  .splashSub {
+    font-family: $open_sanscondensed_light;
+    font-size: 3em;
+    text-align: center;
+    color: white;
+    margin-left: 0.6em;
+
+  }
+
+}

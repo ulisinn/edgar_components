@@ -1,0 +1,45 @@
+
+.links {
+
+  position: relative;
+  margin: 0 auto;
+  color: white;
+  width: 100%;
+  max-width: $maxWidth;
+  background-color: $calloutBackground;
+  text-align: center;
+  min-height: 400px;
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 2em;
+  padding-top: 2em;
+}
+
+.links a:hover {
+  color: $tomatoHeader;
+  text-decoration: underline;
+}
+
+@media (max-width: $navWidth) {
+
+}
+
+@media (max-width: 799px) and(orientation: landscape) {
+  .links {
+    min-height: inherit;
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 1.9em;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 799px) and (orientation: portrait) {
+  .links {
+    min-height: inherit;
+    padding-bottom: 2em;
+
+  }
+}
+
+

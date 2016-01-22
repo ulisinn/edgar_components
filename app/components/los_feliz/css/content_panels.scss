@@ -1,0 +1,56 @@
+
+.mainContentPanelColumn {
+  position: relative;
+  margin-top: $desktopMarginTop;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 3em;
+  margin-right: 3em;
+  //border: 1px solid red;
+}
+
+.mainContentPanelRow {
+  position: relative;
+  margin-top: $desktopMarginTop;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-left: 3em;
+  margin-right: 3em;
+  //border: 1px solid red;
+  max-width: 1300px;
+}
+
+@media (max-width: $navWidth) {
+
+}
+
+@media (max-width: 799px) and(orientation: landscape) {
+  .mainContentPanelColumn {
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .mainContentPanelRow {
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 799px) and (orientation: portrait) {
+  .mainContentPanelColumn {
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+
+  }
+  .mainContentPanelRow {
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+    flex-direction: column;
+
+  }
+}

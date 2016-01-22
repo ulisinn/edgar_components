@@ -1,0 +1,11 @@
+.about {
+  position: relative;
+  margin-top: $desktopMarginTop;
+  margin-left: 3em;
+  margin-right: 3em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: $maxWidth;
+}

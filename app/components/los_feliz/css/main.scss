@@ -20,9 +20,17 @@ $open_sans_condensedbold: 'open_sans_condensedbold';
 $open_sanscondensed_light: 'open_sanscondensed_light';
 $desktopMarginTop: 4em;
 
+@import "content_panels.scss";
 @import "hamburger.scss";
 @import 'makingOf.scss';
 @import 'social_icons.scss';
+@import 'splash.scss';
+@import 'teaser.scss';
+@import 'stills.scss';
+@import 'interviews.scss';
+@import 'screenings.scss';
+@import 'links.scss';
+@import 'about.scss';
 
 ::-webkit-input-placeholder {
   color: white;
@@ -190,20 +198,6 @@ body {
   font-family: $open_sansbold;
 }
 
-.contentTopAlign {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  font-family: $open_sansbold;
-  //border:1px solid red;
-  //overflow: hidden;
-}
-
 .contentInset {
   background-color: rgba(255, 255, 255, 0.8);
   margin-top: 5em;
@@ -252,8 +246,8 @@ body {
   line-height: 1.7em;
   color: white;
   background-color: $calloutBackground;
-  padding: 3em;
-  padding-top: 1em;
+  padding: 2em;
+  padding-bottom: 1em;
   width: 100%;
 
   h1 {
@@ -271,36 +265,6 @@ body {
     padding-bottom: 1em;
 
   }
-}
-
-// SPLASH PAGE
-
-.splashPage {
-  position: relative;
-  margin: 0 auto;
-  width: 90%;
-  max-width: $maxWidth;
-
-  svg {
-    cursor: pointer;
-  }
-  .splashHeader {
-    font-family: $open_sans_condensedbold;
-    line-height: 0.7em;
-    font-size: 3em;
-    text-align: center;
-    color: white;
-    margin-bottom: 2em;
-  }
-  .splashSub {
-    font-family: $open_sanscondensed_light;
-    font-size: 3em;
-    text-align: center;
-    color: white;
-    margin-left: 0.6em;
-
-  }
-
 }
 
 // CREDITS
@@ -403,7 +367,7 @@ body {
 
 // THEORY
 
-.theory, .interviews, .interviews, .makingOf, .press, .drawings {
+.press {
   position: relative;
   margin-top: $desktopMarginTop;
   margin-left: 3em;
@@ -413,30 +377,6 @@ body {
   align-items: flex-start;
   width: 100%;
   max-width: $maxWidth;
-}
-
-.makingOf {
-  max-width: $maxWidth;
-}
-
-.drawings {
-  max-width: 100%;
-  margin-left: 3em;
-  margin-right: 3em;
-
-}
-
-.stills {
-  position: relative;
-  margin-top: $desktopMarginTop;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 100%;
-  margin-left: 3em;
-  margin-right: 3em;
-  overflow: hidden;
 }
 
 .imageViewerDisplay {
@@ -444,38 +384,7 @@ body {
   background-color: $calloutBackground;
 }
 
-.stills img {
-  width: 100%;
-  margin-left: 0;
-  padding-top: 0.7em;
-}
-
-// STILLS
-
-.imageViewerControl {
-  font-family: $menlo;
-  font-size: 0.75em;
-  line-height: 1.7em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-  background-color: $calloutBackground;
-  width: 100%;
-}
-
-.imageViewerControlWrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-  //margin-bottom: 1.8em;
-}
-
-.screenings, .contact, .reviews, .downloads, .links, .info {
+.contact, .reviews, .downloads, .info {
   position: relative;
   margin-top: $desktopMarginTop;
   display: flex;
@@ -497,12 +406,6 @@ body {
 
 .reviews, .downloads, .contact, .info {
   margin-top: 0;
-  min-height: 400px;
-  align-items: center;
-  justify-content: center;
-}
-
-.links {
   min-height: 400px;
   align-items: center;
   justify-content: center;
@@ -535,19 +438,19 @@ body {
   color: $tomatoHeader;
 }
 
-.links a:hover, .info a:hover {
+.info a:hover {
   color: $tomatoHeader;
   text-decoration: underline;
 }
 
-.contact, .links {
+.contact {
   margin-top: $desktopMarginTop;
   font-size: 13px;
   text-transform: uppercase;
   line-height: 2em;
 }
 
-.screeningsItem, .events {
+.events {
   position: relative;
   text-align: left;
   padding: 2em;
@@ -625,10 +528,8 @@ body {
 
 @media (max-width: $navWidth) {
 
-  .theory, .interviews, .interviews, .makingOf, .press, .drawings {
-    margin-top: 2em;
-    margin-left: 2.5em;
-    margin-right: 1em;
+  .contact {
+    line-height: 1.4em;
   }
 
   .makingOfListCallout {
@@ -645,21 +546,9 @@ body {
 
   }
 
-  .links {
-    margin-top: 4em;
-    margin-left: 2.5em;
-    margin-right: 2.5em;
-    padding: 1.5em;
-    min-height: auto;
-  }
-
 }
 
 @media (max-width: 799px) and(orientation: landscape) {
-  .makingOf {
-    flex-direction: row;
-  }
-
   .logos {
     position: fixed;
     top: 3.5em;
@@ -678,13 +567,7 @@ body {
 
 @media (max-width: 799px) and (orientation: portrait) {
 
-  .theory, .interviews, .interviews, .makingOf, .press, .drawings {
-    margin-top: 2em;
-    margin-left: 2.5em;
-    margin-right: 2.5em;
-  }
-
-  .makingOf, .interviews, .theory, .press {
+  .press {
     flex-direction: column;
   }
 
@@ -696,6 +579,8 @@ body {
   .listItem {
     padding: 0;
     text-align: center;
+    font-size: 0.6em;
+    line-height: 1.3em;
   }
   .makingOfListCallout {
     width: 100%;
