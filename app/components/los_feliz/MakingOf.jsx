@@ -1,6 +1,7 @@
 import  React from 'react';
 import TweenMax from 'gsap';
 import uuid from 'node-uuid';
+import classnames from 'classnames';
 
 import Sidebar from './content_panel/Sidebar';
 import VideoListItem from './ui_elements/VideoListItem';
@@ -19,6 +20,9 @@ export default class MakingOf extends React.Component {
         });
 
         this.state = {makingOf, navigation};
+        this._classNames = classnames('mainContentPanelRow', 'makingOf');
+        //this._classNames = classnames('mainContentPanelRow');
+
         //console.log("makingOf", makingOf, navigation);
     }
 
@@ -53,7 +57,7 @@ export default class MakingOf extends React.Component {
         console.log('MakingOf render', location);
         if (currentItem) {
             return <div
-                className="makingOf"
+                className={this._classNames}
                 ref={(c) => this._container = c}>
                 <Sidebar
                     listItems={navigation}

@@ -41,6 +41,7 @@ export default class PlaylistControls extends React.Component {
     }
 
     findCurrentIndex(current, list) {
+        console.log("findCurrentIndex", currentIndex, list);
         const currentIndex = list.map(function (item, index) {
             let n;
             if (current.assetID === item.assetID) {
@@ -54,7 +55,6 @@ export default class PlaylistControls extends React.Component {
             var result = parseInt(previousValue) + parseInt(currentValue);
             return result;
         }, 0);
-        //console.log("findCurrentIndex", currentIndex);
         return currentIndex + 1;
 
     }

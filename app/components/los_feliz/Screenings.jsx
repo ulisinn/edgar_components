@@ -1,17 +1,15 @@
 import React from "react";
 import ScreeningsItem from "./ui_elements/ScreeningsItem";
 import TweenMax from 'gsap';
+import classnames from 'classnames';
 
-var style;
-
-var _container;
+var _container, _classNames;
 
 export default class Screenings extends React.Component {
     constructor(props) {
         super(props);
-        style = {
-            textAlign: 'center'
-        }
+        this._classNames = classnames('mainContentPanelColumn');
+
     }
 
     componentDidMount() {
@@ -32,13 +30,17 @@ export default class Screenings extends React.Component {
     }
 
     render() {
-        const screenings = this.props.assets.screenings.map(function(item){
+        const screenings = this.props.assets.screenings.map(function (item) {
             return item
         }).reverse();
 
         return (
-            <div className="screenings" ref={(c) => this._container = c}>
-                {screenings.map(this.renderScreening, this)}
+            <div
+                className={this._classNames}
+                ref={(c) => this._container = c}>
+                <div className="screenings">
+                    {screenings.map(this.renderScreening, this)}
+                </div>
             </div>
         )
     }

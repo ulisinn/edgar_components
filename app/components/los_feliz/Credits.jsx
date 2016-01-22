@@ -48,13 +48,21 @@ export default class Credits extends React.Component {
         var _contentHeight = 0;
         var _wrapperHeight = 0;
         var remainingTime;
-        var _currentY = Math.abs(parseInt(this._creditsContent.style.top));
+        var _currentY;
+
+
+        try {
+            _currentY = Math.abs(parseInt(this._creditsContent.style.top));
+        } catch (e) {
+            //
+        }
 
         try {
             _contentHeight = this._creditsContent.clientHeight;
         } catch (e) {
             //
         }
+
         try {
             _wrapperHeight = this._creditsWrapper.clientHeight;
         } catch (e) {

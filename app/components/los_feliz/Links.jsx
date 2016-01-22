@@ -33,8 +33,10 @@ export default class Links extends React.Component {
 
     render() {
         return (
-            <div className="links" ref={(c) => this._container = c}>
-                <ul>{this.state.links.map(this.renderLinks)}</ul>
+            <div className="mainContentPanelColumn">
+                <div className="links" ref={(c) => this._container = c}>
+                    <ul>{this.state.links.map(this.renderLinks)}</ul>
+                </div>
             </div>
         )
     }

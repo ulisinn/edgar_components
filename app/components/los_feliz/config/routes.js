@@ -3,7 +3,7 @@ import {Route, IndexRoute, Redirect} from 'react-router';
 
 import Main from '../../Main';
 import Home from '../Home.jsx';
-import Theory from '../Theory.jsx';
+import About from '../About.jsx';
 import MakingOf from '../MakingOf.jsx';
 import Screenings from '../Screenings.jsx';
 import Teaser from '../Teaser.jsx';
@@ -18,7 +18,7 @@ import Links from '../Links.jsx';
 
 export default (
     <Route path="/" component={Main}>
-        <Route path="Theory" component={Theory}/>
+        <Route path="Theory" component={About}/>
         <Route path="Drawings" component={Drawings}/>
         <Route path="MakingOf" component={MakingOf}/>
         <Route path="Screenings" component={Screenings}/>

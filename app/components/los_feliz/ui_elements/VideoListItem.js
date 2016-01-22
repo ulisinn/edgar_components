@@ -39,7 +39,6 @@ export default class InterviewsListItem extends React.Component {
                                  video={video}
                     />
                     <div>
-                        <h1>{this.props.currentItem.longTitle}</h1>
                         <p>{this.props.currentItem.description}</p>
                     </div>
                 </div>

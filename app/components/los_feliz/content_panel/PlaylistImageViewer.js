@@ -16,8 +16,9 @@ export default class PlaylistImageViewer extends React.Component {
 
         const defaultPath = props.selectedPlaylistItem.imageSrc._default;
         const path = defaultPath.substring(0, defaultPath.lastIndexOf('/') + 1);
-        const src = (props.selectedPlaylistItem.imageSrc.sizes) ? props.location + path + props.selectedPlaylistItem.imageSrc.sizes.wh640c0.path : props.location + path + props.selectedPlaylistItem.imageSrc._default;
-        //console.log("PlaylistImageViewer", src, this.state.listItems);
+        console.log("PlaylistImageViewer", props);
+        const size = (props.selectedPlaylistItem.imageSrc.sizes.wh640c0) ? props.selectedPlaylistItem.imageSrc.sizes.wh640c0 : props.selectedPlaylistItem.imageSrc.sizes.wh1200c0;
+        const src = (props.selectedPlaylistItem.imageSrc.sizes) ? props.location + path + size.path : props.location + path + props.selectedPlaylistItem.imageSrc._default;
         const imageSrc = '';
         this.state = ({imageSrc});
 
@@ -36,8 +37,10 @@ export default class PlaylistImageViewer extends React.Component {
     componentWillReceiveProps(newProps) {
         TweenMax.set(this._image, {autoAlpha: 0});
         const defaultPath = newProps.selectedPlaylistItem.imageSrc._default;
+        const size = (newProps.selectedPlaylistItem.imageSrc.sizes.wh640c0) ? newProps.selectedPlaylistItem.imageSrc.sizes.wh640c0 : newProps.selectedPlaylistItem.imageSrc.sizes.wh1200c0;
+
         const path = defaultPath.substring(0, defaultPath.lastIndexOf('/') + 1);
-        const src = newProps.location + path + newProps.selectedPlaylistItem.imageSrc.sizes.wh640c0.path;
+        const src = (newProps.selectedPlaylistItem.imageSrc.sizes) ? newProps.location + path + size.path : newProps.location + path + newProps.selectedPlaylistItem.imageSrc._default;
         //console.log("PlaylistImageViewer", src);
 
         const currentImage = getImage(src).then(

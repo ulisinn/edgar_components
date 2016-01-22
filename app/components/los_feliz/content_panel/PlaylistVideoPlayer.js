@@ -7,25 +7,11 @@ import AudioActions from '../alt/AudioActions';
 
 import TweenMax from 'gsap';
 
-var _video, style, videoStyle;
+var _video;
 
 export default class PlaylistVideoPlayer extends React.Component {
     constructor(props) {
         super(props);
-        style = {
-            position: 'relative',
-            width: '100%',
-            maxWidth: '960px',
-            //height: '360px',
-            overflow: 'hidden'
-        };
-
-        videoStyle = {
-            width: '100%',
-            height: 'auto',
-            zIndex: '1000000'
-
-        }
     }
 
     componentDidMount() {
@@ -48,9 +34,13 @@ export default class PlaylistVideoPlayer extends React.Component {
         }
         //console.log("PlaylistVideoPlayer render:", source, type);
         return (
-            <div style={style}>
-                <video style={videoStyle} autoPlay="autoplay" controls ref={(c) => this._video = c} src={source}
-                       type={type}>
+            <div>
+                <video
+                    className="playlistVideoPlayer"
+                    autoPlay="autoplay"
+                    controls ref={(c) => this._video = c}
+                    src={source}
+                    type={type}>
 
                 </video>
             </div>

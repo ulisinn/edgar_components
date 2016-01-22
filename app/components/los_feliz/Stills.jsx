@@ -1,28 +1,27 @@
 import  React from 'react';
 import TweenMax from 'gsap';
+import classnames from 'classnames';
 
-import  ImageViewer from './ui_elements/ImageViewer';
-import  ImageViewerControl from './ui_elements/ImageViewerControl';
-import  ImageViewerCopy from './ui_elements/ImageViewerCopy';
-import {findActiveLink,getImage} from './utils/utils';
+import MainContentPanel from './content_panel/MainContentPanel';
 
-var _container;
+var _container, _classNames;
 
 export default class Stills extends React.Component {
     constructor(props) {
         super(props);
+
         const listItems = this.props.assets.stills;
-        this.state = {listItems};
+        const currentItem = listItems[0];
+
+        this.state = {listItems, currentItem};
         console.log("Stills listItems", listItems);
+
+        this._classNames = classnames('mainContentPanelColumn', 'stills');
+
     }
 
     componentDidMount() {
-        console.log("Stills componentDidMount");
-        const items = this.state.listItems;
-        const listItems = this.initializeList(items);
-        this.setState({listItems});
-        const currentItem = listItems[0];
-        this.setCurrentItem(currentItem);
+        //console.log("Drawings componentDidMount", this.props.assets.drawings.navigation[0].MakingOfNav);
 
         TweenMax.set(this._container, {autoAlpha: 0});
         if (this.props.siteReady) {
@@ -31,55 +30,42 @@ export default class Stills extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("Stills componentWillReceiveProps", nextProps);
+        //console.log("Drawings componentWillReceiveProps", nextProps);
 
         if (nextProps.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
     }
 
-    initializeList(list) {
-        const listItems = list.map(
-            function (item, index) {
-                //console.log(item, index);
-                if (index == 0) {
-                    item.isSelected = true;
-                } else {
-                    item.isSelected = false;
-                }
-                return item
-            }
-        );
-        return listItems;
-    }
-
-    setCurrentItem(item) {
+    onItemSelected(item) {
+        //console.log("onItemSelected", item);
         const currentItem = item;
-        const currentImage = getImage(this.props.assets.location + item.source);
-
-        this.setState({currentItem});
-        this.setState({currentImage});
-
+        this.setState({currentItem})
     }
+
 
     render() {
-        const listItems = this.state.listItems;
+        const navigation = this.state.navigation;
         const currentItem = this.state.currentItem;
-        const currentImage = this.state.currentImage;
-        console.log("STILLS RENDER", this.state);
-        return (
-            <div className='stills' ref={(c) => this._container = c}>
-                <ImageViewerControl currentImage={currentImage}
-                                    location={this.props.assets.location}
-                                    listItems={listItems}
-                                    currentItem={currentItem}
-                                    setCurrentItem={(item) => this.setCurrentItem(item)}/>
-                <ImageViewer currentImage={currentImage}
-                             location={this.props.assets.location}
-                             listItems={listItems}
-                             currentItem={currentItem}/>
+        const stills = {
+            images: this.props.assets.stills.map(function (item) {
+                //console.log(item.Stills[0]);
+                return item.Stills[0];
+            }),
+            body: '',
+            location: this.props.location
+        };
+        const location = this.props.assets.location;
+        console.log('STILLS render', location, this.props);
+        if (currentItem) {
+            return <div
+                className={this._classNames}
+                ref={(c) => this._container = c}>
+                <MainContentPanel
+                    location={location}
+                    currentItem={stills}/>
             </div>
-        )
+        }
     }
 
 }

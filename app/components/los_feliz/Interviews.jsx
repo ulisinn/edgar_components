@@ -1,10 +1,11 @@
 import  React from 'react';
 import TweenMax from 'gsap';
+import classnames from 'classnames';
 
 import VideoListCallout from './ui_elements/VideoListCallout';
 import VideoListItem from './ui_elements/VideoListItem';
 
-var _container;
+var _container, _classNames;
 
 export default class Interviews extends React.Component {
     constructor(props) {
@@ -12,12 +13,14 @@ export default class Interviews extends React.Component {
         const interviews = this.props.assets.interviews;
         this.state = {interviews};
         console.log("interviews", this.props);
+        this._classNames = classnames('mainContentPanelRow');
+
     }
 
     componentDidMount() {
         console.log("Interviews componentDidMount", this.props.siteReady);
         TweenMax.set(this._container, {autoAlpha: 0});
-        if(this.props.siteReady){
+        if (this.props.siteReady) {
             TweenMax.to(this._container, 1, {autoAlpha: 1});
         }
     }
@@ -40,7 +43,9 @@ export default class Interviews extends React.Component {
         const interviews = this.props.assets.interviews;
         const currentItem = this.state.currentItem;
         console.log('Interviews render', currentItem);
-        return <div className="interviews" ref={(c) => this._container = c}>
+        return <div
+            className={this._classNames}
+            ref={(c) => this._container = c}>
             <VideoListCallout listItems={interviews} onItemSelected={(item) => this.onItemSelected(item)}/>
             <VideoListItem currentItem={currentItem}
                            location={this.props.assets.location}

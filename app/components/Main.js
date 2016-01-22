@@ -6,7 +6,7 @@ import Background from './los_feliz/Background.jsx';
 import Teaser from './los_feliz/Teaser.jsx';
 import Interviews from './los_feliz/Interviews.jsx';
 import BackgroundLoop from './los_feliz/BackgroundLoop.jsx';
-import Theory from './los_feliz/Theory.jsx';
+import About from './los_feliz/About.jsx';
 import Credits from './los_feliz/Credits.jsx';
 import Screenings from './los_feliz/Screenings.jsx';
 import MakingOf from './los_feliz/MakingOf.jsx';
@@ -275,7 +275,8 @@ export default class Main extends React.Component {
     }
 
     parseStills(response) {
-        const stills = response.data.map(
+        const stills = response.data;
+/*        const stills = response.data.map(
             function (item) {
                 const t = {};
                 t.assetID = item._id;
@@ -285,7 +286,7 @@ export default class Main extends React.Component {
 
                 //console.log(item, t);
                 return t;
-            });
+            });*/
         this.setState({stills});
     }
 

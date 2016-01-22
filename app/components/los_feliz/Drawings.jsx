@@ -1,12 +1,11 @@
 import  React from 'react';
 import TweenMax from 'gsap';
 import uuid from 'node-uuid';
+import classnames from 'classnames';
 
-import Sidebar from './content_panel/Sidebar';
-import VideoListItem from './ui_elements/VideoListItem';
 import MainContentPanel from './content_panel/MainContentPanel';
 
-var _container;
+var _container, _classNames;
 
 export default class Drawings extends React.Component {
     constructor(props) {
@@ -16,6 +15,8 @@ export default class Drawings extends React.Component {
 
         this.state = {listItems, currentItem};
         console.log("Drawings listItems", listItems);
+        this._classNames = classnames('mainContentPanelColumn');
+
     }
 
     componentDidMount() {
@@ -49,7 +50,7 @@ export default class Drawings extends React.Component {
         console.log('Drawings render', location, this.state);
         if (currentItem) {
             return <div
-                className="drawings"
+                className={this._classNames}
                 ref={(c) => this._container = c}>
                 <MainContentPanel
                     location={location}

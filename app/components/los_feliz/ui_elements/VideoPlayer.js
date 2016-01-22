@@ -11,20 +11,6 @@ var _video, style, videoStyle;
 export default class VideoPlayer extends React.Component {
     constructor(props) {
         super(props);
-        style = {
-            position: 'relative',
-            width: '100%',
-            maxWidth: '960px',
-            //height: '360px',
-            overflow: 'hidden'
-        };
-
-        videoStyle = {
-            width: '100%',
-            height: 'auto',
-            zIndex: '1000000'
-
-        }
     }
 
     componentDidMount() {
@@ -47,11 +33,9 @@ export default class VideoPlayer extends React.Component {
         }
         console.log("VideoPlayer render:", source, type);
         return (
-            <div style={style}>
-                <video style={videoStyle} autoPlay="autoplay" controls ref={(c) => this._video = c} src={source} type={type}>
+                <video className="teaser" autoPlay="autoplay" controls ref={(c) => this._video = c} src={source} type={type}>
 
                 </video>
-            </div>
         )
     }
 

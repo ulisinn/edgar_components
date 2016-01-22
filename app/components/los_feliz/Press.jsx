@@ -1,11 +1,12 @@
 import uuid from 'node-uuid';
 import  React from 'react';
 import TweenMax from 'gsap';
+import classnames from 'classnames';
 
 import PressCallout from './ui_elements/PressCallout';
 import PressCategory from './ui_elements/PressCategory';
 
-var _container;
+var _container, _classNames;
 
 export default class Press extends React.Component {
     constructor(props) {
@@ -28,6 +29,8 @@ export default class Press extends React.Component {
         ];
         const currentContent = reviews;
         this.state = {reviews, downloads, category, currentContent};
+        this._classNames = classnames('mainContentPanelRow');
+
     }
 
     componentDidMount() {
@@ -62,7 +65,9 @@ export default class Press extends React.Component {
         if (currentItem) {
             currentContent = (this.state.currentItem.category === "Reviews") ? this.props.assets.reviews : this.props.assets.downloads;
         }
-        return <div className="press" ref={(c) => this._container = c}>
+        return <div
+            className={this._classNames}
+            ref={(c) => this._container = c}>
             <PressCallout listItems={category} onItemSelected={(item) => this.onItemSelected(item)}/>
             <PressCategory info={this.props.assets.info}
                            currentItem={currentItem}

@@ -26,6 +26,8 @@ export default class MainContentPanel extends React.Component {
     }
 
     render() {
+        console.log("MainContentPanel render", this.props);
+
         return (
             <div className={this._classNames} ref={(c) => this._container = c}>
                 <MainContentDescription description={this.props.currentItem.body}></MainContentDescription>
