@@ -16,10 +16,12 @@ export default class BackgroundLoop extends React.Component {
     componentDidMount() {
         const links = this.props.links;
         const isMuted = (this.props.initialRoute === "Teaser" && this.props.currentRoute === undefined) ? true : false;
+        if (!Modernizr.touchevents) {
+            this._audio.volume = 0;
+            this.muteUnmuteAudio(isMuted, 0);
+            AudioStore.listen(this.audioStoreChanged);
 
-        this._audio.volume = 0;
-        this.muteUnmuteAudio(isMuted, 0);
-        AudioStore.listen(this.audioStoreChanged);
+        }
     }
 
 
@@ -63,14 +65,18 @@ export default class BackgroundLoop extends React.Component {
     }
 
     render() {
-        console.log("BackgroundLoop render", this._audio, this.props, this.props.location + this.props.audio[0].mpeg);
-        return (
-            <div>
-                <audio autoPlay loop ref={(c) => this._audio = c}>
-                    <source src={this.props.location + this.props.audio[0].mpeg}/>
-                    <source src={this.props.location + this.props.audio[0].ogg}/>
-                </audio>
-            </div>
-        )
+        console.log("BackgroundLoop render", Modernizr.touchevents, this._audio, this.props, this.props.location + this.props.audio[0].mpeg);
+        if (!Modernizr.touchevents) {
+            return (
+                <div>
+                    <audio autoPlay loop ref={(c) => this._audio = c}>
+                        <source src={this.props.location + this.props.audio[0].mpeg}/>
+                        <source src={this.props.location + this.props.audio[0].ogg}/>
+                    </audio>
+                </div>
+            )
+        } else {
+            return null;
+        }
     }
 }

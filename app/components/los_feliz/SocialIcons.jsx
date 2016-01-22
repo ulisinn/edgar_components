@@ -47,7 +47,7 @@ export default class SocialIcons extends React.Component {
     };
 
     setSocialIconDirection(currentRoute) {
-        if (currentRoute === "Stills" ||currentRoute === "Drawings" || currentRoute === "Credits" || currentRoute === "MakingOf" || currentRoute === "Theory" || currentRoute === "Screenings" || currentRoute === "Press") {
+        if (currentRoute !== "Home") {
             this._classNames = classnames('socialIconsVertical');
         } else {
             this._classNames = classnames('socialIcons');
