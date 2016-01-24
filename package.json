@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.3.1",
     "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.0",
@@ -37,6 +38,7 @@
     "html-webpack-plugin": "^1.7.0",
     "html-webpack-template": "^2.5.1",
     "node-sass": "^3.4.2",
+    "postcss-loader": "^0.8.0",
     "react-transform-hmr": "^1.0.1",
     "resetcss": "^1.0.2",
     "sass-loader": "^3.1.2",

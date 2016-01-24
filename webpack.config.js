@@ -6,6 +6,8 @@ var pkg = require('./package.json');
 var Clean = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var autoprefixer = require('autoprefixer');
+
 const TARGET = process.env.npm_lifecycle_event;
 
 const PATHS = {
@@ -44,6 +46,7 @@ const common = {
             }
         ]
     },
+
     plugins: [
         new HtmlwebpackPlugin({
             template: 'node_modules/html-webpack-template/index.html',
@@ -70,11 +73,16 @@ if (TARGET === 'start' || !TARGET) {
             loaders: [
                 {
                     test: /\.scss$/,
-                    loaders: ["style", "css", "sass"],
+                    loaders: ["style",
+                        "css",
+                        'postcss',
+                        "sass"
+                    ],
                     include: PATHS.app
                 }
             ]
         },
+        postcss: [autoprefixer({browsers: "> 0%"})],
         plugins: [
             new webpack.HotModuleReplacementPlugin()
         ]
@@ -100,11 +108,12 @@ if (TARGET === 'build') {
             loaders: [
                 {
                     test: /\.scss$/,
-                    loader: ExtractTextPlugin.extract(["css!sass"]),
+                    loader: ExtractTextPlugin.extract(["css!postcss!sass"]),
                     include: PATHS.app
                 }
             ]
         },
+        postcss: [autoprefixer({browsers: "> 0%"})],
         plugins: [
             new Clean([PATHS.build]),
             new ExtractTextPlugin('styles.[chunkhash].css'),
