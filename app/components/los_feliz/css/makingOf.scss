@@ -1,8 +1,5 @@
 
 .mainContent {
-  //position: relative;
-  //display: flex;
-  //flex-direction: column;
   width: 100%;
   min-height: 533px;
   background-color: $calloutBackground;
@@ -115,7 +112,7 @@
 
 @media (max-width: $navWidth) {
   .mainContent {
-    min-height: auto;
+    min-height: inherit;
   }
 
   .mainContent p{
