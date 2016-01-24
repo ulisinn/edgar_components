@@ -372,6 +372,7 @@ export default class Main extends React.Component {
                 t.magicWord = item.Downloads[0].magicWord;
                 t.description = item.Downloads[0].description;
                 t.download = item.Downloads[0].download._default;
+                t.email = item.Downloads[0].email;
 
                 //console.log(item, t);
                 return t;

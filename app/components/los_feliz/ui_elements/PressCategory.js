@@ -17,7 +17,9 @@ export default class PressCategory extends React.Component {
     }
 
     requestPassword() {
-        document.location.href = "mailto:edgar@sil.at?subject=Password Request";
+        var email = this.props.currentContent[0].email;
+        console.log("requestPassword", this.props);
+        document.location.href = "mailto:" + email + "?subject=Password Request";
     }
 
     render() {

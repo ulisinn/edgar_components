@@ -16,7 +16,28 @@ export default class ScreeningsItem extends React.Component {
             <h2>{currentItem.venue}</h2>
             <h3>{currentItem.address}</h3>
             <h4>{currentItem.date}</h4>
-            <p>{currentItem.comment}</p>
+            <div className='screeningsComment'
+                 dangerouslySetInnerHTML={this.createMarkup(currentItem.comment.processed)}/>
         </div>;
     }
+
+
+    /*
+     render() {
+     const currentItem = this.props.currentItem;
+     return <div className='screeningsItem'>
+     <h1>{currentItem.publication}</h1>
+     <h2>{currentItem.title}</h2>
+     <h3>{currentItem.author}</h3>
+     <h4>{currentItem.date}</h4>
+     <div dangerouslySetInnerHTML={this.createMarkup(currentItem.processed)}/>
+     </div>;
+     }
+     */
+
+
+    createMarkup(item) {
+        //console.log("createMarkup", item);
+        return {__html: item};
+    };
 }
