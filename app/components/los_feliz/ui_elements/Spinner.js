@@ -21,8 +21,6 @@ export default class Spinner extends React.Component {
 
 
     render() {
-        console.log("HOME render", this.props);
-
         return (
             <div className='contentCenterAlign'>
                 <div className={this._classNames} ref={(c) => this._container = c}>

@@ -48,7 +48,7 @@ export default class Home extends React.Component {
     }
 
     render() {
-        console.log("HOME render", this.props);
+        //console.log("HOME render", this.props);
 
         return (
             <div className='contentCenterAlign'>

@@ -1,9 +1,7 @@
 import React from "react";
-import TweenMax from 'gsap';
-import classnames from 'classnames';
-
-
-import {findActiveLink,getImage} from './utils/utils';
+import TweenMax from "gsap";
+import classnames from "classnames";
+import {getImage} from "./utils/utils";
 
 var backgroundStyle, lightBoxStyle;
 var _animatedBg, _lightBox;
@@ -22,7 +20,7 @@ export default class Background extends React.Component {
             height: '100%',
             background: 'url(' + imageURL + ') 0 0 no-repeat',
             backgroundSize: "cover",
-            opacity: 0
+            opacity: (props.isReload) ? 1 : 0
         };
         lightBoxStyle = {
             position: 'fixed',
@@ -34,17 +32,22 @@ export default class Background extends React.Component {
             opacity: 0
         };
 
+
         getImage(imageURL).then(
             function (successurl) {
-                this.onBackgroundImageLoaded();
+                this.onBackgroundImageLoaded(props.isReload);
             }.bind(this)).catch(
             function (errorurl) {
                 console.log('errorurl', errorurl);
             });
 
-        this._classNames = classnames('animated');
+        if (props.isReload) {
+            this._classNames = classnames('animated');
+        } else {
+            this._classNames = classnames('');
+        }
 
-
+        console.log("Background constructor", props.isReload);
     }
 
 
@@ -84,6 +87,7 @@ export default class Background extends React.Component {
     }
 
     render() {
+        //console.log("background render");
         return (
             <div>
                 <div style={backgroundStyle} className={this._classNames} ref={(c) => this._animatedBg = c}></div>
@@ -92,8 +96,13 @@ export default class Background extends React.Component {
         )
     }
 
-    onBackgroundImageLoaded() {
-        TweenMax.to(this._animatedBg, 1, {autoAlpha: 1});
+    onBackgroundImageLoaded(reload) {
+
+        const t = (reload) ? 0 : 1;
+        if (this._animatedBg && t == 1) {
+            console.log("onBackgroundImageLoaded", t);
+            TweenMax.to(this._animatedBg, t, {autoAlpha: 1});
+        }
         this.props.onFadeStart();
     }
 

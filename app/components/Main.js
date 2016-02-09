@@ -88,7 +88,7 @@ export default class Main extends React.Component {
         const state = this.state;
         const parentComp = this;
 
-        console.log("render", links);
+        //console.log("render", links);
         const childrenWithProps = React.Children.map(this.props.children, function (child) {
             return React.cloneElement(child, {
                 assets: state,
@@ -103,6 +103,7 @@ export default class Main extends React.Component {
             return (
                 <div>
                     <Background onFadeStart={() => this.onBackgroundFadeStart()}
+                                isReload={true}
                                 links={links}
                                 backgroundImage={backgroundImage}
                                 currentRoute={currentRoute}
@@ -118,7 +119,8 @@ export default class Main extends React.Component {
                                     backgroundImage={backgroundImage}
                                     location={location}
                                     isHidden={true}/>
-                    <Navigation links={links}
+                    <Navigation onFadeStart={() => this.onBackgroundFadeStart()}
+                                links={links}
                                 backgroundImage={backgroundImage}
                                 siteReady={siteReady}
                                 currentRoute={currentRoute}
@@ -134,12 +136,13 @@ export default class Main extends React.Component {
             );
             return null;
 
-        } else if (audio) {
-            console.log(this.state, "links", links);
+        } else if (audio && !this.state.downloads) {
+            //console.log("audio", audio);
             return (
                 <div>
-                    <Background onFadeStart={() => this.onBackgroundFadeStart()}
-                                links={links}
+                    <Spinner></Spinner>
+                    <Background links={links}
+                                isReload={false}
                                 backgroundImage={backgroundImage}
                                 currentRoute={currentRoute}
                                 initialRoute={initialRoute}
@@ -147,7 +150,6 @@ export default class Main extends React.Component {
                     <BackgroundLoop links={links} audio={audio} backgroundImage={backgroundImage} location={location}
                                     isHidden={true}/>
 
-                    <Spinner></Spinner>
                 </div>
             );
         } else {
