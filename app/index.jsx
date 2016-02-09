@@ -1,6 +1,7 @@
 var Modernizr = require('./components/los_feliz/utils/modernizr');
 
 require('./components/los_feliz/css/main.scss');
+require('es6-promise').polyfill();
 
 import React from 'react';
 import ReactDOM from 'react-dom';
