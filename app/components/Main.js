@@ -1,21 +1,10 @@
-import React from 'react';
-import Navigation from './los_feliz/Navigation.jsx';
-import Home from './los_feliz/Home.jsx';
-import Stills from './los_feliz/Stills.jsx';
-import Background from './los_feliz/Background.jsx';
-import Teaser from './los_feliz/Teaser.jsx';
-import Interviews from './los_feliz/Interviews.jsx';
-import BackgroundLoop from './los_feliz/BackgroundLoop.jsx';
-import About from './los_feliz/About.jsx';
-import Credits from './los_feliz/Credits.jsx';
-import Screenings from './los_feliz/Screenings.jsx';
-import MakingOf from './los_feliz/MakingOf.jsx';
-import Downloads from './los_feliz/Downloads.jsx';
-import SocialIcons from './los_feliz/SocialIcons.jsx';
-import Press from './los_feliz/Press.jsx';
-import Contact from './los_feliz/Contact.jsx';
-
-import {getInitialData} from './los_feliz/utils/data';
+import React from "react";
+import Navigation from "./los_feliz/Navigation.jsx";
+import Background from "./los_feliz/Background.jsx";
+import BackgroundLoop from "./los_feliz/BackgroundLoop.jsx";
+import SocialIcons from "./los_feliz/SocialIcons.jsx";
+import Spinner from "./los_feliz/ui_elements/Spinner.js";
+import {getInitialData, getMainData} from "./los_feliz/utils/data";
 
 
 export default class Main extends React.Component {
@@ -27,23 +16,47 @@ export default class Main extends React.Component {
         const magicWord = "";
         this.state = {location, siteReady, magicWord};
 
-        const data = getInitialData(location).then(function (response) {
+        const initialData = getInitialData(location).then(function (response) {
             //console.log("getInitialData", response[11].data);
             this.parseBackground(response[0]);
             this.parseBackgroundLoop(response[1]);
-            this.parseNavigation(response[2]);
-            this.parseTeaser(response[3]);
-            this.parseStills(response[4]);
-            this.parseScreenings(response[5]);
-            this.parseInterviews(response[6]);
-            this.parseMakingOf(response[7]);
-            this.parsePaintings(response[8]);
-            this.parseCredits(response[9]);
-            this.parseTheory(response[10]);
-            this.parseLinks(response[11]);
-            this.parseInfo(response[12]);
-            this.parseReviews(response[14]);
-            this.parseDownloads(response[13]);
+            this.getMain();
+
+            /*  this.parseNavigation(response[2]);
+             this.parseTeaser(response[3]);
+             this.parseStills(response[4]);
+             this.parseScreenings(response[5]);
+             this.parseInterviews(response[6]);
+             this.parseMakingOf(response[7]);
+             this.parsePaintings(response[8]);
+             this.parseCredits(response[9]);
+             this.parseTheory(response[10]);
+             this.parseLinks(response[11]);
+             this.parseInfo(response[12]);
+             this.parseReviews(response[14]);
+             this.parseDownloads(response[13]);*/
+        }.bind(this))
+    }
+
+    getMain() {
+        const location = (window.location.hostname.indexOf('.at') == -1) ? "http://new.1000000000.at" : "";
+
+        const mainData = getMainData(location).then(function (response) {
+            console.log("getMainData", response);
+            this.parseNavigation(response[0]);
+            this.parseTeaser(response[1]);
+            this.parseStills(response[2]);
+            this.parseScreenings(response[3]);
+            this.parseInterviews(response[4]);
+            this.parseMakingOf(response[5]);
+            this.parsePaintings(response[6]);
+            this.parseCredits(response[7]);
+            this.parseTheory(response[8]);
+            this.parseLinks(response[9]);
+            this.parseInfo(response[10]);
+            this.parseReviews(response[12]);
+            this.parseDownloads(response[11]);
+
         }.bind(this))
     }
 
@@ -75,6 +88,7 @@ export default class Main extends React.Component {
         const state = this.state;
         const parentComp = this;
 
+        console.log("render", links);
         const childrenWithProps = React.Children.map(this.props.children, function (child) {
             return React.cloneElement(child, {
                 assets: state,
@@ -120,20 +134,8 @@ export default class Main extends React.Component {
             );
             return null;
 
-        } else if (this.state && backgroundImage) {
-            //console.log(this.state, "Modernizr", Modernizr);
-            return (
-                <div>
-                    <Background onFadeStart={() => this.onBackgroundFadeStart()}
-                                links={links}
-                                backgroundImage={backgroundImage}
-                                currentRoute={currentRoute}
-                                initialRoute={initialRoute}
-                                location={location}/>
-                </div>
-            );
-        } else if (this.state && links) {
-            //console.log(this.state, "Modernizr", Modernizr);
+        } else if (audio) {
+            console.log(this.state, "links", links);
             return (
                 <div>
                     <Background onFadeStart={() => this.onBackgroundFadeStart()}
@@ -144,19 +146,8 @@ export default class Main extends React.Component {
                                 location={location}/>
                     <BackgroundLoop links={links} audio={audio} backgroundImage={backgroundImage} location={location}
                                     isHidden={true}/>
-                    <div className="content">
-                        <Home links={links}
-                              siteReady={siteReady}
-                              onNavClick={(id) => this.onLinkClicked(id)}/>
 
-                    </div>
-                    <Navigation links={links} backgroundImage={backgroundImage}
-                                onNavClick={(id) => this.onLinkClicked(id)}/>
-
-                    <SocialIcons links={links}
-                                 siteReady={siteReady}
-                    />
-
+                    <Spinner></Spinner>
                 </div>
             );
         } else {
@@ -244,7 +235,7 @@ export default class Main extends React.Component {
 
     parseNavigation(response) {
         const initialRoute = this.state.initialRoute;
-        //console.log("NAVIGATION", response.data[0].Navigation);
+        console.log("NAVIGATION", response.data[0].Navigation);
         const links = response.data[0].Navigation.map(
             function (item) {
                 const t = {};
@@ -276,17 +267,17 @@ export default class Main extends React.Component {
 
     parseStills(response) {
         const stills = response.data;
-/*        const stills = response.data.map(
-            function (item) {
-                const t = {};
-                t.assetID = item._id;
-                t.description = item.Stills[0].description;
-                t.title = item.Stills[0].title;
-                t.source = item.Stills[0].imageSrc._default;
+        /*        const stills = response.data.map(
+         function (item) {
+         const t = {};
+         t.assetID = item._id;
+         t.description = item.Stills[0].description;
+         t.title = item.Stills[0].title;
+         t.source = item.Stills[0].imageSrc._default;
 
-                //console.log(item, t);
-                return t;
-            });*/
+         //console.log(item, t);
+         return t;
+         });*/
         this.setState({stills});
     }
 

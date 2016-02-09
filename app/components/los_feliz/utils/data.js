@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 // GET BACKGROUND IMAGES
 
@@ -272,11 +272,15 @@ export function getInfo(location) {
 }
 
 
-
 export function getInitialData(location) {
     return axios.all([
         getBackgrounds(location),
-        getBackgroundLoop(location),
+        getBackgroundLoop(location)
+    ])
+}
+
+export function getMainData(location) {
+    return axios.all([
         getNavigation(location),
         getTeaser(location),
         getStills(location),
