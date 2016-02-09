@@ -10,14 +10,8 @@ import routes from "./components/los_feliz/config/routes";
 main();
 
 function main(){
-
-/*    window.oncontextmenu = function () {
-        return false;
-    };*/
-
     ReactDOM.render(
         <Router>{routes}</Router>,
         document.getElementById('app')
     );
-
 }
