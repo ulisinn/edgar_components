@@ -49,10 +49,15 @@ const common = {
 
     plugins: [
         new HtmlwebpackPlugin({
-            template: 'node_modules/html-webpack-template/index.html',
+            // template: 'node_modules/html-webpack-template/index.html',
+            template: 'app/components/los_feliz/assets/index.html',
             title: 'LOS FELIZ',
             mobile: true,
-            appMountId: 'app'
+            appMountId: 'app',
+            googleAnalytics: {
+                trackingId: 'UA-73613799-1',
+                pageViewOnLoad: true
+            }
         })
     ]
 };
