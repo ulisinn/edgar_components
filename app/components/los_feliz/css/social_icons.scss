@@ -33,7 +33,7 @@
   }
 }
 
-.speakerIcon {
+.imdbIcon, .speakerIcon {
   cursor: pointer;
   width: 24px;
   margin-top: 2px;
@@ -47,6 +47,22 @@
   }
 }
 
+.imdbIcon {
+  path {
+    fill: white;
+  }
+  .st0 {
+    fill: black;
+  }
+}
+.imdbIcon:hover {
+  path {
+    fill: $navSelected;
+  }
+  .st0 {
+    fill: white;
+  }
+}
 
 .socialIconsVertical {
   font-size: 1.3em;
@@ -54,7 +70,7 @@
   left: 0;
   bottom: 0;
   width: 40px;
-  height: 8.65em;
+  height: 9.75em;
 
   div {
     display: flex;
@@ -80,7 +96,11 @@
     color: $navSelected;
   }
 
-  .speakerIcon{
+  .speakerIcon {
     width: 20px;
+  }
+  .imdbIcon {
+    width: 18px;
+    fill: white;
   }
 }

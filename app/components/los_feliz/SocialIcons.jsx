@@ -1,11 +1,9 @@
 import React from "react";
-
-import AudioStore from './alt/AudioStore';
-
-import TweenMax from 'gsap';
-import classnames from 'classnames';
-
-import SpeakerIcon from './ui_elements/SpeakerIcon'
+import AudioStore from "./alt/AudioStore";
+import TweenMax from "gsap";
+import classnames from "classnames";
+import SpeakerIcon from "./ui_elements/SpeakerIcon";
+import ImdbIcon from "./ui_elements/ImdbIcon";
 
 var _container;
 var _classNames;
@@ -86,6 +84,9 @@ export default class SocialIcons extends React.Component {
 
                     <a href="http://www.1000000000.at/?page_id=2" target="_blank">
                         &#xe805;
+                    </a>
+                    <a href="http://www.imdb.com/title/tt4299890/?ref_=nm_flmg_dr_1" target="_blank">
+                        <ImdbIcon></ImdbIcon>
                     </a>
                     <a onClick={() =>this.onSpeakerClick()}>
                         <SpeakerIcon globalMute={globalMute}/>
